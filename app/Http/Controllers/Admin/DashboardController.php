@@ -8,6 +8,6 @@ use App\Http\Controllers\Controller;
 class DashboardController extends Controller
 {
     public function index(Request $request){
-        echo 'welcome admin';die;
+        return view('admin.dashboard');
     }
 }

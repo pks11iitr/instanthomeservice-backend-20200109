@@ -1,58 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
+    <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="structure chanegd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Cart.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrderitemsController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrdersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OtpsController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PartnersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PartnersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PermissionroleController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PermissionsController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PermissionuserController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RoleuserController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Otps.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Partners.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Partners.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Permission_role.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Permission_user.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Permissions.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Products.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Role_user.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Roles.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Orderitems.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/Orderitems.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cart.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/category.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/categoryadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/categoryadd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/categoryedit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/categoryedit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/orders.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/otps.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partners.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/partners.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partnersadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/partnersadd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partnersedit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/partnersedit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/permissionrole.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/permissions.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/permissionuser.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/products.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/productsadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/productsadd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/productsdetail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/productsdetail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/productsedit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/productsedit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/role.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/roleuser.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/users.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/usersdetail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/usersdetail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Order_items.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order_items.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,7 +208,10 @@
       <workItem from="1576157813295" duration="1249000" />
       <workItem from="1576216972014" duration="15561000" />
       <workItem from="1576302193547" duration="3866000" />
-      <workItem from="1576476807862" duration="8141000" />
+      <workItem from="1576476807862" duration="11395000" />
+      <workItem from="1576560737952" duration="655000" />
+      <workItem from="1576562043662" duration="454000" />
+      <workItem from="1576587006922" duration="845000" />
     </task>
     <task id="LOCAL-00001" summary="address updated api">
       <created>1575285836963</created>
@@ -308,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576479191230</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="structure chanegd">
+      <created>1576489715844</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1576489715844</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,7 +293,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="address updated api" />
     <MESSAGE value="setting rolewise login redirections" />
-    <option name="LAST_COMMIT_MESSAGE" value="setting rolewise login redirections" />
+    <MESSAGE value="structure chanegd" />
+    <option name="LAST_COMMIT_MESSAGE" value="structure chanegd" />
   </component>
   <component name="WindowStateProjectService">
     <state x="402" y="125" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1576056798900">
@@ -340,15 +302,15 @@
     </state>
     <state x="402" y="125" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1576056798900" />
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1575361440240" />
-    <state x="225" y="0" width="860" height="741" key="CommitChangelistDialog2" timestamp="1576479144888">
+    <state x="225" y="0" width="860" height="741" key="CommitChangelistDialog2" timestamp="1576489733897">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="225" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1576479144888" />
+    <state x="225" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1576489733897" />
     <state x="281" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1575448175302" />
-    <state x="454" y="125" width="424" height="484" key="FileChooserDialogImpl" timestamp="1576145128306">
+    <state x="454" y="125" width="424" height="484" key="FileChooserDialogImpl" timestamp="1576561870613">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="454" y="125" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1576145128306" />
+    <state x="454" y="125" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1576561870613" />
     <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1575275604543" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1575742327793">
       <screen x="0" y="0" width="1366" height="728" />
@@ -375,10 +337,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1575451443847" />
-    <state x="257" y="103" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576479176728">
+    <state x="257" y="103" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576489718412">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="257" y="103" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1576479176728" />
+    <state x="257" y="103" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1576489718412" />
     <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1575375042924" />
     <state x="390" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1576128815043">
       <screen x="0" y="0" width="1366" height="728" />
@@ -388,5 +350,16 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="17" width="672" height="676" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1575975598890" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Models/Order_items.php</url>
+          <line>7</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

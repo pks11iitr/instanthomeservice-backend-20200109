@@ -10,7 +10,7 @@ class Order_items extends Model
     protected $table='order_items';
 
     public function product(){
-        return $this->belongsTo('App\Products', 'product_id');
+        return $this->belongsTo('App\Models\Products', 'product_id');
     }
 
 }

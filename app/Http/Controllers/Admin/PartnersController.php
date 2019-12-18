@@ -31,7 +31,7 @@ class PartnersController extends Controller
             'image' => $path,
             'isactive' => $request->isactive]);
 
-        return redirect('siteadmin.partners');
+        return redirect('partners.list');
     }
     public function edit(Request $request,$id){
         $partner = Partners::find($id);
@@ -58,6 +58,6 @@ class PartnersController extends Controller
                 'isactive'=>$request->isactive]);
         }
 
-        return redirect('siteadmin.partners');
+        return redirect('partners.list');
     }
 }

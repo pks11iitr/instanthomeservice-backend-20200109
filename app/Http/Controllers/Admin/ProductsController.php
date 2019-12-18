@@ -46,7 +46,7 @@ class ProductsController extends Controller
             'description' => $request->description,
             'in_the_box' => $request->inthebox]);
 
-        return redirect('products.list');
+        return redirect(route('products.list'));
     }
     public function edit(Request $request,$id){
         $product = Products::find($id);
@@ -82,6 +82,6 @@ class ProductsController extends Controller
 
 
 
-        return redirect('products.list');
+        return redirect(route('products.list'));
     }
 }

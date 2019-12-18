@@ -20,13 +20,33 @@ class OrdersController extends Controller
         $details = Order_items::where('order_id',$id)->get();
         return view('siteadmin.orderitems',['details'=>$details]);
     }
-    public function status(Request $request,$id){
-        $emp=Order_items::find($id);
-        if($emp->order_status==processing)
-            $emp->status=0;
-        else
-            $emp->status=processing;
-        $emp->save();
-        return redirect()->back();
+
+    public function changestatus(Request $request, $id){
+        $order_item=Order_items::findOrFail($id);
+        switch($request->type){
+            case 'returned': if($order_item->order_status=='returnrequest'){
+                $order_item->order_status='returned';
+                $order_item->save();
+                return redirect()->back()->with('success', 'Order status has been changed');
+            }
+            case 'completed': if($order_item->order_status=='delivered'){
+                $order_item->order_status='completed';
+                $order_item->save();
+                return redirect()->back()->with('success', 'Order status has been changed');
+            }
+            case 'processing': if($order_item->order_status=='paid'){
+                $order_item->order_status='processing';
+                $order_item->save();
+                return redirect()->back()->with('success', 'Order status has been changed');
+            }
+            case 'delivered': if($order_item->order_status=='processing'){
+                $order_item->order_status='delivered';
+                $order_item->save();
+                return redirect()->back()->with('success', 'Order status has been changed');
+            }
+            default:break;
+        }
+        return redirect()->back()->with('error', 'Order status cannot be changed');
+
     }
 }

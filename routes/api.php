@@ -33,6 +33,8 @@ $api = app('Dingo\Api\Routing\Router');
 
     $api->get('category', ['as'=>'api.category', 'uses'=>'Customer\Api\CategoryController@index']);
 
+    $api->get('home', ['as'=>'api.home', 'uses'=>'Customer\Api\HomeController@index']);
+
     $api->get('category/{id}/product', ['as'=>'api.category', 'uses'=>'Customer\Api\CategoryController@cateproduct']);
 
 

@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function index(Request $request){
 
-        $category=Category::get();
+        $category=Category::active()->with('subcategories.subcategories')->where('parent', null)->get();
 
        return $category;
 

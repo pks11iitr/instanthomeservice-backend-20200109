@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Active;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    public $timestamps=false;
+    //public $timestamps=false;
+    use Active;
+
     protected $table='category';
 
     protected $fillable=['title','image', 'description', 'parent','istop','isactive'];
@@ -15,18 +18,17 @@ class Category extends Model
 
 
 
-        public function product(){
-            return $this->hasMany('App\Models\Products', 'categoryid');
-        }
+    public function product(){
+        return $this->hasMany('App\Models\Products', 'categoryid');
+    }
 
 
-
-    public function parent(){
+    public function parentcategory(){
         return $this->belongsTo('App\Models\Category', 'parent');
     }
 
     public function subcategories(){
-            return $this->hasMany('App\Models\Category', 'parent');
+        return $this->hasMany('App\Models\Category', 'parent');
     }
 
 }

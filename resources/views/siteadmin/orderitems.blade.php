@@ -36,6 +36,7 @@
                                     <th>Name</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
+                                    <th>Order Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -44,6 +45,7 @@
                                         <td>{{$detail->product->name}}</td>
                                         <td>{{$detail->price}}</td>
                                         <td>{{$detail->quantity}}</td>
+                                        <td>{{$detail->order_status}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

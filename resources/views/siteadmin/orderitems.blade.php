@@ -61,7 +61,7 @@
                                                 Delivered <a href="{{route('order.status.change',['id'=>$detail->id])}}?type=completed">Accept Return</a>
                                                 @elseif($detail->order_status=='cancelled')
                                                     Cancelled
-                                                @elseif($detail->order_status=='cancelled')
+                                                @elseif($detail->order_status=='completed')
                                                 Completed
                                                 @endif
                                         </td>

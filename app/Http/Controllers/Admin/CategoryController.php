@@ -35,7 +35,7 @@ class CategoryController extends Controller
             'istop' => $request->istop,
             'isactive'=>$request->isactive]);
 
-        return redirect('siteadmin.category');
+        return redirect(route('category.list'));
     }
 
     public function edit(Request $request, $id){
@@ -71,7 +71,7 @@ class CategoryController extends Controller
                 'isactive'=>$request->isactive]);
         }
 
-        return redirect('siteadmin.category');
+        return redirect(route('category.list'));
     }
 
 }

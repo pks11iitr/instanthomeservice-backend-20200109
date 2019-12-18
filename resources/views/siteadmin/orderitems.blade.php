@@ -40,11 +40,11 @@
                                 </thead>
                                 <tbody>
                                 @foreach($details as $detail)
-                                <tr>
-                                    <td>{{$detail->product->name}}</td>
-                                    <td>{{$detail->price}}</td>
-                                    <td>{{$detail->quantity}}</td>
-                                </tr>
+                                    <tr>
+                                        <td>{{$detail->product->name}}</td>
+                                        <td>{{$detail->price}}</td>
+                                        <td>{{$detail->quantity}}</td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>

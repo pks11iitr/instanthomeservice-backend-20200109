@@ -27,6 +27,8 @@ $api = app('Dingo\Api\Routing\Router');
         $api->get('make-order', ['as'=>'api.order', 'uses'=>'Customer\Api\OrderController@make']);
         $api->get('order-details/{id}', ['as'=>'api.order.details', 'uses'=>'Customer\Api\OrderController@details']);
         $api->get('order-history', ['as'=>'api.order.history', 'uses'=>'Customer\Api\OrderController@history']);
+        $api->get('cancel-order/{id}', ['as'=>'api.order.cancel', 'uses'=>'Customer\Api\OrderController@cancel']);
+        $api->get('return/{id}', ['as'=>'api.order.return', 'uses'=>'Customer\Api\OrderController@returnOrder']);
     });
 
     $api->get('category', ['as'=>'api.category', 'uses'=>'Customer\Api\CategoryController@index']);

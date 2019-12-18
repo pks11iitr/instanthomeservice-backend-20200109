@@ -11,6 +11,8 @@ class Orders extends Model
 
     protected $fillable=['user_id'];
 
+    protected $hidden=['created_at', 'user_id', 'deleted_at', 'payment_mode'];
+
     public function details(){
       return $this->hasMany('App\Models\Order_items', 'order_id');
     }

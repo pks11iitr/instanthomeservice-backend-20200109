@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 class ProductsController extends Controller
 {
@@ -36,6 +37,7 @@ class ProductsController extends Controller
         Products::create(['name' => $request->name,
             'company' => $request->company,
             'price' => $request->price,
+            'cut_price' => $request->cut_price,
             'image' => $path,
             'size' => $request->size,
             'isactive' =>$request->isactive,
@@ -44,7 +46,7 @@ class ProductsController extends Controller
             'description' => $request->description,
             'in_the_box' => $request->inthebox]);
 
-        return redirect('siteadmin.products');
+        return redirect('products.list');
     }
     public function edit(Request $request,$id){
         $product = Products::find($id);
@@ -53,38 +55,33 @@ class ProductsController extends Controller
     }
     public function update(Request $request,$id){
         $product=Products::findOrFail($id);
-        if(isset($request->productsimage)){
-            $file=$request->productsimage->path();
+        if(isset($request->productsimage)) {
+            $file = $request->productsimage->path();
 
-            $name=str_replace(' ', '_', $request->productsimage->getClientOriginalName());
+            $name = str_replace(' ', '_', $request->productsimage->getClientOriginalName());
 
-            $path='products/'.$name;
+            $path = 'products/' . $name;
 
             Storage::put($path, $file);
-
-            $product->update(['name' => $request->name,
-                'company' => $request->company,
-                'price' => $request->price,
-                'image' => $path,
-                'size' => $request->size,
-                'isactive' =>$request->isactive,
-                'rating' => $request->rating,
-                'categoryid' => $request->categoryid,
-                'description' => $request->description,
-                'in_the_box' => $request->inthebox]);
-
         }else{
-            $product->update(['name' => $request->name,
-                'company' => $request->company,
-                'price' => $request->price,
-                'size' => $request->size,
-                'isactive' =>$request->isactive,
-                'rating' => $request->rating,
-                'categoryid' => $request->categoryid,
-                'description' => $request->description,
-                'in_the_box' => $request->inthebox]);
+            $path=DB::raw('image');
         }
 
-        return redirect('siteadmin.products');
+
+        $product->update(['name' => $request->name,
+            'company' => $request->company,
+            'price' => $request->price,
+            'cut_price' => $request->cut_price,
+            'image' => $path,
+            'size' => $request->size,
+            'isactive' =>$request->isactive,
+            'rating' => $request->rating,
+            'categoryid' => $request->categoryid,
+            'description' => $request->description,
+            'in_the_box' => $request->inthebox]);
+
+
+
+        return redirect('products.list');
     }
 }

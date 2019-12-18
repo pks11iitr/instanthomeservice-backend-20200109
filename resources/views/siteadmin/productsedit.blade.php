@@ -48,6 +48,10 @@
                                         <input type="text" name="price" class="form-control" id="exampleInputEmail1" placeholder="Price" value="{{$product->price}}">
                                     </div>
                                     <div class="form-group">
+                                        <label for="exampleInputtitle">Cut Price</label>
+                                        <input type="text" name="cut_price" class="form-control" id="exampleInputEmail1" placeholder="Price" value="{{$product->cut_price}}">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="exampleInputimage">Image</label>
                                         <input type="file" name="productsimage" class="form-control" id="exampleInputimage" placeholder="">
                                         <img src="{{$product->image}}">

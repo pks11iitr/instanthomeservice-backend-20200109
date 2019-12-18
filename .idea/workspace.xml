@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrdersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -349,7 +348,8 @@
     <MESSAGE value="structure chanegd" />
     <MESSAGE value="cut price added, order history api changed" />
     <MESSAGE value="url corrected for listing in admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="url corrected for listing in admin" />
+    <MESSAGE value="order status change added to admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="order status change added to admin" />
   </component>
   <component name="WindowStateProjectService">
     <state x="402" y="125" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1576056798900">
@@ -401,9 +401,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="390" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1576128815043" />
-    <state x="341" y="189" width="741" height="415" key="git4idea.merge.GitPullDialog" timestamp="1576590844591">
-      <screen x="67" y="27" width="1299" height="741" />
+    <state x="288" y="159" width="741" height="415" key="git4idea.merge.GitPullDialog" timestamp="1576674234825">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="288" y="159" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1576674234825" />
     <state x="341" y="189" width="741" height="415" key="git4idea.merge.GitPullDialog/67.27.1299.741@67.27.1299.741" timestamp="1576590844591" />
     <state x="389" y="44" width="672" height="689" key="search.everywhere.popup" timestamp="1576661818613">
       <screen x="67" y="27" width="1299" height="741" />

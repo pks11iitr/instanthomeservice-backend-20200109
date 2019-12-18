@@ -20,4 +20,13 @@ class OrdersController extends Controller
         $details = Order_items::where('order_id',$id)->get();
         return view('siteadmin.orderitems',['details'=>$details]);
     }
+    public function status(Request $request,$id){
+        $emp=Order_items::find($id);
+        if($emp->order_status==processing)
+            $emp->status=0;
+        else
+            $emp->status=processing;
+        $emp->save();
+        return redirect()->back();
+    }
 }

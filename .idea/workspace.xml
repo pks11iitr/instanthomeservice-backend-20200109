@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/siteadmin/orderitems.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Order_items.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order_items.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Orders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/productsadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/productsadd.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/productsedit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/productsedit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +283,21 @@
       <option name="project" value="LOCAL" />
       <updated>1576590828105</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="structure chanegd">
+      <created>1576591300131</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1576591300131</updated>
+    </task>
+    <task id="LOCAL-00011" summary="structure chanegd">
+      <created>1576591394995</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1576591394995</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,11 +330,11 @@
     </state>
     <state x="402" y="125" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1576056798900" />
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1575361440240" />
-    <state x="281" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1576591300025">
+    <state x="281" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1576663511276">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="225" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1576489733897" />
-    <state x="281" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1576591300025" />
+    <state x="281" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1576663511276" />
     <state x="454" y="125" width="424" height="484" key="FileChooserDialogImpl" timestamp="1576561870613">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -344,11 +365,11 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1575451443847" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576591317315">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576591404340">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="257" y="103" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1576489718412" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1576591317315" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1576591404340" />
     <state x="390" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1576128815043">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -357,20 +378,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="341" y="189" width="741" height="415" key="git4idea.merge.GitPullDialog/67.27.1299.741@67.27.1299.741" timestamp="1576590844591" />
-    <state x="339" y="17" width="672" height="676" key="search.everywhere.popup" timestamp="1575975598890">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="389" y="44" width="672" height="689" key="search.everywhere.popup" timestamp="1576661818613">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="339" y="17" width="672" height="676" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1575975598890" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Models/Order_items.php</url>
-          <line>7</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="389" y="44" width="672" height="689" key="search.everywhere.popup/67.27.1299.741@67.27.1299.741" timestamp="1576661818613" />
   </component>
 </project>

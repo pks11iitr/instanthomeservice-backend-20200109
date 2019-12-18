@@ -40,7 +40,7 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
     Route::group(['prefix'=>'orders'],function (){
         Route::get('/','Admin\OrdersController@index')->name('orders.list');
         Route::get('detail/{id}','Admin\OrdersController@detail')->name('orders.detail');
-        Route::get('change-status/{id}','Admin\OrdersController@changestatus')->name('orders.change.status');
+        Route::get('change-status/{id}','Admin\OrdersController@changestatus')->name('order.status.change');
     });
 
 });

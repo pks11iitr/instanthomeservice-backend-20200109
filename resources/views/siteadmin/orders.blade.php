@@ -35,7 +35,8 @@
                                 <tr>
                                     <th>User Name</th>
                                     <th>Mobile</th>
-                                    <th>Total Paid</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
                                     <th>Created Date</th>
                                     <th>Detail</th>
                                 </tr>
@@ -46,6 +47,7 @@
                                         <td>{{$s->name}}</td>
                                         <td>{{$s->mobile}}</td>
                                         <td>{{$s->total_paid}}</td>
+                                        <td>{{$s->ispaid==1?'paid':'payment pending'}}</td>
                                         <td>{{$s->created_at}}</td>
                                         <td><a href="{{route('orders.detail',['id'=>$s->id])}}" class="btn btn-block btn-primary">Detail</a></td>
                                     </tr>

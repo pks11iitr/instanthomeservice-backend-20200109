@@ -12,7 +12,7 @@ return [
      */
     'admins'=>[
         'admin'=>'admin.dashboard',
-        'partner'=>'partner.dashboard',
+        #'partner'=>'partner.dashboard',
     ],
 
     /*

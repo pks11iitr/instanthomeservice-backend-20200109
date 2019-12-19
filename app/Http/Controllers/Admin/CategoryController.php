@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class CategoryController extends Controller
 {
     public function index(Request $request){
-        $sel = Category::with('parent')->get();
+        $sel = Category::with('parentcategory')->get();
         return view('siteadmin.category',['sel'=>$sel]);
     }
     public function create(Request $request){

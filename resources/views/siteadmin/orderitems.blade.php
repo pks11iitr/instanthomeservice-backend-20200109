@@ -36,6 +36,8 @@
                                     <th>Name</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
+                                    <th>Order Status</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -44,6 +46,26 @@
                                         <td>{{$detail->product->name}}</td>
                                         <td>{{$detail->price}}</td>
                                         <td>{{$detail->quantity}}</td>
+                                        <td>
+                                                @if($detail->order_status=='processing')
+                                                Processing <a href="{{route('order.status.change',['id'=>$detail->id])}}?type=delivered">Mark as delivered</a>
+                                                @elseif($detail->order_status=='returned')
+                                                 Returned
+                                                @elseif($detail->order_status=='paid')
+                                                     Paid <a href="{{route('order.status.change',['id'=>$detail->id])}}?type=delivered">Mark as processing</a>
+                                                @elseif($detail->order_status=='pending')
+                                                     Payment Pending
+                                                @elseif($detail->order_status=='delivered')
+                                                    Delivered <a href="{{route('order.status.change',['id'=>$detail->id])}}?type=completed">Mark as completed</a>
+                                                @elseif($detail->order_status=='returnrequest')
+                                                Delivered <a href="{{route('order.status.change',['id'=>$detail->id])}}?type=completed">Accept Return</a>
+                                                @elseif($detail->order_status=='cancelled')
+                                                    Cancelled
+                                                @elseif($detail->order_status=='completed')
+                                                Completed
+                                                @endif
+                                        </td>
+
                                     </tr>
                                 @endforeach
                                 </tbody>

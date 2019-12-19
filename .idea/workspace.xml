@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/orderitems.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/orderitems.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +146,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models/Traits" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -158,6 +158,9 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Models/Traits" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\fertilizers\app\Models" />
       <recent name="C:\xampp\htdocs\fertilizers\app\Http\Controllers\Admin" />
@@ -304,7 +307,28 @@
       <option name="project" value="LOCAL" />
       <updated>1576667937113</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="url corrected for listing in admin">
+      <created>1576668074286</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1576668074286</updated>
+    </task>
+    <task id="LOCAL-00015" summary="url corrected for listing in admin">
+      <created>1576670949044</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1576670949044</updated>
+    </task>
+    <task id="LOCAL-00016" summary="order status change added to admin">
+      <created>1576674272199</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1576674272199</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +355,8 @@
     <MESSAGE value="structure chanegd" />
     <MESSAGE value="cut price added, order history api changed" />
     <MESSAGE value="url corrected for listing in admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="url corrected for listing in admin" />
+    <MESSAGE value="order status change added to admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="order status change added to admin" />
   </component>
   <component name="WindowStateProjectService">
     <state x="402" y="125" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1576056798900">
@@ -339,11 +364,11 @@
     </state>
     <state x="402" y="125" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1576056798900" />
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1575361440240" />
-    <state x="281" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1576667937041">
-      <screen x="67" y="27" width="1299" height="741" />
+    <state x="225" y="0" width="860" height="741" key="CommitChangelistDialog2" timestamp="1576674270719">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="225" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1576489733897" />
-    <state x="281" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1576667937041" />
+    <state x="225" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1576674270719" />
+    <state x="281" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1576673643371" />
     <state x="454" y="125" width="424" height="484" key="FileChooserDialogImpl" timestamp="1576561870613">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -365,6 +390,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1575742327793" />
+    <state x="395" y="81" key="MultipleFileMergeDialog" timestamp="1576674291766">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="395" y="81" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1576674291766" />
     <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1576591284052">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -374,18 +403,19 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1575451443847" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576667945121">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576670955689">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="257" y="103" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1576489718412" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1576667945121" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1576670955689" />
     <state x="390" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1576128815043">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="390" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1576128815043" />
-    <state x="341" y="189" width="741" height="415" key="git4idea.merge.GitPullDialog" timestamp="1576590844591">
-      <screen x="67" y="27" width="1299" height="741" />
+    <state x="288" y="159" width="741" height="415" key="git4idea.merge.GitPullDialog" timestamp="1576674281939">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="288" y="159" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1576674281939" />
     <state x="341" y="189" width="741" height="415" key="git4idea.merge.GitPullDialog/67.27.1299.741@67.27.1299.741" timestamp="1576590844591" />
     <state x="389" y="44" width="672" height="689" key="search.everywhere.popup" timestamp="1576661818613">
       <screen x="67" y="27" width="1299" height="741" />

@@ -22,6 +22,16 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
         Route::get('edit/{id}','Admin\CategoryController@edit')->name('category.edit');
         Route::post('update/{id}','Admin\CategoryController@update')->name('category.update');
     });
+
+    Route::group(['prefix'=>'banners'], function(){
+        Route::get('/','Admin\BannerController@index')->name('banners.list');
+        Route::get('create','Admin\BannerController@create')->name('banners.create');
+        Route::post('store','Admin\BannerController@store')->name('banners.store');
+        Route::get('edit/{id}','Admin\BannerController@edit')->name('banners.edit');
+        Route::post('update/{id}','Admin\BannerController@update')->name('banners.update');
+
+          });
+
     Route::group(['prefix'=>'partners'],function (){
         Route::get('/','Admin\PartnersController@index')->name('partners.list');
         Route::get('create','Admin\PartnersController@create')->name('partners.create');
@@ -40,7 +50,7 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
     Route::group(['prefix'=>'orders'],function (){
         Route::get('/','Admin\OrdersController@index')->name('orders.list');
         Route::get('detail/{id}','Admin\OrdersController@detail')->name('orders.detail');
-        Route::get('change-status/{id}','Admin\OrdersController@changestatus')->name('orders.change.status');
+        Route::get('change-status/{id}','Admin\OrdersController@changestatus')->name('order.status.change');
     });
 
 });

@@ -37,7 +37,6 @@
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Order Status</th>
-                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>

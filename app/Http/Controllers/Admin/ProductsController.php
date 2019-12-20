@@ -10,15 +10,15 @@ use Illuminate\Support\Facades\Storage;
 class ProductsController extends Controller
 {
     public function index(Request $request){
-        $sel = products::all();
+        $sel = Products::all();
         return view('siteadmin.products',['sel'=>$sel]);
     }
     public function detail(Request $request,$id){
-        $det = products::where('id',$id)->first();
+        $det = Products::where('id',$id)->first();
         return view('siteadmin.productsdetail',['det'=>$det]);
     }
     public function create(Request $request){
-        $allcategories=Products::get();
+        $allcategories=Category::get();
         return view('siteadmin.productsadd', ['allcategories'=>$allcategories]);
     }
     public function store(Request $request){

@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Active;
 use Illuminate\Database\Eloquent\Model;
 use Storage;
 class Banner extends Model
 {
+    use Active;
   protected $table='banners';
 
     protected $fillable=['doc_path','isactive'];

@@ -25,7 +25,7 @@ class CategoryController extends Controller
     }
 
     public function subcategory(Request $request, $id){
-        $category=Category::active()->where('parent', $id)->get();
+        $category=Category::active()->where('parent', $id)->get()->toArray();
         return $category;
 
     }

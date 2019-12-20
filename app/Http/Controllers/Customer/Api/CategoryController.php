@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function index(Request $request){
 
-        $category=Category::active()->with('subcategories.subcategories')->where('parent', null)->get();
+        $category=Category::active()->where('parent', null)->get();
 
        return $category;
 
@@ -23,4 +23,6 @@ class CategoryController extends Controller
 
       return $product;
     }
+
+    public
 }

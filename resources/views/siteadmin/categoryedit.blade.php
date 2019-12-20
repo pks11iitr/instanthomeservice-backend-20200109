@@ -51,7 +51,7 @@
                                     <div class="form-group">
                                         <label for="exampleInputparent">Parent Category(optional)</label>
                                         <select name="parent" class="form-control" id="exampleInputistop" placeholder="">
-                                            <option>Select Parent Category</option>
+                                            <option value="0">Select Parent Category</option>
                                             @foreach($allcategories as $c)
                                                 <option value="{{$c->id}}"   {{$category->parent==$c->id?'selected':''}}>{{$c->title}}</option>
                                             @endforeach

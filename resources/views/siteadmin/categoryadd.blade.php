@@ -50,7 +50,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputparent">Parent Category(optional)</label>
                                     <select name="parent" class="form-control" id="exampleInputistop" placeholder="">
-                                        <option>Select Parent Category</option>
+                                        <option value="">Select Parent Category</option>
                                         @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->title}}</option>
                                         @endforeach

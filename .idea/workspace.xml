@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/allowedusers.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/allowedusers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/categoryadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/categoryadd.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/categoryedit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/categoryedit.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +217,8 @@
       <workItem from="1576560737952" duration="655000" />
       <workItem from="1576562043662" duration="454000" />
       <workItem from="1576587006922" duration="845000" />
-      <workItem from="1576746839123" duration="31000" />
+      <workItem from="1576746839123" duration="987000" />
+      <workItem from="1576845250765" duration="80000" />
     </task>
     <task id="LOCAL-00001" summary="address updated api">
       <created>1575285836963</created>
@@ -336,7 +339,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576741274033</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="allow admin for admin panel and customer for api">
+      <created>1576746911187</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1576746911187</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -364,7 +374,8 @@
     <MESSAGE value="cut price added, order history api changed" />
     <MESSAGE value="url corrected for listing in admin" />
     <MESSAGE value="order status change added to admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="order status change added to admin" />
+    <MESSAGE value="allow admin for admin panel and customer for api" />
+    <option name="LAST_COMMIT_MESSAGE" value="allow admin for admin panel and customer for api" />
   </component>
   <component name="WindowStateProjectService">
     <state x="402" y="125" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1576056798900">
@@ -411,11 +422,11 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1575451443847" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576741279796">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576746920975">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="257" y="103" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1576489718412" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1576741279796" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1576746920975" />
     <state x="390" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1576128815043">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

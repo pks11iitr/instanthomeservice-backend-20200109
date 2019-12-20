@@ -52,7 +52,7 @@
                                         <td>{{$s->name}}</td>
                                         <td>{{$s->company}}</td>
                                         <td>{{$s->price}}</td>
-                                        <td><img src="{{Storage::url($s->image)}}" height="50px" width="50px"/></td>
+                                        <td><img src="{{$s->image}}" height="50px" width="50px"/></td>
                                         <td>{{$s->size}}</td>
                                         <td>
                                             @if($s->isactive==0){{'No'}}

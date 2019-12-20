@@ -30,7 +30,7 @@ class ProductsController extends Controller
 
             $path='products/'.$name;
 
-            Storage::put($path, $file);
+            Storage::put($path, file_get_contents($file));
         }else{
             $path=null;
         }
@@ -62,7 +62,7 @@ class ProductsController extends Controller
 
             $path = 'products/' . $name;
 
-            Storage::put($path, $file);
+            Storage::put($path, file_get_contents($file));
         }else{
             $path=DB::raw('image');
         }

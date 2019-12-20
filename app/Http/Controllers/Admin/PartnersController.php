@@ -23,7 +23,7 @@ class PartnersController extends Controller
 
             $path='partners/'.$name;
 
-            Storage::put($path, $file);
+            Storage::put($path, file_get_contents($file));
         }else{
             $path=null;
         }
@@ -47,7 +47,7 @@ class PartnersController extends Controller
 
             $path='partners/'.$name;
 
-            Storage::put($path, $file);
+            Storage::put($path, file_get_contents($file));
 
             $partner->update(['name' => $request->name,
                 'image' => $path,

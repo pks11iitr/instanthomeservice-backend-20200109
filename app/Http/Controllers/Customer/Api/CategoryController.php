@@ -23,6 +23,4 @@ class CategoryController extends Controller
 
       return $product;
     }
-
-    public
 }

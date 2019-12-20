@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Active;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class Products extends Model
 {
     //public $timestamps=false;
+    use Active;
+
     protected $table='products';
     protected $fillable=['name','company','price','image','size','isactive','rating','categoryid','description','in_the_box', 'cut_price'];
 

@@ -23,4 +23,10 @@ class CategoryController extends Controller
 
       return $product;
     }
+
+    public function subcategory(Request $request, $id){
+        $category=Category::active()->where('parent', $id)->get();
+        return $category;
+
+    }
 }

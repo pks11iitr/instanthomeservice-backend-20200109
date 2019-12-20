@@ -18,7 +18,7 @@ class ProductsController extends Controller
         return view('siteadmin.productsdetail',['det'=>$det]);
     }
     public function create(Request $request){
-        $allcategories=Category::get();
+        $allcategories=Category::active()->get();
         return view('siteadmin.productsadd', ['allcategories'=>$allcategories]);
     }
     public function store(Request $request){

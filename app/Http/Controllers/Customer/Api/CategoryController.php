@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function index(Request $request){
 
-        $category=Category::active()->where('parent', null)->get();
+        $category=Category::active()->where('parent', null)->get()->toArray();
 
        return $category;
 
@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
     public function cateproduct(Request $request,$id){
 
-      $product=Products::with('category')->where('categoryid',$id)->first();
+      $product=Products::active()->with('category')->where('categoryid',$id)->get()->toArray();
 
       return $product;
     }

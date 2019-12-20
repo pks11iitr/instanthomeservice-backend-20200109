@@ -74,7 +74,7 @@
                                         <label for="exampleInputtitle">Category ID</label>
                                         <select name="categoryid" class="form-control" id="exampleInputistop" placeholder="">
                                            @foreach($allcategories as $c)
-                                            <option value="{{$c->id}}">{{$c->categoryid}}</option>
+                                            <option value="{{$c->id}}">{{$c->title}}</option>
                                            @endforeach
                                         </select>
                                     </div>

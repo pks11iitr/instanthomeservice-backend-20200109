@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Products extends Model
 {
@@ -14,5 +15,9 @@ class Products extends Model
 
     public function category(){
         return $this->belongsTo('App\Models\Category', 'categoryid');
+    }
+
+    public function getImageAttribute($value){
+        return Storage::url($value);
     }
 }

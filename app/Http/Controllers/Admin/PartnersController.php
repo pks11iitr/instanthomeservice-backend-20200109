@@ -19,7 +19,7 @@ class PartnersController extends Controller
         if(isset($request->partnersimage)){
             $file=$request->partnersimage->path();
 
-            $name=str_replace(' ', '_', $request->partnersimage->getClientOriginalName());
+            $name=str_replace(' ', '_',     $request->partnersimage->getClientOriginalName());
 
             $path='partners/'.$name;
 

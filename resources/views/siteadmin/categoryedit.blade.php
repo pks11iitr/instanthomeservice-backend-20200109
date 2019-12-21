@@ -46,7 +46,7 @@
                                     <div class="form-group">
                                         <label for="exampleInputimage">Image</label>
                                         <input type="file" name="categoryimage" class="form-control" id="exampleInputimage" placeholder="">
-                                        <img src="{{Storage::url($category->image)}}">
+                                        <img src="{{$category->image}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputparent">Parent Category(optional)</label>

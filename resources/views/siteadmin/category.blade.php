@@ -46,7 +46,7 @@
                                     <tr>
                                         <td>{{$s->title}}</td>
                                         <td>{{$s->description}}</td>
-                                        <td><img src="{{Storage::url($s->image)}}" height="50px" width="50px"/></td>
+                                        <td><img src="{{$s->image}}" height="50px" width="50px"/></td>
                                         <td>{{$s->parentcategory->title??''}}</td>
                                         <td>{{$s->statustext()}}</td>
                                         <td><a href="{{route('category.edit',['id'=>$s->id])}}" class="btn btn-success">Edit</a></td>

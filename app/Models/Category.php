@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Traits\Active;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Category extends Model
 {
@@ -29,6 +30,10 @@ class Category extends Model
 
     public function subcategories(){
         return $this->hasMany('App\Models\Category', 'parent');
+    }
+
+    public function getImageAttribute($value){
+        return Storage::url($value);
     }
 
 }

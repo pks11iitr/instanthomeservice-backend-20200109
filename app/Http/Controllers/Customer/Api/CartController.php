@@ -30,7 +30,7 @@ class CartController extends Controller
                     'product_id'=>$request->product_id,
                     'quantity'=>$request->quantity,
                     'userid'=>$user->id,
-                    'size'=>$request->size,
+                    'size_id'=>$request->size,
                 ]);
               }
 

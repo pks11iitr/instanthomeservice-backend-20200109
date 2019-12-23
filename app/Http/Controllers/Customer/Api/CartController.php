@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Customer\Api;
 
+use App\Models\Size;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
@@ -16,17 +17,20 @@ class CartController extends Controller
 
           $request->validate([
   				'quantity'=>'required|integer|min:0',
-          'product_id'=>'required|integer|min:1'
+                'product_id'=>'required|integer|min:1',
+                'size'=>'required|integer|min:0',
+                //'price'=>'required|integer|min:1'
   				]);
-
-          $cart = Cart::where('product_id',$request->product_id)->first();
+          $size=Size::findOrFail($request->size);
+          $cart = Cart::where('product_id',$request->product_id)->where('user_id', $user->id)->first();
             //die;
           if(!$cart){
               if($request->quantity>0){
                 Cart::create([
                     'product_id'=>$request->product_id,
                     'quantity'=>$request->quantity,
-                    'userid'=>$user->id
+                    'userid'=>$user->id,
+                    'size'=>$request->size,
                 ]);
               }
 
@@ -46,29 +50,9 @@ class CartController extends Controller
 
       }
 
+      public function getCartDetails(Request $request){
+          $user=  auth()->user();
+          return $user->cart;
 
-        public function update(Request $request,$id){
-          $request->validate([
-          'quantity'=>'required'
-          ]);
-
-            $cart = Cart::findOrFail($id);
-
-                 if($cart->update(['quantity'=>$request->quantity,
-                   'product_id'=>auth()->user()->id,
-
-          ])){
-
-          }
-          }
-
-          public function destroy($id){
-
-                  $del = Cart::find($id);
-                  $del->delete();
-
-
-
-
-        }
+      }
 }

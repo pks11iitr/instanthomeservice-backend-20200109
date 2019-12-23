@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
     public function cateproduct(Request $request,$id){
 
-      $product=Products::active()->with('category')->where('categoryid',$id)->get()->toArray();
+      $product=Products::active()->with(['category', 'sizes'])->where('categoryid',$id)->get()->toArray();
 
       return $product;
     }

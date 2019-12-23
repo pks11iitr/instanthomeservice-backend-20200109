@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Customer\Api;
 
+use App\Models\Size;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
@@ -13,7 +14,17 @@ class OrderController extends Controller
     public function make(Request $request){
         $user=auth()->user();
         $cart=Cart::where('userid', $user->id)->get();
+        $sizes=[];
+        foreach($cart as $c){
+            $sizes[]=$c->size;
+        }
+        $sizes=Size::whereIn('id', $sizes)->get();
+        $sizeprice=[];
+        foreach($sizes as $s){
+            $sizeprice;
+        }
         $order=Orders::create(['user_id'=>$user->id]);
+
         $total=0;
         if(count($cart)){
 

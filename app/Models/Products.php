@@ -23,4 +23,8 @@ class Products extends Model
     public function getImageAttribute($value){
         return Storage::url($value);
     }
+
+    public function sizes(){
+        return $this->belongsTo('App\Models\Size', 'product_id');
+    }
 }

@@ -22,7 +22,7 @@ class CartController extends Controller
                 //'price'=>'required|integer|min:1'
   				]);
           $size=Size::findOrFail($request->size);
-          $cart = Cart::where('product_id',$request->product_id)->where('user_id', $user->id)->first();
+          $cart = Cart::where('product_id',$request->product_id)->where('userid', $user->id)->first();
             //die;
           if(!$cart){
               if($request->quantity>0){

@@ -53,7 +53,7 @@ class CartController extends Controller
 
       public function getCartDetails(Request $request){
           $user=  auth()->user();
-          return $user->cart()->with(['product', 'size'])->get();
+          return $user->cart()->with(['product', 'sizeprice'])->get();
 
       }
 }

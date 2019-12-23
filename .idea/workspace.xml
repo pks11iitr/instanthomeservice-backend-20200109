@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/CartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Cart.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,14 +220,7 @@
       <workItem from="1576746839123" duration="987000" />
       <workItem from="1576845250765" duration="243000" />
       <workItem from="1576845555463" duration="5476000" />
-      <workItem from="1577019558211" duration="5200000" />
-    </task>
-    <task id="LOCAL-00005" summary="setting rolewise login redirections">
-      <created>1575448175347</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1575448175347</updated>
+      <workItem from="1577019558211" duration="5417000" />
     </task>
     <task id="LOCAL-00006" summary="setting rolewise login redirections">
       <created>1575448186717</created>
@@ -562,7 +558,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577088809057</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="adding size model">
+      <created>1577089316183</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1577089316183</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -602,11 +605,11 @@
     </state>
     <state x="402" y="125" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1576056798900" />
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1575361440240" />
-    <state x="281" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1577088808953">
+    <state x="281" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1577089316113">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="225" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1576674270719" />
-    <state x="281" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1577088808953" />
+    <state x="281" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1577089316113" />
     <state x="454" y="125" width="424" height="484" key="FileChooserDialogImpl" timestamp="1576561870613">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

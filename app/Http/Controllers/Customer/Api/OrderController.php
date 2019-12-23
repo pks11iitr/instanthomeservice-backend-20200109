@@ -13,16 +13,7 @@ class OrderController extends Controller
 {
     public function make(Request $request){
         $user=auth()->user();
-        $cart=Cart::where('userid', $user->id)->get();
-        $sizes=[];
-        foreach($cart as $c){
-            $sizes[]=$c->size;
-        }
-        $sizes=Size::whereIn('id', $sizes)->get();
-        $sizeprice=[];
-        foreach($sizes as $s){
-            $sizeprice;
-        }
+        $cart=$user->cart()->with(['product', 'sizeprice'])->get();
         $order=Orders::create(['user_id'=>$user->id]);
 
         $total=0;
@@ -34,9 +25,10 @@ class OrderController extends Controller
             Order_items::create(['order_id'=>$order->id,
                                 'quantity'=>$c->quantity,
                                 'price'=>$c->product->price,
-                                'product_id'=>$c->product_id
+                                'product_id'=>$c->product_id,
+                                'size_id'=>$c->size_id
                               ]);
-                  $total=$total+$c->quantity*$c->product->price;
+                  $total=$total+$c->quantity*$c->sizeprice->price;
           }
           //die;
           $order->total_paid=$total;

@@ -18,7 +18,7 @@ class Cart extends Model
     }
 
     public function size(){
-        return $this->belongsTo('App\Model\Size', 'size');
+        return $this->belongsTo('App\Models\Size', 'size');
     }
 
 }

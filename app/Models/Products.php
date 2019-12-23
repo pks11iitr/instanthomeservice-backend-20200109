@@ -25,6 +25,6 @@ class Products extends Model
     }
 
     public function sizeprice(){
-        return $this->belongsTo('App\Models\Size', 'product_id');
+        return $this->hasMany('App\Models\Size', 'product_id');
     }
 }

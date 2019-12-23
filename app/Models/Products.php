@@ -24,7 +24,7 @@ class Products extends Model
         return Storage::url($value);
     }
 
-    public function sizes(){
+    public function sizeprice(){
         return $this->belongsTo('App\Models\Size', 'product_id');
     }
 }

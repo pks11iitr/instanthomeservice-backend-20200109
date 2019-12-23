@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class ProductController extends Controller
 {
     public function details(Request $request){
-        $product=Products::active()->firstOrFail();
+        $product=Products::active()->with('sizeprice')->firstOrFail();
         return $product;
     }
 }

@@ -37,6 +37,7 @@ class CartController extends Controller
           }else{
             if($request->quantity>0){
               $cart->quantity=$request->quantity;
+              $cart->size_id=$request->size;
               $cart->save();
             }else{
 

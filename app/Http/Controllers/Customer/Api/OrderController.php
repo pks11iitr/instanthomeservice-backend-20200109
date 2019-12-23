@@ -24,7 +24,7 @@ class OrderController extends Controller
 
             Order_items::create(['order_id'=>$order->id,
                                 'quantity'=>$c->quantity,
-                                'price'=>$c->product->price,
+                                'price'=>$c->sizeprice->price,
                                 'product_id'=>$c->product_id,
                                 'size_id'=>$c->size_id
                               ]);
@@ -48,7 +48,7 @@ class OrderController extends Controller
 
     public function history(Request $request){
           $user=auth()->user();
-          $orders=Orders::with('details.product')->where('user_id', $user->id)->orderBy('updated_at', 'desc')->get();
+          $orders=Orders::with(['details.product', 'details.sizeprice'])->where('user_id', $user->id)->orderBy('updated_at', 'desc')->get();
           return $orders;
     }
 

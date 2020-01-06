@@ -2,203 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/CategoryController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/ProductController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/bootstrap/css/bootstrap-responsive.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/bootstrap/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/bootstrap/img/glyphicons-halflings-white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/bootstrap/img/glyphicons-halflings.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/bootstrap/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/amelia/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/amelia/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/bootshop/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/businessltd/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/cerulean/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/css/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/css/bootstrap-responsive.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/css/font-awesome-ie7.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/css/font-awesome.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/cyborg/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/font/fontawesome-webfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/font/fontawesome-webfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/font/fontawesome-webfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/font/fontawesome-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/font/museo_slab_300-webfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/font/museo_slab_300-webfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/font/museo_slab_500-webfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/font/museo_slab_500-webfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/font/proximanova-webfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/font/proximanova-webfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/carousel/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/carousel/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/carousel/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/carousel/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/carousel/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/carousel/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/carousel/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/facebook.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/headerRepeat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/ico-cart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/ico/apple-touch-icon-114-precomposed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/ico/apple-touch-icon-144-precomposed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/ico/apple-touch-icon-57-precomposed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/ico/apple-touch-icon-72-precomposed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/ico/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/lightbox/Close.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/lightbox/lightbox-blank.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/lightbox/lightbox-btn-close.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/lightbox/lightbox-btn-next.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/lightbox/lightbox-btn-prev.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/lightbox/lightbox-ico-loading.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/new.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/payment_methods.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/13.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/b1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/b2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/b3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/b4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/kindle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/large/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/large/f1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/large/f2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/large/f3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/products/panasonic.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/tabRepeatInactive.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/twitter.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/images/youtube.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/img/glyphicons-halflings-white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/img/glyphicons-halflings.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/journal/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/js/bootshop.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/js/google-code-prettify/prettify.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/js/google-code-prettify/prettify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/js/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/js/jquery.lightbox-0.5.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/js/less.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/accordion.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/alerts.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/amelia.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/amelia/bootswatch.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/amelia/variables.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/bootshop.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/bootshop/main.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/bootshop/variables.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/bootstrap.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/breadcrumbs.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/button-groups.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/buttons.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/carousel.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/classified.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/close.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/code.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/component-animations.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/dropdowns.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/font-awesome-ie7.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/font-awesome.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/forms.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/grid.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/hero-unit.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/labels-badges.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/layouts.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/mixins.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/modals.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/navbar.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/navs.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/pager.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/pagination.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/popovers.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/progress-bars.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/reset.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/responsive-1200px-min.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/responsive-767px-max.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/responsive-768px-979px.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/responsive-navbar.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/responsive-utilities.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/responsive.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/scaffolding.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/simplex.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/simplex/bootswatch.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/simplex/variables.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/sprites.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/tables.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/thumbnails.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/tooltip.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/type.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/utilities.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/variables.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/less/wells.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/readable/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/simplex/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/slate/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/spacelab/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/spruce/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/spruce/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/superhero/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/clr/amelia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/clr/bootshop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/clr/businessltd.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/clr/cerulean.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/clr/cyborg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/clr/journal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/clr/readable.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/clr/simplex.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/clr/slate.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/clr/spacelab.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/clr/spruce.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/clr/superhero.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/clr/united.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/hideme.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern16~.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern17.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern17~.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern19~.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern20~.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/pattern/pattern9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/images/styleTgl.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/theamswitcher.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/switch/themeswitch.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/themes/united/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/website/category-products.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/website/home.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/website/layout.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/website/product-detail.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/website/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layout.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -416,14 +221,7 @@
       <workItem from="1576845555463" duration="5476000" />
       <workItem from="1577019558211" duration="10330000" />
       <workItem from="1577702448167" duration="2100000" />
-      <workItem from="1578124145562" duration="9959000" />
-    </task>
-    <task id="LOCAL-00014" summary="url corrected for listing in admin">
-      <created>1576668074286</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1576668074286</updated>
+      <workItem from="1578124145562" duration="10072000" />
     </task>
     <task id="LOCAL-00015" summary="url corrected for listing in admin">
       <created>1576670949044</created>
@@ -761,7 +559,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578131530001</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="home, category product, product detail page template setup">
+      <created>1578315110098</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1578315110098</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -794,7 +599,8 @@
     <MESSAGE value="image path fixes" />
     <MESSAGE value="adding size model" />
     <MESSAGE value="adding gallery" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding gallery" />
+    <MESSAGE value="home, category product, product detail page template setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="home, category product, product detail page template setup" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1578130950517">
@@ -802,11 +608,11 @@
     </state>
     <state x="402" y="125" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1576056798900" />
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1578130950517" />
-    <state x="281" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1578131529736">
+    <state x="281" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1578315109464">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="225" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1576674270719" />
-    <state x="281" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1578131529736" />
+    <state x="281" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1578315109464" />
     <state x="454" y="125" width="424" height="484" key="FileChooserDialogImpl" timestamp="1576561870613">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

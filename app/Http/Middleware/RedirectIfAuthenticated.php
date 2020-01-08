@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class RedirectIfAuthenticated
 {
@@ -31,17 +32,21 @@ class RedirectIfAuthenticated
     }
 
     public function redirectTo(){
-        foreach(config('allowedusers.admins') as $key=>$value){
-            if(auth()->user()->hasRole($key)){
-                return redirect(route($value));
+        if(auth()->user()->status==1){
+            foreach(config('allowedusers.admins') as $key=>$value){
+                if(auth()->user()->hasRole($key)){
+                    return redirect(route($value));
+                }
             }
+            abort(401);
+        }else if(auth()->user()->status==0){
+            Auth::logout();
+            Session::flash('error', 'Account is not active');
+            return redirect(route('login'));
+        }else if(auth()->user()->status==2){
+            Auth::logout();
+            Session::flash('error', 'Account has been blocked');
+            return redirect(route('login'));
         }
-        abort(401);
-//        if(auth()->user()->hasRole('admin'))
-//            return redirect(route('admin.dashboard'));
-//        else if(auth()->user()->hasRole('partner'))
-//            return redirect(route('partner.dashboard'));
-//        else
-//            abort(401);
     }
 }

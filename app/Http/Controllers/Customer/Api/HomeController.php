@@ -12,9 +12,7 @@ class HomeController extends Controller
 {
     public function index(Request $request){
         $banner=Banner::active()->get();
-        $maincategories=Category::active()->where('parent', null)->get();
-        //$smallcategories=Category::active()->where('istop', false)->limit(6)->get();
-        //$partners=Partners::active()->get();
-        return compact('banner','maincategories');
+        $categories=Category::active()->where('parent', null)->get();
+        return compact('banner','categories');
     }
 }

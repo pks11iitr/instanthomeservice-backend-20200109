@@ -19,11 +19,25 @@ class CategoryController extends Controller
 
     public function cateproduct(Request $request,$id){
 
-      $product=Category::active()->with(['product'=>function($products){
+      $category=Category::active()->with(['product'=>function($products){
           $products->where('isactive', true);
       }])->where('id',$id)->first();
-
-      return $product;
+        $uninstallation=[];
+        $installation=[];
+        if($category->type==2){
+          $i=0;
+          foreach($category->product as $p){
+              if($i<3){
+                  $installation[]=$p;
+              }else{
+                  $uninstallation[]=$p;
+              }
+              $i++;
+          }
+      }
+      $category->installation=$installation;
+      $category->uninstallation=$uninstallation;
+      return $category;
     }
 
     public function subcategory(Request $request, $id){

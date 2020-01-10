@@ -20,13 +20,24 @@ class CartController extends Controller
           $token=$request->bearerToken();
           Auth::guard('api')->setToken($token);
           $user=  Auth::guard('api')->user();
-          $unique_id=$request->token;
+          $unique_id=$request->did;
 
-          $cart = Cart::where('product_id',$request->product_id)
-              ->where(function($cart) use($user,$unique_id){
-                  $cart->where('userid', $user->id??null)
-                      ->orWhere('unique_id', $unique_id);
-              })->first();
+          if($user && $unique_id){
+              Cart::where('userid', $user->id)
+                  ->orWhere('unique_id', $unique_id)
+                  ->update(['userid'=>$user->id, 'unique_id'=>$unique_id]);
+          }
+
+          if($user){
+              $cart = Cart::where('product_id',$request->product_id)
+                            ->where('userid', $user->id)->first();
+          }else if($request->did){
+              $cart = Cart::where('product_id',$request->product_id)
+                  ->where('unique_id', $unique_id)->first();
+          }else{
+              $cart=[];
+          }
+
 
           if(!$cart){
               if($request->quantity>0){
@@ -51,7 +62,8 @@ class CartController extends Controller
           }
 
           return [
-            'message'=>'success'
+            'status'=>'success',
+            'message'=>'Item has been added to cart'
           ];
 
       }
@@ -60,11 +72,25 @@ class CartController extends Controller
           $token=$request->bearerToken();
           Auth::guard('api')->setToken($token);
           $user=  Auth::guard('api')->user();
-          //var_dump($user);die;
-          if($user){
-              return $user->cart()->with(['product', 'sizeprice'])->get();
-          }else{
-              return Cart::where('unique_id', $request->did)->with(['product', 'sizeprice'])->get();
+          $unique_id=$request->did;
+
+          if($user && $unique_id){
+              Cart::where('userid', $user->id??null)
+                  ->orWhere('unique_id', $unique_id)
+              ->update(['userid'=>$user->id??null, 'unique_id'=>$unique_id]);
           }
+
+          if($user){
+              $cart = Cart::with('product')->where('userid', $user->id)->get();
+          }else if($request->did){
+              $cart = Cart::with('product')->where('unique_id', $unique_id)->get();
+          }else{
+              $cart=[];
+          }
+
+          return [
+              'status'=>'success',
+              'cart'=>$cart
+          ];
       }
 }

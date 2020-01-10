@@ -9,13 +9,12 @@ use Illuminate\Support\Facades\Storage;
 
 class Products extends Model
 {
-    //public $timestamps=false;
     use Active, DocumentUploadTrait;
 
     protected $table='products';
-    protected $fillable=['name','company','price','image','size','isactive','rating','categoryid','description','in_the_box', 'cut_price'];
+    protected $fillable=['name','price','image', 'isactive', 'categoryid'];
 
-    protected $hidden=['created_at', 'isactive','updated_at', 'deleted_at', 'payment_mode', 'categoryid', 'subcategoryid', 'specialcategoryid', ];
+    protected $hidden=['created_at', 'isactive','updated_at', 'deleted_at' ];
 
     public function category(){
         return $this->belongsTo('App\Models\Category', 'categoryid');

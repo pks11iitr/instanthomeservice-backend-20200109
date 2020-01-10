@@ -19,7 +19,9 @@ class CategoryController extends Controller
 
     public function cateproduct(Request $request,$id){
 
-      $product=Products::active()->with(['category', 'sizeprice'])->where('categoryid',$id)->get()->toArray();
+      $product=Category::active()->with(['product'=>function($products){
+          $products->where('isactive', true);
+      }])->where('id',$id)->first();
 
       return $product;
     }

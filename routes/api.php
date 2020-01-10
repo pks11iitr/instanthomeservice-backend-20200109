@@ -23,14 +23,15 @@ $api = app('Dingo\Api\Routing\Router');
 
     $api->group(['middleware' => ['auth:api','acl'], 'is'=>'customer'], function ($api) {
         $api->get('home', ['as'=>'api.home', 'uses'=>'Auth\Api\LoginController@home']);
-        $api->post('add-cart', ['as'=>'api.cart', 'uses'=>'Customer\Api\CartController@store']);
-        $api->get('cart-details', ['as'=>'api.cart.details', 'uses'=>'Customer\Api\CartController@getCartDetails']);
         $api->get('make-order', ['as'=>'api.order', 'uses'=>'Customer\Api\OrderController@make']);
         $api->get('order-details/{id}', ['as'=>'api.order.details', 'uses'=>'Customer\Api\OrderController@details']);
         $api->get('order-history', ['as'=>'api.order.history', 'uses'=>'Customer\Api\OrderController@history']);
         $api->get('cancel-order/{id}', ['as'=>'api.order.cancel', 'uses'=>'Customer\Api\OrderController@cancel']);
         $api->get('return/{id}', ['as'=>'api.order.return', 'uses'=>'Customer\Api\OrderController@returnOrder']);
     });
+
+    $api->get('cart-details', ['as'=>'api.cart.details', 'uses'=>'Customer\Api\CartController@getCartDetails']);
+    $api->post('add-cart', ['as'=>'api.cart', 'uses'=>'Customer\Api\CartController@store']);
 
     $api->get('category/{id}/subcategory', ['as'=>'api.category', 'uses'=>'Customer\Api\CategoryController@subcategory']);
 

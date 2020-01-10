@@ -35,7 +35,10 @@ class CartController extends Controller
               $cart = Cart::where('product_id',$request->product_id)
                   ->where('unique_id', $unique_id)->first();
           }else{
-              $cart=[];
+              return [
+                  'status'=>'failed',
+                  'message'=>'Invalid Request'
+              ];
           }
 
 
@@ -52,9 +55,10 @@ class CartController extends Controller
           }else{
             if($request->quantity>0){
               $cart->quantity=$request->quantity;
-              $cart->size_id=$request->size;
-              $cart->user_id=$user->id??null;
-              $cart->unique_id=$unique_id??null;
+              if($user)
+                   $cart->userid=$user->id;
+              if($unique_id)
+                   $cart->unique_id=$unique_id;
               $cart->save();
             }else{
               $cart->delete();

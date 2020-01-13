@@ -24,7 +24,7 @@ class CategoryController extends Controller
       }])->where('id',$id)->first();
         $uninstallation=[];
         $installation=[];
-        if($category->type==2){
+        if($category->type==6){
           $i=0;
           foreach($category->product as $p){
               if($i<3){

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth\Api;
+use App\Models\Cart;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use App\Models\OTPModel;
 use App\User;
@@ -117,6 +118,7 @@ class LoginController extends Controller
             'otp' => ['required', 'integer'],
         ]);
 
+        $unique_id=$request->did??'';
         $user=User::where('mobile', $request->mobile)->first();
 
         if(!$user){
@@ -147,6 +149,14 @@ class LoginController extends Controller
         if($user->status==0){
             $user->status=1;
             $user->save();
+        }
+
+        //update cart items
+
+        if($user && $unique_id){
+            Cart::where('userid', $user->id??null)
+                ->orWhere('unique_id', $unique_id)
+                ->update(['userid'=>$user->id??null, 'unique_id'=>$unique_id]);
         }
 
         return [

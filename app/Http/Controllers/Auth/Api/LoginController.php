@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth\Api;
 use App\Models\Cart;
+use App\Services\SMS\Msg91;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use App\Models\OTPModel;
 use App\User;
@@ -65,7 +66,7 @@ class LoginController extends Controller
     {
         return User::create([
             'mobile' => $data['mobile'],
-            'password' => Hash::make($data['mobile'])
+            'password' => Hash::make($data['password'])
         ]);
     }
 
@@ -75,10 +76,17 @@ class LoginController extends Controller
         $user=$this->ifUserExists($request->mobile);
         if(!$user){
             if($user = $this->create($request->all())){
-                //event(new Registered($user));
-                //sendotp
                $user->assignRole('customer');
-               OTPModel::createOTP($user->id, 'login');
+               if($otp=OTPModel::createOTP($user->id, 'login')){
+                   $msg=config('sms-templates.login-otp');
+                   $msg=str_replace('{{otp}}', $otp, $msg);
+                   if(Msg91::send($request->mobile, $msg)){
+                       return [
+                           'status'=>'success',
+                           'message'=>'Please verify OTP to continue'
+                       ];
+                   }
+               }
             }
         }else if(!in_array($user->status, [0 , 1])){
             //send OTP

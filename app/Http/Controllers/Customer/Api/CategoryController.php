@@ -31,25 +31,41 @@ class CategoryController extends Controller
         }else{
             $cart=[];
         }
-          $category=Category::active()->with(['product'=>function($products){
-              $products->where('isactive', true);
-          }])->where('id',$id)->first();
-            $uninstallation=[];
-            $installation=[];
+        $carts=[];
+        foreach($cart as $c){
+            $carts[$c->product_id]=$c->quantity;
+        }
+        $category=Category::active()->with(['product'=>function($products){
+          $products->where('isactive', true);
+        }])->where('id',$id)->first();
+
+        $i=0;
+        $installation=[];
+        $uninstallation=[];
+
+        foreach($category->product as $p){
+            if(isset($carts[$p->id])){
+              $category->product[$i]->quantity=$carts[$p->id];
+            }else{
+              $category->product[$i]->quantity=0;
+            }
+
             if($category->type==6){
-              $i=0;
-              foreach($category->product as $p){
-                  if($i<3){
-                      $installation[]=$p;
-                  }else{
-                      $uninstallation[]=$p;
-                  }
-                  $i++;
-              }
-          }
+                $i=0;
+                foreach($category->product as $p){
+                    if($i<3){
+                        $installation[]=$p;
+                    }else{
+                        $uninstallation[]=$p;
+                    }
+                    $i++;
+                }
+            }
+          $i++;
+        }
       $category->installation=$installation;
       $category->uninstallation=$uninstallation;
-      $category->cart=$cart;
+      //$category->cart=$cart;
       return $category;
     }
 

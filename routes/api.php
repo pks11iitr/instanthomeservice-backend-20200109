@@ -24,6 +24,7 @@ $api = app('Dingo\Api\Routing\Router');
     $api->group(['middleware' => ['auth:api','acl'], 'is'=>'customer'], function ($api) {
         $api->get('home', ['as'=>'api.home', 'uses'=>'Auth\Api\LoginController@home']);
         $api->get('make-order', ['as'=>'api.order', 'uses'=>'Customer\Api\OrderController@make']);
+        $api->get('make-query/{id}', ['as'=>'api.query', 'uses'=>'Customer\Api\OrderController@makeQuery']);
         $api->get('order-details/{id}', ['as'=>'api.order.details', 'uses'=>'Customer\Api\OrderController@details']);
         $api->get('order-history', ['as'=>'api.order.history', 'uses'=>'Customer\Api\OrderController@history']);
         $api->get('cancel-order/{id}', ['as'=>'api.order.cancel', 'uses'=>'Customer\Api\OrderController@cancel']);

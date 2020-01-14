@@ -48,6 +48,41 @@ class OrderController extends Controller
         }
     }
 
+    public function makeQuery(Request $request, $id){
+            $user=auth()->user();
+            $product=Products::active()->find($id);
+            if($product) {
+                if($product->flow==2){
+                    Orders::where('user_id', $user->id)->where('isbookingcomplete', false)->delete();
+                    $order=Orders::create(['user_id'=>$user->id, 'isbookingcomplete'=>true]);
+                    Order_items::create([
+                        'order_id'=>$order->id,
+                        'quantity'=>1,
+                        'price'=>null,
+                        'product_id'=>$id,
+                    ]);
+                    return [
+                        'status'=>'success',
+                        'orderid'=>$order->id,
+                        'message'=>'Your request has been submitted. Our team will contact you shortly'
+                    ];
+                }else{
+                    return [
+                        'status'=>'failed',
+                        'orderid'=>'',
+                        'message'=>'This action is not valid'
+                    ];
+                }
+            }else{
+                return [
+                    'status'=>'failed',
+                    'orderid'=>'',
+                    'message'=>'This action is not valid'
+                ];
+            }
+    }
+
+
     public function history(Request $request){
           $user=auth()->user();
           $orders=Orders::with(['details.product', 'details.sizeprice'])->where('user_id', $user->id)->orderBy('updated_at', 'desc')->get();

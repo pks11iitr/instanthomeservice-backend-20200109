@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer\Api;
 
 use App\Models\Size;
+use App\Models\TimeSlot;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
@@ -13,7 +14,7 @@ class OrderController extends Controller
 {
     public function make(Request $request){
         $user=auth()->user();
-        $cart=$user->cart()->with(['product', 'sizeprice'])->get();
+        $cart=$user->cart()->with(['product'])->get();
         $order=Orders::create(['user_id'=>$user->id]);
 
         $total=0;
@@ -22,15 +23,14 @@ class OrderController extends Controller
           foreach($cart as $c){
             //echo $c->product_id;
 
-            Order_items::create(['order_id'=>$order->id,
-                                'quantity'=>$c->quantity,
-                                'price'=>$c->sizeprice->price,
-                                'product_id'=>$c->product_id,
-                                'size_id'=>$c->size_id
-                              ]);
-                  $total=$total+$c->quantity*$c->sizeprice->price;
+                Order_items::create([
+                                    'order_id'=>$order->id,
+                                    'quantity'=>$c->quantity,
+                                    'price'=>$c->product->price,
+                                    'product_id'=>$c->product_id,
+                                  ]);
+                $total=$total+$c->quantity*$c->product->price;
           }
-          //die;
           $order->total_paid=$total;
           if($order->save()){
             return [
@@ -87,6 +87,57 @@ class OrderController extends Controller
         $item->save();
         return [
             'message'=>'success'
+        ];
+    }
+
+
+    public function getTimeSlots(Request $request){
+        $timeslots=TimeSlot::active()->get();
+        $date=date('Y-m-d');
+        $dates=[];
+        for($i=0;$i<7;$i++){
+            $dates[]=['date'=>date('Y-m-d', strtotime("+$i days")), 'display'=>date('D,d M', strtotime("+$i days"))];
+        }
+
+        return compact('timeslots', 'dates');
+    }
+
+    public function setAddress(Request $request, $id){
+        $request->validate([
+            'address'=>'required|string|max:300',
+            'name'=>'required|string|max:100',
+            'auto_address'=>'required|string|max:300',
+            'lat'=>'required|numeric',
+            'lang'=>'required|numeric',
+        ]);
+
+        $order=Orders::where('user_id', auth()->guard('api')->user()->id)->where('isbookingcomplete', false)->findOrFail($id);
+        if($order->update($request->only('address', 'auto_address', 'lat', 'lang', 'name'))){
+            return [
+                'status'=>'success'
+            ];
+        }
+        return [
+            'status'=>'failed',
+            'message'=>'Address update failed'
+        ];
+    }
+
+    public function setTime(Request $request, $id){
+        $request->validate([
+            'booking_date'=>'required|date_format:Y-m-d',
+            'booking_time'=>'required|integer|min:1|max:12'
+        ]);
+
+        $order=Orders::where('user_id', auth()->guard('api')->user()->id)->where('isbookingcomplete', false)->findOrFail($id);
+        if($order->update(array_merge($request->only('booking_date', 'booking_time'), [ 'isbookingcomplete'=>true]))){
+            return [
+                'status'=>'success'
+            ];
+        }
+        return [
+            'status'=>'failed',
+            'message'=>'Booking time update failed'
         ];
     }
 }

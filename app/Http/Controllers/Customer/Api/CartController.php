@@ -73,8 +73,7 @@ class CartController extends Controller
       }
 
       public function getCartDetails(Request $request){
-          $token=$request->bearerToken();
-          Auth::guard('api')->setToken($token);
+
           $user=  Auth::guard('api')->user();
           $unique_id=$request->did;
 

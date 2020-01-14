@@ -15,29 +15,31 @@ class OrderController extends Controller
     public function make(Request $request){
         $user=auth()->user();
         $cart=$user->cart()->with(['product'])->get();
-        $order=Orders::create(['user_id'=>$user->id]);
-
         $total=0;
         if(count($cart)){
 
-          foreach($cart as $c){
-            //echo $c->product_id;
+            //delete all incomplete order
+            Orders::where('user_id', $user->id)->delete();
 
-                Order_items::create([
-                                    'order_id'=>$order->id,
-                                    'quantity'=>$c->quantity,
-                                    'price'=>$c->product->price,
-                                    'product_id'=>$c->product_id,
-                                  ]);
-                $total=$total+$c->quantity*$c->product->price;
-          }
-          $order->total_paid=$total;
-          if($order->save()){
-            return [
-              'message'=>'success',
-              'orderid'=>$order->id
-            ];
-          }
+            $order=Orders::create(['user_id'=>$user->id]);
+              foreach($cart as $c){
+                //echo $c->product_id;
+
+                    Order_items::create([
+                                        'order_id'=>$order->id,
+                                        'quantity'=>$c->quantity,
+                                        'price'=>$c->product->price,
+                                        'product_id'=>$c->product_id,
+                                      ]);
+                    $total=$total+$c->quantity*$c->product->price;
+              }
+              $order->total_paid=$total;
+              if($order->save()){
+                return [
+                  'message'=>'success',
+                  'orderid'=>$order->id
+                ];
+              }
         }else{
           return [
             'message'=>'cart is empty',
@@ -128,9 +130,11 @@ class OrderController extends Controller
             'booking_date'=>'required|date_format:Y-m-d',
             'booking_time'=>'required|integer|min:1|max:12'
         ]);
-
-        $order=Orders::where('user_id', auth()->guard('api')->user()->id)->where('isbookingcomplete', false)->findOrFail($id);
+        $user=auth()->guard('api')->user();
+        $order=Orders::where('user_id', $user->id)->where('isbookingcomplete', false)->findOrFail($id);
         if($order->update(array_merge($request->only('booking_date', 'booking_time'), [ 'isbookingcomplete'=>true]))){
+            //clear cart
+            $user->cart()->delete();
             return [
                 'status'=>'success'
             ];

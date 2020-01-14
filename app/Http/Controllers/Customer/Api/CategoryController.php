@@ -22,7 +22,7 @@ class CategoryController extends Controller
     public function cateproduct(Request $request,$id){
 
         $user=  Auth::guard('api')->user();
-        $unique_id=$request->did;
+        $unique_id=$request->did??null;
 
         if($user){
             $cart = Cart::where('userid', $user->id)->get();

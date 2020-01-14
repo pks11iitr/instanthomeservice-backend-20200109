@@ -17,10 +17,10 @@ class CartController extends Controller
                 'product_id'=>'required|integer|min:1',
   				]);
 
-          $token=$request->bearerToken();
-          Auth::guard('api')->setToken($token);
+          //$token=$request->bearerToken();
+          //Auth::guard('api')->setToken($token);
           $user=  Auth::guard('api')->user();
-          $unique_id=$request->did;
+          $unique_id=$request->did??null;
 
           if($user && $unique_id){
               Cart::where('userid', $user->id)
@@ -75,7 +75,7 @@ class CartController extends Controller
       public function getCartDetails(Request $request){
 
           $user=  Auth::guard('api')->user();
-          $unique_id=$request->did;
+          $unique_id=$request->did??null;
 
           if($user && $unique_id){
               Cart::where('userid', $user->id??null)

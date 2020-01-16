@@ -51,15 +51,11 @@ class CategoryController extends Controller
             }
 
             if($category->type==6){
-                $i=0;
-                foreach($category->product as $p){
                     if($i<3){
                         $installation[]=$p;
                     }else{
                         $uninstallation[]=$p;
                     }
-                    $i++;
-                }
             }
           $i++;
         }

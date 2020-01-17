@@ -109,24 +109,6 @@ class OrderController extends Controller
         return $orderdata;
     }
 
-    public function cancel(Request $request, $id){
-        $item=Order_items::where('order_status', 'paid')->findOrFail($id);
-        $item->order_status='cancelled';
-        $item->save();
-        return [
-            'message'=>'success'
-        ];
-    }
-
-    public function returnorder(Request $request, $id){
-        $item=Order_items::where('order_status', 'delivered')->findOrFail($id);
-        $item->order_status='returnrequest';
-        $item->save();
-        return [
-            'message'=>'success'
-        ];
-    }
-
 
     public function getTimeSlots(Request $request){
         $timeslots=TimeSlot::active()->get();

@@ -29,8 +29,6 @@ $api = app('Dingo\Api\Routing\Router');
         $api->get('make-query/{id}', ['as'=>'api.query', 'uses'=>'Customer\Api\OrderController@makeQuery']);
         $api->get('order-details/{id}', ['as'=>'api.order.details', 'uses'=>'Customer\Api\OrderController@details']);
         $api->get('order-history', ['as'=>'api.order.history', 'uses'=>'Customer\Api\OrderController@history']);
-        $api->get('cancel-order/{id}', ['as'=>'api.order.cancel', 'uses'=>'Customer\Api\OrderController@cancel']);
-        $api->get('return/{id}', ['as'=>'api.order.return', 'uses'=>'Customer\Api\OrderController@returnOrder']);
         $api->post('set-address/{id}', ['as'=>'api.order.address', 'uses'=>'Customer\Api\OrderController@setAddress']);
         $api->post('set-time/{id}', ['as'=>'api.order.address', 'uses'=>'Customer\Api\OrderController@setTime']);
         $api->get('date-time-slots', ['as'=>'api.times', 'uses'=>'Customer\Api\OrderController@getTimeSlots']);

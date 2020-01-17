@@ -13,8 +13,6 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
     Route::get('dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
 
     //Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-    Route::get('/users','Admin\UsersController@users')->name('users');
-    Route::get('/usersdetail/{id}','Admin\UsersController@usersdetail')->name('usersdetail');
     Route::group(['prefix'=>'category'], function(){
         Route::get('/','Admin\CategoryController@index')->name('category.list');
         Route::get('create','Admin\CategoryController@create')->name('category.create');
@@ -29,8 +27,7 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
         Route::post('store','Admin\BannerController@store')->name('banners.store');
         Route::get('edit/{id}','Admin\BannerController@edit')->name('banners.edit');
         Route::post('update/{id}','Admin\BannerController@update')->name('banners.update');
-
-          });
+    });
 
     Route::group(['prefix'=>'partners'],function (){
         Route::get('/','Admin\PartnersController@index')->name('partners.list');
@@ -52,7 +49,22 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
         Route::get('detail/{id}','Admin\OrdersController@detail')->name('orders.detail');
         Route::get('change-status/{id}','Admin\OrdersController@changestatus')->name('order.status.change');
     });
-
+    Route::group(['prefix'=>'vendors'],function (){
+        Route::get('/','Admin\VendorsController@index')->name('venders.list');
+    });
+    Route::group(['prefix'=>'customers'],function (){
+        Route::get('/','Admin\CustomersController@index')->name('customers.list');
+    });
+    Route::group(['prefix'=>'complaints'],function (){
+        Route::get('/','Admin\ComplaintsController@index')->name('complaints.list');
+    });
+    Route::group(['prefix'=>'reviews'],function (){
+        Route::get('/','Admin\ReviewsController@index')->name('reviews.list');
+    });
+    Route::group(['prefix'=>'users'],function (){
+        Route::get('/','Admin\UsersController@index')->name('users.list');
+        Route::get('detail/{id}','Admin\UsersController@detail')->name('users.detail');
+    });
 });
 
 Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'partner', 'is'=>'partner'], function(){

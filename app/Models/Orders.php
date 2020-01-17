@@ -16,5 +16,8 @@ class Orders extends Model
     public function details(){
       return $this->hasMany('App\Models\Order_items', 'order_id');
     }
+    public function review(){
+        return $this->hasMany('App\Models\Review','order_id');
+    }
 
 }

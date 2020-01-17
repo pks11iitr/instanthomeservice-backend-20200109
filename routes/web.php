@@ -1,8 +1,9 @@
 <?php
 
-Route::get('/', 'Website\HomeController@home')->name('website.home');
-Route::get('product/{id}', 'Website\ProductController@index')->name('website.product.details');
-Route::get('category/{id}', 'Website\CategoryController@products')->name('website.category.product');
+Route::get('/', function(){
+    return view('welcome');
+})->name('website.home');
+
 
 Auth::routes();
 

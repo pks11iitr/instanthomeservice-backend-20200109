@@ -78,7 +78,7 @@ class CartController extends Controller
           $unique_id=$request->did??null;
 
           if($user && $unique_id){
-              Cart::where('userid', $user->id??null)
+              Cart::with('product')->where('userid', $user->id??null)
                   ->orWhere('unique_id', $unique_id)
               ->update(['userid'=>$user->id??null, 'unique_id'=>$unique_id]);
           }

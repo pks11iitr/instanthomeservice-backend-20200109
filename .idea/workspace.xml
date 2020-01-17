@@ -15,11 +15,7 @@
       <change afterPath="$PROJECT_DIR$/resources/views/siteadmin/reviews.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/siteadmin/vendors.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Orders.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/users.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/Api/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Api/LoginController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,43 +249,7 @@
       <workItem from="1578933953059" duration="11000" />
       <workItem from="1578981693619" duration="14012000" />
       <workItem from="1579091381241" duration="2985000" />
-      <workItem from="1579240182537" duration="6344000" />
-      <workItem from="1579254381212" duration="12550000" />
-    </task>
-    <task id="LOCAL-00036" summary="minor fixes">
-      <created>1576847769848</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1576847769848</updated>
-    </task>
-    <task id="LOCAL-00037" summary="minor fixes">
-      <created>1576848249813</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1576848249813</updated>
-    </task>
-    <task id="LOCAL-00038" summary="minor fixes">
-      <created>1576848287016</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1576848287016</updated>
-    </task>
-    <task id="LOCAL-00039" summary="minor fixes">
-      <created>1576848380683</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1576848380683</updated>
-    </task>
-    <task id="LOCAL-00040" summary="image path fixes">
-      <created>1576917298409</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1576917298409</updated>
+      <workItem from="1579240182537" duration="9509000" />
     </task>
     <task id="LOCAL-00041" summary="image path fixes">
       <created>1576917383479</created>
@@ -599,7 +559,42 @@
       <option name="project" value="LOCAL" />
       <updated>1579252900762</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="website garbage removed">
+      <created>1579253133446</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1579253133446</updated>
+    </task>
+    <task id="LOCAL-00086" summary="add compaint and reviews model">
+      <created>1579256074703</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1579256074703</updated>
+    </task>
+    <task id="LOCAL-00087" summary="add compaint and reviews model">
+      <created>1579256707157</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1579256707157</updated>
+    </task>
+    <task id="LOCAL-00088" summary="removed retur and cancel order api">
+      <created>1579256925952</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1579256925952</updated>
+    </task>
+    <task id="LOCAL-00089" summary="remove password from login">
+      <created>1579257770098</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1579257770098</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -621,10 +616,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="allow admin for admin panel and customer for api" />
-    <MESSAGE value="minor fixes" />
-    <MESSAGE value="image path fixes" />
-    <MESSAGE value="adding size model" />
     <MESSAGE value="adding gallery" />
     <MESSAGE value="home, category product, product detail page template setup" />
     <MESSAGE value="home url set" />
@@ -646,25 +637,29 @@
     <MESSAGE value="get product in cart" />
     <MESSAGE value="revert change" />
     <MESSAGE value="vendor profile api added" />
-    <option name="LAST_COMMIT_MESSAGE" value="vendor profile api added" />
+    <MESSAGE value="website garbage removed" />
+    <MESSAGE value="add compaint and reviews model" />
+    <MESSAGE value="removed retur and cancel order api" />
+    <MESSAGE value="remove password from login" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove password from login" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1579256644890">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="505" y="84" width="412" height="625" key="#com.intellij.ide.util.MemberChooser" timestamp="1579256779041">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1579256644890" />
+    <state x="505" y="84" width="412" height="625" key="#com.intellij.ide.util.MemberChooser/67.27.1299.741@67.27.1299.741" timestamp="1579256779041" />
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1579004851532">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="402" y="125" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1576056798900" />
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1579004851532" />
-    <state x="300" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1579252900460">
+    <state x="300" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1579257770023">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="225" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1576674270719" />
-    <state x="300" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1579252900460" />
-    <state x="454" y="125" width="424" height="484" key="FileChooserDialogImpl" timestamp="1579259092357">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="300" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1579257770023" />
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1579246446305">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="454" y="125" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1579259092357" />
     <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1579246446305" />
@@ -697,11 +692,11 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1575451443847" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1579252904156">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1579257758729">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="257" y="103" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1576489718412" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1579252904156" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1579257758729" />
     <state x="438" y="221" key="com.intellij.ide.util.TipDialog" timestamp="1579155851298">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

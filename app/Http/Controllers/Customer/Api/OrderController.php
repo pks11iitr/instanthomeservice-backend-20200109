@@ -19,7 +19,7 @@ class OrderController extends Controller
         if(count($cart)){
 
             //delete all incomplete order
-            Orders::where('user_id', $user->id)->delete();
+            Orders::where('user_id', $user->id)->where('isbookingcomplete', false)->delete();
 
             $order=Orders::create(['user_id'=>$user->id]);
               foreach($cart as $c){
@@ -107,24 +107,6 @@ class OrderController extends Controller
         }
 
         return $orderdata;
-    }
-
-    public function cancel(Request $request, $id){
-        $item=Order_items::where('order_status', 'paid')->findOrFail($id);
-        $item->order_status='cancelled';
-        $item->save();
-        return [
-            'message'=>'success'
-        ];
-    }
-
-    public function returnorder(Request $request, $id){
-        $item=Order_items::where('order_status', 'delivered')->findOrFail($id);
-        $item->order_status='returnrequest';
-        $item->save();
-        return [
-            'message'=>'success'
-        ];
     }
 
 

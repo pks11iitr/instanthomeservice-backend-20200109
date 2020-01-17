@@ -173,7 +173,7 @@ class LoginController extends Controller
 
         return [
             'message'=>'Login Successfull',
-            'token'=>$this->jwt->attempt(['password'=>$request->mobile, 'mobile'=>$request->mobile])
+            'token'=>$this->jwt->fromUser($user)??''
         ];
 
     }

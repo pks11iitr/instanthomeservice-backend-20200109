@@ -66,7 +66,7 @@ class LoginController extends Controller
     {
         return User::create([
             'mobile' => $data['mobile'],
-            'password' => Hash::make($data['password'])
+            //'password' => Hash::make($data['password'])
         ]);
     }
 

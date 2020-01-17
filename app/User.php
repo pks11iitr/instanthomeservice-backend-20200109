@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Storage;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Kodeine\Acl\Traits\HasRole;
 
@@ -61,6 +62,21 @@ class User extends Authenticatable implements JWTSubject
 
     public function cart(){
         return $this->hasMany('App\Models\Cart', 'userid');
+    }
+
+    public function services(){
+        return $this->belongsToMany('App\Models\Category', 'user_services', 'user_id', 'service_id');
+    }
+
+    public function times(){
+        return $this->belongsToMany('App\Models\TimeSlot', 'user_times', 'user_id', 'time_id');
+    }
+
+    public function getImageAttribute($value){
+        if($value){
+            return Storage::url($value);
+        }
+        return '';
     }
 
 }

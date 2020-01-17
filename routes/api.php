@@ -20,8 +20,10 @@ $api = app('Dingo\Api\Routing\Router');
     $api->post('login', ['as'=>'api.login', 'uses'=>'Auth\Api\LoginController@login']);
     $api->post('verify-otp', ['as'=>'api.otp.verify', 'uses'=>'Auth\Api\LoginController@verifyOTP']);
 
-
-    $api->group(['middleware' => ['auth:api','acl'], 'is'=>'customer'], function ($api) {
+    /*
+     * Customer App Apis Starts
+     */
+    $api->group(['middleware' => ['auth:api']], function ($api) {
         $api->get('home', ['as'=>'api.home', 'uses'=>'Auth\Api\LoginController@home']);
         $api->get('make-order', ['as'=>'api.order', 'uses'=>'Customer\Api\OrderController@make']);
         $api->get('make-query/{id}', ['as'=>'api.query', 'uses'=>'Customer\Api\OrderController@makeQuery']);
@@ -29,23 +31,30 @@ $api = app('Dingo\Api\Routing\Router');
         $api->get('order-history', ['as'=>'api.order.history', 'uses'=>'Customer\Api\OrderController@history']);
         $api->get('cancel-order/{id}', ['as'=>'api.order.cancel', 'uses'=>'Customer\Api\OrderController@cancel']);
         $api->get('return/{id}', ['as'=>'api.order.return', 'uses'=>'Customer\Api\OrderController@returnOrder']);
+        $api->post('set-address/{id}', ['as'=>'api.order.address', 'uses'=>'Customer\Api\OrderController@setAddress']);
+        $api->post('set-time/{id}', ['as'=>'api.order.address', 'uses'=>'Customer\Api\OrderController@setTime']);
+        $api->get('date-time-slots', ['as'=>'api.times', 'uses'=>'Customer\Api\OrderController@getTimeSlots']);
     });
 
-    $api->get('date-time-slots', ['as'=>'api.times', 'uses'=>'Customer\Api\OrderController@getTimeSlots']);
-    $api->post('set-address/{id}', ['as'=>'api.order.address', 'uses'=>'Customer\Api\OrderController@setAddress']);
-    $api->post('set-time/{id}', ['as'=>'api.order.address', 'uses'=>'Customer\Api\OrderController@setTime']);
+    $api->get('home', ['as'=>'api.home', 'uses'=>'Customer\Api\HomeController@index']);
+    $api->get('category/{id}/subcategory', ['as'=>'api.category', 'uses'=>'Customer\Api\CategoryController@subcategory']);
+    $api->get('category/{id}/product', ['as'=>'api.product', 'uses'=>'Customer\Api\CategoryController@cateproduct']);
+    $api->get('product/{id}', ['as'=>'api.product', 'uses'=>'Customer\Api\ProductController@details']);
     $api->get('cart-details', ['as'=>'api.cart.details', 'uses'=>'Customer\Api\CartController@getCartDetails']);
     $api->post('add-cart', ['as'=>'api.cart', 'uses'=>'Customer\Api\CartController@store']);
+    /*
+     * Customer App Apis Starts
+     */
 
-    $api->get('category/{id}/subcategory', ['as'=>'api.category', 'uses'=>'Customer\Api\CategoryController@subcategory']);
-
-    $api->get('home', ['as'=>'api.home', 'uses'=>'Customer\Api\HomeController@index']);
-
-    $api->get('category/{id}/product', ['as'=>'api.product', 'uses'=>'Customer\Api\CategoryController@cateproduct']);
-
-    $api->get('product/{id}', ['as'=>'api.product', 'uses'=>'Customer\Api\ProductController@details']);
-
-
+    $api->group(['middleware' => ['auth:api','acl'], 'is'=>'vendor'], function ($api) {
+        $api->get('get-orders', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\OrderController@store']);
+        $api->get('order-details', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\OrderController@store']);
+        $api->get('my-services', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
+        $api->post('my-services', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
+        $api->get('my-times', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
+        $api->post('my-times', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
+        $api->post('my-availablity', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
+    });
 
 
 //Route::middleware('auth:api')->get('/user', function (Request $request) {

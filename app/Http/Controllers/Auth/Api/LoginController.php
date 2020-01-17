@@ -76,7 +76,11 @@ class LoginController extends Controller
         $user=$this->ifUserExists($request->mobile);
         if(!$user){
             if($user = $this->create($request->all())){
-               $user->assignRole('customer');
+               if($request->type=='vendor'){
+                    $user->assignRole('vendor');
+               }else{
+                    $user->assignRole('customer');
+               }
                if($otp=OTPModel::createOTP($user->id, 'login')){
                    $msg=config('sms-templates.login-otp');
                    $msg=str_replace('{{otp}}', $otp, $msg);

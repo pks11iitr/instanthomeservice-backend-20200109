@@ -19,7 +19,7 @@ class OrderController extends Controller
         if(count($cart)){
 
             //delete all incomplete order
-            Orders::where('user_id', $user->id)->delete();
+            Orders::where('user_id', $user->id)->where('isbookingcomplete', false)->delete();
 
             $order=Orders::create(['user_id'=>$user->id]);
               foreach($cart as $c){

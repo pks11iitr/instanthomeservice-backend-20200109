@@ -9,7 +9,7 @@ class Orders extends Model
     //public $timestamps=false;
     protected $table='orders';
 
-    protected $fillable=['user_id', 'address', 'auto_address', 'name', 'lat', 'lang', 'booking_date', 'booking_time', 'isbookingcomplete'];
+    protected $fillable=['user_id', 'address', 'auto_address', 'name', 'lat', 'lang', 'booking_date', 'booking_time', 'isbookingcomplete', 'order_id'];
 
     protected $hidden=['created_at', 'user_id', 'deleted_at', 'payment_mode'];
 

@@ -21,7 +21,7 @@ class OrderController extends Controller
             //delete all incomplete order
             Orders::where('user_id', $user->id)->where('isbookingcomplete', false)->delete();
 
-            $order=Orders::create(['user_id'=>$user->id]);
+            $order=Orders::create(['user_id'=>$user->id, 'order_id'=>date('YmdHis')]);
               foreach($cart as $c){
                 //echo $c->product_id;
 
@@ -54,7 +54,7 @@ class OrderController extends Controller
             if($product) {
                 if($product->flow==2){
                     Orders::where('user_id', $user->id)->where('isbookingcomplete', false)->delete();
-                    $order=Orders::create(['user_id'=>$user->id, 'isbookingcomplete'=>true]);
+                    $order=Orders::create(['user_id'=>$user->id, 'isbookingcomplete'=>true, 'order_id'=>date('YmdHis')]);
                     Order_items::create([
                         'order_id'=>$order->id,
                         'quantity'=>1,

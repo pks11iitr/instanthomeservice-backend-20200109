@@ -32,6 +32,8 @@ $api = app('Dingo\Api\Routing\Router');
         $api->post('set-address/{id}', ['as'=>'api.order.address', 'uses'=>'Customer\Api\OrderController@setAddress']);
         $api->post('set-time/{id}', ['as'=>'api.order.address', 'uses'=>'Customer\Api\OrderController@setTime']);
         $api->get('date-time-slots', ['as'=>'api.times', 'uses'=>'Customer\Api\OrderController@getTimeSlots']);
+        $api->get('get-profile', ['as'=>'api.profileget', 'uses'=>'Customer\Api\ProfileController@getProfile']);
+        $api->post('set-profile', ['as'=>'api.profileset', 'uses'=>'Customer\Api\ProfileController@setProfile']);
     });
 
     $api->get('home', ['as'=>'api.home', 'uses'=>'Customer\Api\HomeController@index']);

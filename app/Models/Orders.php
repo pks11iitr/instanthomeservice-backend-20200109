@@ -16,5 +16,8 @@ class Orders extends Model
     public function details(){
       return $this->hasMany('App\Models\Order_items', 'order_id');
     }
+    public function time(){
+        return $this->belongsTo('App\Models\TimeSlot', 'booking_time');
+    }
 
 }

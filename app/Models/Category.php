@@ -36,4 +36,10 @@ class Category extends Model
         return Storage::url($value);
     }
 
+    public function rootCategory(){
+        $parent=$this->parentcategory;
+        if($parent)
+        return $this->parentcategory()->with('parentcategory')->whereDoesntHave('parent');
+    }
+
 }

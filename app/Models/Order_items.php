@@ -17,9 +17,4 @@ class Order_items extends Model
         return $this->belongsTo('App\Models\Products', 'product_id');
     }
 
-    public function sizeprice(){
-        return $this->belongsTo('App\Models\Size', 'size_id');
-    }
-
-
 }

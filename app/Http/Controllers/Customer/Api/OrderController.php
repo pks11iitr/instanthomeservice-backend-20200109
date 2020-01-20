@@ -85,24 +85,41 @@ class OrderController extends Controller
 
     public function history(Request $request){
           $user=auth()->user();
-          $orders=Orders::with(['details.product', 'details.sizeprice'])->where('user_id', $user->id)->orderBy('updated_at', 'desc')->get();
-          return $orders;
+          $orders=Orders::with(['details'])->where('user_id', $user->id)->orderBy('updated_at', 'desc')->get();
+
+          $orderarray=[];
+          foreach($orders as $o){
+              $items=$o->details()->select('quantity')->get();
+              $items=$items->map(function($value, $key){
+                  return $value['quantity'];
+              });
+              $items=array_sum($items->toArray());
+              $orderarray[]=['id'=>$o->id, 'order_id'=>$o->order_id, 'date'=>date('D,d M H:i  A', strtotime($o->created_at)), 'items'=>count($o->details).' Services/ '.$items.' Items'];
+          }
+          return $orderarray;
     }
 
     public function details(Request $request, $id){
-        $order=Orders::with(['details.product'])->findOrFail($id);
-
+        $user=auth()->user();
+        $order=Orders::with(['details.product'])->where('user_id', $user->id)->findOrFail($id);
         $orderdata=[];
         $orderdata['total']=$order->total_paid;
         $orderdata['taxes']=0;
-        $orderdata['date']=$order->updated_at;
+        $orderdata['name']=$order->name;
+        $orderdata['address']=$order->address;
+        $orderdata['lat']=$order->lat;
+        $orderdata['lang']=$order->lang;
+        $orderdata['price_after_inspection']=$order->total_after_inspection;
+        $orderdata['time']=date('D, d M').'('.$order->time->name.')';
+        //$orderdata['date']=$order->updated_at;
         $orderdata['items']=[];
         foreach($order->details as $d){
           $orderdata['items'][]=[
-            'name'=>$d->product->name,
+            'name'=>$d->product->category->title.'('.$d->product->name.')',
             'unitprice'=>$d->product->price,
             'quantity'=>$d->quantity,
-            'total'=>$d->product->price*$d->quantity
+            'total'=>$d->product->price*$d->quantity,
+            'image'=>$d->product->image
           ];
         }
 

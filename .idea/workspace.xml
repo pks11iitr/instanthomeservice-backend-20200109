@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/CompaintController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Complaint.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Complaint.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Order_items.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order_items.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Orders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Products.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +152,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../equalapple" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -237,14 +242,8 @@
       <workItem from="1578933953059" duration="11000" />
       <workItem from="1578981693619" duration="14012000" />
       <workItem from="1579091381241" duration="2985000" />
-      <workItem from="1579240182537" duration="12763000" />
-    </task>
-    <task id="LOCAL-00043" summary="adding size model">
-      <created>1577087728560</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1577087728560</updated>
+      <workItem from="1579240182537" duration="16230000" />
+      <workItem from="1579497598953" duration="2425000" />
     </task>
     <task id="LOCAL-00044" summary="adding size model">
       <created>1577087806645</created>
@@ -582,7 +581,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579343291621</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="random id in order added">
+      <created>1579343550928</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1579343550928</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -604,7 +610,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="home, category product, product detail page template setup" />
     <MESSAGE value="home url set" />
     <MESSAGE value="reset password and authentication added" />
     <MESSAGE value="login change" />
@@ -629,23 +634,24 @@
     <MESSAGE value="removed retur and cancel order api" />
     <MESSAGE value="remove password from login" />
     <MESSAGE value="customer profile update api" />
-    <option name="LAST_COMMIT_MESSAGE" value="customer profile update api" />
+    <MESSAGE value="random id in order added" />
+    <option name="LAST_COMMIT_MESSAGE" value="random id in order added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="505" y="84" width="412" height="625" key="#com.intellij.ide.util.MemberChooser" timestamp="1579256779041">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="505" y="84" width="412" height="625" key="#com.intellij.ide.util.MemberChooser/67.27.1299.741@67.27.1299.741" timestamp="1579256779041" />
-    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1579342234582">
+    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1579348660532">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="402" y="125" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1576056798900" />
-    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1579342234582" />
-    <state x="300" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1579343291395">
+    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1579348660532" />
+    <state x="300" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1579343550774">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="225" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1576674270719" />
-    <state x="300" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1579343291395" />
+    <state x="300" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1579343550774" />
     <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1579246446305">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -680,11 +686,11 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1575451443847" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1579343540086">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1579343554312">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="257" y="103" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1576489718412" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1579343540086" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1579343554312" />
     <state x="438" y="221" key="com.intellij.ide.util.TipDialog" timestamp="1579155851298">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

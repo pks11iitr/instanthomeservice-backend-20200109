@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Complaint extends Model
 {
@@ -14,4 +15,11 @@ class Complaint extends Model
     public function user(){
         return $this->belongsTo('App\Models\User', 'user_id');
     }
+
+    public function getAttachmentAttribute($value){
+        if($value)
+            return Storage::url($value);
+        return '';
+    }
+
 }

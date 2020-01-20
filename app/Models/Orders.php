@@ -20,4 +20,8 @@ class Orders extends Model
         return $this->belongsTo('App\Models\TimeSlot', 'booking_time');
     }
 
+    public function vendors(){
+        return $this->belongsToMany('App\User', 'vendor_orders', 'order_id', 'vendor_id')->withPivot('status');
+    }
+
 }

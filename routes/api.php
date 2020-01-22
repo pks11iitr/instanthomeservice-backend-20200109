@@ -49,10 +49,13 @@ use Illuminate\Http\Request;
     $api->group(['middleware' => ['auth:api','acl'], 'is'=>'vendor'], function ($api) {
         $api->get('get-orders', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\OrderController@index']);
         $api->get('vendor/order-details/{id}', ['as'=>'vendor.api.details', 'uses'=>'Partner\Api\OrderController@details']);
-        $api->get('my-services', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
-        $api->post('my-services', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
-        $api->get('my-times', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
-        $api->post('my-times', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
+        $api->get('my-services', ['as'=>'vendor.api.getservices', 'uses'=>'Partner\Api\ProfileController@services']);
+        $api->post('add-service', ['as'=>'vendor.api.setsetvices', 'uses'=>'Partner\Api\ProfileController@addServices']);
+        $api->post('delete-service', ['as'=>'vendor.api.setsetvices', 'uses'=>'Partner\Api\ProfileController@delServices']);
+        $api->get('my-times', ['as'=>'vendor.api.gettimes', 'uses'=>'Partner\Api\ProfileController@times']);
+        $api->post('add-time', ['as'=>'vendor.api.setsetvices', 'uses'=>'Partner\Api\ProfileController@addTime']);
+        $api->post('delete-time', ['as'=>'vendor.api.setsetvices', 'uses'=>'Partner\Api\ProfileController@delTime']);
+
         $api->post('my-availablity', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
     });
 

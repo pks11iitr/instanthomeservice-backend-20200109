@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Users </li>
+                            <li class="breadcrumb-item active">Orders</li>
                         </ol>
                     </div>
                 </div>
@@ -26,42 +26,36 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Users Table</h3>
+                            <h3 class="card-title">Cancelled Orders Table</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
+                                    <th>OrderID</th>
                                     <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Mobile</th>
                                     <th>Address</th>
-                                    <th>Status</th>
-                                    <th>Email Verified</th>
-                                    <th>Mobile Verified</th>
-                                    <th>Created</th>
-                                    <th>lat</th>
-                                    <th>lang</th>
-                                    <th>Action</th>
+                                    <th>Customer(Mobile)</th>
+                                    <th>Customer(Name)</th>
+                                    <th>Booking Date</th>
+                                    <th>Booking Time</th>
+                                    <th>Details</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($sel as $s)
-                                <tr>
-                                    <td>{{$s->name}}</td>
-                                    <td>{{$s->email}}</td>
-                                    <td>{{$s->mobile}}</td>
-                                    <td>{{$s->address}}</td>
-                                    <td>{{$s->status}}</td>
-                                    <td>{{$s->email_verified_at}}</td>
-                                    <td>{{$s->mobile_verified_at}}</td>
-                                    <td>{{$s->created_at}}</td>
-                                    <td>{{$s->lat}}</td>
-                                    <td>{{$s->lang}}</td>
-                                    <td><a href="{{route('users.detail',['id'=>$s->id])}}" class="btn btn-block btn-primary">Details</a></td>
-                                </tr>
-                                    @endforeach
+                                    <tr>
+                                        <td>{{$s->id}}</td>
+                                        <td>{{$s->name}}</td>
+                                        <td>{{$s->address}}</td>
+                                        <td>{{$s->user->mobile}}</td>
+                                        <td>{{$s->user->name}}</td>
+                                        <td>{{$s->booking_date}}</td>
+                                        <td>{{$s->booking_time}}</td>
+                                        <td><a href="" class="btn btn-primary">Details</a></td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

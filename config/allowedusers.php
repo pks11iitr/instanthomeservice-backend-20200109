@@ -19,7 +19,8 @@ return [
      * Allow users for api login
      */
     'apiusers'=>[
-        'customer'
+        'customer',
+        'vendor'
     ]
 
 ];

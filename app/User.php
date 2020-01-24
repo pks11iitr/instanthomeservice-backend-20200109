@@ -19,7 +19,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'mobile','status'
+        'name', 'email', 'password', 'mobile','status','image'
     ];
 
     /**
@@ -75,6 +75,20 @@ class User extends Authenticatable implements JWTSubject
     public function getImageAttribute($value){
         if($value){
             return Storage::url($value);
+        }
+        return '';
+    }
+
+    public function getNameAttribute($value){
+        if($value){
+            return $value;
+        }
+        return '';
+    }
+
+    public function getEmailAttribute($value){
+        if($value){
+            return $value;
         }
         return '';
     }

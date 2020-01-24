@@ -188,9 +188,9 @@
       <recent name="C:\xampp\htdocs\fertilizers\resources\views\siteadmin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Models/Traits" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/public/vendor" />
-      <recent name="$PROJECT_DIR$/app/Models/Traits" />
     </key>
   </component>
   <component name="RunManager">
@@ -612,7 +612,63 @@
       <option name="project" value="LOCAL" />
       <updated>1579257770098</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="remove password from login">
+      <created>1579257859240</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1579257859240</updated>
+    </task>
+    <task id="LOCAL-00091" summary="customer profile update api">
+      <created>1579343291621</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1579343291621</updated>
+    </task>
+    <task id="LOCAL-00092" summary="random id in order added">
+      <created>1579343550928</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1579343550928</updated>
+    </task>
+    <task id="LOCAL-00093" summary="order details changed">
+      <created>1579500095877</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1579500095877</updated>
+    </task>
+    <task id="LOCAL-00094" summary="vendor order history and details api">
+      <created>1579512609419</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1579512609419</updated>
+    </task>
+    <task id="LOCAL-00095" summary="order_id and status added in order detail api">
+      <created>1579513063814</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1579513063814</updated>
+    </task>
+    <task id="LOCAL-00096" summary="minor fix">
+      <created>1579517670258</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1579517670259</updated>
+    </task>
+    <task id="LOCAL-00097" summary="add service and time api vendor">
+      <created>1579673356489</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1579673356489</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,13 +690,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="adding gallery" />
-    <MESSAGE value="home, category product, product detail page template setup" />
-    <MESSAGE value="home url set" />
-    <MESSAGE value="reset password and authentication added" />
-    <MESSAGE value="login change" />
-    <MESSAGE value="cerated login and home api" />
-    <MESSAGE value="subcategory" />
     <MESSAGE value="category products, cart changes" />
     <MESSAGE value="add to cart and cart details changes" />
     <MESSAGE value="change to category products list" />
@@ -659,7 +708,14 @@
     <MESSAGE value="add compaint and reviews model" />
     <MESSAGE value="removed retur and cancel order api" />
     <MESSAGE value="remove password from login" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove password from login" />
+    <MESSAGE value="customer profile update api" />
+    <MESSAGE value="random id in order added" />
+    <MESSAGE value="order details changed" />
+    <MESSAGE value="vendor order history and details api" />
+    <MESSAGE value="order_id and status added in order detail api" />
+    <MESSAGE value="minor fix" />
+    <MESSAGE value="add service and time api vendor" />
+    <option name="LAST_COMMIT_MESSAGE" value="add service and time api vendor" />
   </component>
   <component name="WindowStateProjectService">
     <state x="505" y="84" width="412" height="625" key="#com.intellij.ide.util.MemberChooser" timestamp="1579256779041">
@@ -714,7 +770,7 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1575451443847" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1579257758729">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1579673362009">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="257" y="103" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1576489718412" />

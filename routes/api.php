@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-$api = app('Dingo\Api\Routing\Router');
+    $api = app('Dingo\Api\Routing\Router');
 
 
 
@@ -32,6 +32,8 @@ $api = app('Dingo\Api\Routing\Router');
         $api->post('set-address/{id}', ['as'=>'api.order.address', 'uses'=>'Customer\Api\OrderController@setAddress']);
         $api->post('set-time/{id}', ['as'=>'api.order.address', 'uses'=>'Customer\Api\OrderController@setTime']);
         $api->get('date-time-slots', ['as'=>'api.times', 'uses'=>'Customer\Api\OrderController@getTimeSlots']);
+        $api->get('get-profile', ['as'=>'api.profileget', 'uses'=>'Customer\Api\ProfileController@getProfile']);
+        $api->post('set-profile', ['as'=>'api.profileset', 'uses'=>'Customer\Api\ProfileController@setProfile']);
     });
 
     $api->get('home', ['as'=>'api.home', 'uses'=>'Customer\Api\HomeController@index']);
@@ -40,18 +42,24 @@ $api = app('Dingo\Api\Routing\Router');
     $api->get('product/{id}', ['as'=>'api.product', 'uses'=>'Customer\Api\ProductController@details']);
     $api->get('cart-details', ['as'=>'api.cart.details', 'uses'=>'Customer\Api\CartController@getCartDetails']);
     $api->post('add-cart', ['as'=>'api.cart', 'uses'=>'Customer\Api\CartController@store']);
+    $api->post('submit-review/{id}', ['as'=>'api.review', 'uses'=>'Customer\Api\OrderController@review']);
     /*
      * Customer App Apis Starts
      */
 
     $api->group(['middleware' => ['auth:api','acl'], 'is'=>'vendor'], function ($api) {
-        $api->get('get-orders', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\OrderController@store']);
-        $api->get('order-details', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\OrderController@store']);
-        $api->get('my-services', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
-        $api->post('my-services', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
-        $api->get('my-times', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
-        $api->post('my-times', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
+        $api->get('get-orders', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\OrderController@index']);
+        $api->get('vendor/order-details/{id}', ['as'=>'vendor.api.details', 'uses'=>'Partner\Api\OrderController@details']);
+        $api->get('my-services', ['as'=>'vendor.api.getservices', 'uses'=>'Partner\Api\ProfileController@services']);
+        $api->post('add-service', ['as'=>'vendor.api.setsetvices', 'uses'=>'Partner\Api\ProfileController@addServices']);
+        $api->post('delete-service', ['as'=>'vendor.api.setsetvices', 'uses'=>'Partner\Api\ProfileController@delServices']);
+        $api->get('my-times', ['as'=>'vendor.api.gettimes', 'uses'=>'Partner\Api\ProfileController@times']);
+        $api->post('add-time', ['as'=>'vendor.api.setsetvices', 'uses'=>'Partner\Api\ProfileController@addTime']);
+        $api->post('delete-time', ['as'=>'vendor.api.setsetvices', 'uses'=>'Partner\Api\ProfileController@delTime']);
+
         $api->post('my-availablity', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
+        $api->post('complete-service/{id}', ['as'=>'vendor.api.completeorders', 'uses'=>'Partner\Api\OrderController@completeService']);
+
     });
 
 

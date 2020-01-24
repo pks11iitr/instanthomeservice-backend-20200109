@@ -23,8 +23,4 @@ class Products extends Model
     public function getImageAttribute($value){
         return Storage::url($value);
     }
-
-    public function sizeprice(){
-        return $this->hasMany('App\Models\Size', 'product_id');
-    }
 }

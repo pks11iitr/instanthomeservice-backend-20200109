@@ -14,46 +14,69 @@ class ProfileController extends Controller
         $services=Category::active()->where('parent', null)->get();
         $servicesselected=[];
         foreach($user->services as $s){
-            $servicesselected[$s->name]=['id'=>$s->id, 'ischecked'=>1];
+            $servicesselected[$s->title]=['id'=>$s->id, 'ischecked'=>1];
         }
         foreach($services as $s){
-            if(!isset($servicesselected[$s->name]))
-                $servicesselected[$s->name]=['id'=>$s->id, 'ischecked'=>0];
+            if(!isset($servicesselected[$s->title]))
+                $servicesselected[$s->title]=['id'=>$s->id, 'ischecked'=>0];
         }
         return [
             'services'=>$servicesselected
         ];
     }
 
-    public function updateServices(Request $request){
+
+    public function addServices(Request $request){
         $request->validate([
-            'services'    =>'nullable|array|min:0',
-            'services.*'  =>'required|integer',
+            'service'    =>'required|integer|min:1',
         ]);
         $user=auth()->user();
-        if($user){
-            $sids=[];
-            if(!empty($request->services)){
-                foreach($request->services as $s){
-                    $sids[]=$s;
-                }
-            }
-            $user->services()->sync($sids);
-            return [
-                'status'=>'success',
-                'message'=>'Services has been updated'
-            ];
-        }
+        $user->services()->syncWithoutDetaching([$request->service]);
         return [
-            'status'=>'failed',
-            'message'=>'Services update failed'
+            'status'=>'success',
+            'message'=>'Services has been updated'
         ];
-
     }
+    public function delServices(Request $request){
+        $request->validate([
+            'service'    =>'required|integer|min:1',
+        ]);
+        $user=auth()->user();
+        $user->services()->detach([$request->service]);
+        return [
+            'status'=>'success',
+            'message'=>'Services has been updated'
+        ];
+    }
+
+    public function addTime(Request $request){
+        $request->validate([
+            'time'    =>'required|integer|min:1',
+        ]);
+        $user=auth()->user();
+        $user->times()->syncWithoutDetaching([$request->time]);
+        return [
+            'status'=>'success',
+            'message'=>'Times has been updated'
+        ];
+    }
+    public function delTime(Request $request){
+        $request->validate([
+            'time'    =>'required|integer|min:1',
+        ]);
+        $user=auth()->user();
+        $user->times()->detach([$request->time]);
+        return [
+            'status'=>'success',
+            'message'=>'Times has been updated'
+        ];
+    }
+
+
 
     public function times(Request $request){
         $user=auth()->user();
-        $times=TimeSlot::active()->where('parent', null)->get();
+        $times=TimeSlot::active()->get();
         $servicesselected=[];
         foreach($user->times as $s){
             $servicesselected[$s->name]=['id'=>$s->id, 'ischecked'=>1];
@@ -67,31 +90,6 @@ class ProfileController extends Controller
         ];
     }
 
-
-    public function updateTimes(Request $request){
-        $request->validate([
-            'times'    =>'nullable|array|min:0',
-            'times.*'  =>'required|integer',
-        ]);
-        $user=auth()->user();
-        if($user){
-            $sids=[];
-            if(!empty($request->times)){
-                foreach($request->times as $s){
-                    $sids[]=$s;
-                }
-            }
-            $user->services()->sync($sids);
-            return [
-                'status'=>'success',
-                'message'=>'Times has been updated'
-            ];
-        }
-        return [
-            'status'=>'failed',
-            'message'=>'Times update failed'
-        ];
-    }
 
     public function updateAvailability(Request $request){
         $request->validate([

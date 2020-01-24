@@ -26,6 +26,10 @@ class Orders extends Model
         return $this->belongsToMany('App\User', 'vendor_orders', 'order_id', 'vendor_id')->withPivot('status');
     }
 
+    public function user(){
+        return $this->belongsTo('App\User','user_id');
+    }
+
     public function reviews(){
         return $this->hasOne('App\Models\Review', 'order_id');
     }

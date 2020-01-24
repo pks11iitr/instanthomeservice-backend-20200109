@@ -26,30 +26,32 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Orders Table</h3>
+                            <h3 class="card-title">Open Orders Table</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>User Name</th>
-                                    <th>Mobile</th>
-                                    <th>Amount</th>
-                                    <th>Status</th>
-                                    <th>Created Date</th>
-                                    <th>Detail</th>
+                                    <th>OrderID</th>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Customer(Mobile)</th>
+                                    <th>Booking Date</th>
+                                    <th>Booking Time</th>
+                                    <th>Details</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($sel as $s)
                                     <tr>
+                                        <td>{{$s->id}}</td>
                                         <td>{{$s->name}}</td>
-                                        <td>{{$s->mobile}}</td>
-                                        <td>{{$s->total_paid}}</td>
-                                        <td>{{$s->ispaid==1?'paid':'payment pending'}}</td>
-                                        <td>{{$s->created_at}}</td>
-                                        <td><a href="{{route('orders.detail',['id'=>$s->id])}}" class="btn btn-block btn-primary">Detail</a></td>
+                                        <td>{{$s->address}}</td>
+                                        <td>{{$s->user->mobile}}</td>
+                                        <td>{{$s->booking_date}}</td>
+                                        <td>{{$s->time->name}}</td>
+                                        <td><a href="{{route('orders.details',['id'=>$s->id])}}" class="btn btn-primary">Details</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

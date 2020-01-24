@@ -37,9 +37,7 @@ class Category extends Model
     }
 
     public function rootCategory(){
-        $parent=$this->parentcategory;
-        if($parent)
-        return $this->parentcategory()->with('parentcategory')->whereDoesntHave('parent');
+        return $this->parentcategory()->with('parentcategory')->wherehas('parentcategory');
     }
 
 }

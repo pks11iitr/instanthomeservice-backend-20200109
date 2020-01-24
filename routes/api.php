@@ -43,6 +43,8 @@ use Illuminate\Http\Request;
     $api->get('cart-details', ['as'=>'api.cart.details', 'uses'=>'Customer\Api\CartController@getCartDetails']);
     $api->post('add-cart', ['as'=>'api.cart', 'uses'=>'Customer\Api\CartController@store']);
     $api->post('submit-review/{id}', ['as'=>'api.review', 'uses'=>'Customer\Api\OrderController@review']);
+    $api->get('pay-now/{id}', ['as'=>'api.pay', 'uses'=>'Customer\Api\OrderController@paynow']);
+    $api->get('verify-payment/{id}', ['as'=>'api.pay.verify', 'uses'=>'Customer\Api\OrderController@verifyPayment']);
     /*
      * Customer App Apis Starts
      */

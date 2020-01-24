@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer\Api;
 use App\Models\Review;
 use App\Models\Size;
 use App\Models\TimeSlot;
+use App\Services\Payment\RazorPayService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
@@ -13,6 +14,11 @@ use App\Models\Products;
 use App\Models\Order_items;
 class OrderController extends Controller
 {
+    public function __construct(RazorPayService $pay)
+    {
+        $this->pay=$pay;
+    }
+
     public function make(Request $request){
         $user=auth()->user();
         $cart=$user->cart()->with(['product'])->get();
@@ -204,5 +210,64 @@ class OrderController extends Controller
             'message'=>'logout'
         ];
 
+    }
+
+    public function paynow(Request $request, $id){
+        $order=Orders::where('status', 'completed')->findOrFail($id);
+        $response=$this->pay->generateorderid([
+            "amount"=>$order->total_paid*100,
+            "currency"=>"INR",
+            "receipt"=>$order->id.'',
+        ]);
+        $responsearr=json_decode($response);
+        if(isset($responsearr->id)){
+            $order->razor_order_id=$responsearr->id;
+            $order->order_id_response=$response;
+            $order->save();
+            return response()->json([
+                'status'=>'success',
+                'message'=>'success',
+                'data'=>[
+                    'id'=>$order->id,
+                    'orderid'=> $order->razor_order_id,
+                    'total'=>$order->total_after_inspection??0*100
+                ]
+            ], 200);
+        }else{
+            return response()->json([
+                'status'=>'failed',
+                'message'=>'Payment cannot be initiated',
+                'data'=>[
+                ],
+            ], 200);
+        }
+    }
+
+    public function verifyPayment(Request $request){
+        $user=auth()->user();
+        $order=Orders::where('razor_order_id', $request->razorpay_order_id)->firstOrFail();
+        $paymentresult=$this->pay->verifypayment($request->all());
+        if($paymentresult){
+            $order->payment_id=$request->razorpay_payment_id;
+            $order->payment_id_response=$request->razorpay_signature;
+            $order->status='paid';
+            $order->save();
+            $order->vendors()->where('vendor_orders.status', '=', 'completed')->update(['vendor_orders.status'=>'paid']);
+            return response()->json([
+                'status'=>'success',
+                'message'=>'Payment is successfull',
+                'errors'=>[
+
+                ],
+            ], 200);
+        }else{
+            return response()->json([
+                'status'=>'failed',
+                'message'=>'Payment is not successfull',
+                'errors'=>[
+
+                ],
+            ], 200);
+        }
     }
 }

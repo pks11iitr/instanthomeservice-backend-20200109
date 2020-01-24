@@ -94,4 +94,50 @@ class OrderController extends Controller
 
         return $orderdata;
     }
+
+    public function completeService(Request $request, $id){
+        $request->validate([
+            'preimage'=>'required|array',
+            'preimage.*'=>'image',
+            'postimage'=>'required|array',
+            'postimage.*'=>'image',
+            'billimage'=>'required|image',
+            'estimate'=>'required|integer'
+
+        ]);
+
+        $user=auth()->user();
+        if($user){
+            $order=Orders::whereHas('vendors',function($vendor) use ($user){
+                $vendor->whereIn('vendor_orders.status', ['accepted','completed'])->where('vendor_id', $user->id);
+        })->findOrFail($id);
+            if($order){
+                foreach($request->preimage as $image){
+                    $order->saveDocument($image, 'preimage');
+                }
+                foreach($request->postimage as $image){
+                    $order->saveDocument($image, 'postimage');
+                }
+                $order->saveDocument($image, 'billimage');
+                //var_dump($request->estimate);die;
+                $order->update(['total_after_inspection'=>$request->estimate]);
+
+                return [
+                    'status'=>'status',
+                    'message'=>'Order has been updated'
+                ];
+            }
+            return [
+                'status'=>'failed',
+                'message'=>'No such order'
+            ];
+        }
+
+        return [
+            'status'=>'failed',
+            'message'=>'logout'
+        ];
+
+    }
+
 }

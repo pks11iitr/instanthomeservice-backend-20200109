@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Customer\Api;
 
+use App\Models\Review;
 use App\Models\Size;
 use App\Models\TimeSlot;
 use Illuminate\Http\Request;
@@ -101,7 +102,7 @@ class OrderController extends Controller
 
     public function details(Request $request, $id){
         $user=auth()->user();
-        $order=Orders::with(['details.product'])->where('user_id', $user->id)->findOrFail($id);
+        $order=Orders::with(['details.product','reviews'])->where('user_id', $user->id)->findOrFail($id);
         $orderdata=[];
         $orderdata['total']=$order->total_paid;
         $orderdata['taxes']=0;
@@ -112,6 +113,7 @@ class OrderController extends Controller
         $orderdata['lat']=$order->lat;
         $orderdata['lang']=$order->lang;
         $orderdata['price_after_inspection']=$order->total_after_inspection;
+        $order['reviews']=$order->reviews;
         $orderdata['time']=date('D, d M').'('.$order->time->name.')';
         //$orderdata['date']=$order->updated_at;
         $orderdata['items']=[];
@@ -179,5 +181,28 @@ class OrderController extends Controller
             'status'=>'failed',
             'message'=>'Booking time update failed'
         ];
+    }
+
+    public function review(Request $request, $id){
+        $request->validate([
+            'rating'=>'required|integer|in:1,2,3,4,5',
+            'review'=>'string'
+        ]);
+        $user=auth()->guard('api')->user();
+        if($user){
+            $order=Orders::where('user_id', $user->id)->where('status', 'paid')->findOrFail($id);
+            $review=new Review(['ratings'=>$request->rating, 'review'=>$request->review,'user_id'=>$user->id]);
+            $order->reviews()->save($review);
+            return [
+                'status'=>'success',
+                'message'=>'Review has been submitted'
+            ];
+        }
+
+        return [
+            'status'=>'failed',
+            'message'=>'logout'
+        ];
+
     }
 }

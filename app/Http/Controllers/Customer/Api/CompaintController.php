@@ -13,7 +13,7 @@ class CompaintController extends Controller
     public function index(Request $request){
         $user=auth()->user();
         if($user){
-            return Complaint::where('user_id', $user->id);
+            return Complaint::where('user_id', $user->id)->get();
         }
         return [];
 

@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Storage;
 
 class Document extends Model
 {
-    protected $table='gallery';
+    protected $table='documents';
+
+    public $fillable=['doc_path','uploaded_by','entity_type', 'entity_id'];
 
     public function getDocPathAttribute($value){
         return Storage::url($value);

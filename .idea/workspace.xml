@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Partner/Api/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Partner/Api/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/CompaintController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/CompaintController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Partner/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Partner/Api/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Document.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Document.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Orders.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +151,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../packagespare" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models/Traits" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -159,16 +163,16 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Models/Traits" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/public/vendor" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/Http/Controllers/Customer/Api" />
       <recent name="C:\xampp\htdocs\fertilizers\app\Models" />
       <recent name="C:\xampp\htdocs\fertilizers\app\Http\Controllers\Admin" />
       <recent name="C:\xampp\htdocs\fertilizers\resources\views\siteadmin" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app" />
-      <recent name="$PROJECT_DIR$/public/vendor" />
-      <recent name="$PROJECT_DIR$/app/Models/Traits" />
     </key>
   </component>
   <component name="RunManager">
@@ -238,14 +242,7 @@
       <workItem from="1578981693619" duration="14012000" />
       <workItem from="1579091381241" duration="2985000" />
       <workItem from="1579240182537" duration="16230000" />
-      <workItem from="1579497598953" duration="17876000" />
-    </task>
-    <task id="LOCAL-00048" summary="adding size model">
-      <created>1577088394919</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1577088394919</updated>
+      <workItem from="1579497598953" duration="28259000" />
     </task>
     <task id="LOCAL-00049" summary="adding size model">
       <created>1577088494438</created>
@@ -583,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579517670259</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="add service and time api vendor">
+      <created>1579673356489</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1579673356489</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -605,7 +609,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="subcategory" />
     <MESSAGE value="category products, cart changes" />
     <MESSAGE value="add to cart and cart details changes" />
     <MESSAGE value="change to category products list" />
@@ -630,7 +633,8 @@
     <MESSAGE value="vendor order history and details api" />
     <MESSAGE value="order_id and status added in order detail api" />
     <MESSAGE value="minor fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor fix" />
+    <MESSAGE value="add service and time api vendor" />
+    <option name="LAST_COMMIT_MESSAGE" value="add service and time api vendor" />
   </component>
   <component name="WindowStateProjectService">
     <state x="505" y="84" width="412" height="625" key="#com.intellij.ide.util.MemberChooser" timestamp="1579256779041">
@@ -642,11 +646,11 @@
     </state>
     <state x="402" y="125" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1576056798900" />
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1579348660532" />
-    <state x="300" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1579517669930">
+    <state x="300" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1579673355893">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="225" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1576674270719" />
-    <state x="300" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1579517669930" />
+    <state x="300" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1579673355893" />
     <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1579513713490">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -681,11 +685,11 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1575451443847" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1579673340099">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1579673362009">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="257" y="103" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1576489718412" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1579673340099" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1579673362009" />
     <state x="438" y="221" key="com.intellij.ide.util.TipDialog" timestamp="1579155851298">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -696,6 +700,10 @@
     </state>
     <state x="288" y="159" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1576674281939" />
     <state x="341" y="189" width="804" height="415" key="git4idea.merge.GitPullDialog/67.27.1299.741@67.27.1299.741" timestamp="1578561836129" />
+    <state width="600" height="424" key="javadoc.popup" timestamp="1579673359555">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="600" height="424" key="javadoc.popup/67.27.1299.741@67.27.1299.741" timestamp="1579673359555" />
     <state x="380" y="175" key="run.anything.popup" timestamp="1578984652499">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

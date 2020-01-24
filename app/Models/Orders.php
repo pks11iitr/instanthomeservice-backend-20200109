@@ -16,8 +16,13 @@ class Orders extends Model
     public function details(){
       return $this->hasMany('App\Models\Order_items', 'order_id');
     }
-    public function review(){
-        return $this->hasMany('App\Models\Review','order_id');
+    public function user(){
+        return $this->belongsTo('App\User','user_id');
     }
+
+    public function time(){
+        return $this->belongsTo('App\Models\TimeSlot', 'booking_time');
+    }
+
 
 }

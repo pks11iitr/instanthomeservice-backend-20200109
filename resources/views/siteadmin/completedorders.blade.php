@@ -26,7 +26,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Open Orders Table</h3>
+                            <h3 class="card-title">Completed Orders Table</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -37,6 +37,7 @@
                                     <th>Name</th>
                                     <th>Address</th>
                                     <th>Customer(Mobile)</th>
+                                    <th>Vendor(Name)</th>
                                     <th>Booking Date</th>
                                     <th>Booking Time</th>
                                     <th>Details</th>
@@ -49,9 +50,10 @@
                                         <td>{{$s->name}}</td>
                                         <td>{{$s->address}}</td>
                                         <td>{{$s->user->mobile}}</td>
+                                        <td>{{$s->user->name}}</td>
                                         <td>{{$s->booking_date}}</td>
                                         <td>{{$s->booking_time}}</td>
-                                        <td><a href="{{route('orders.details',['id'=>$s->id])}}" class="btn btn-primary">Details</a></td>
+                                        <th><a href="" class="btn btn-primary">Details</a></th>
                                     </tr>
                                 @endforeach
                                 </tbody>

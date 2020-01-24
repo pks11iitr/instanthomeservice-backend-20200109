@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
-use App\Models\Users;
+use App\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
     function index(Request $request){
-        $sel = users::all();
+        $sel = User::role('admin')->get();
         return view('siteadmin.users',['sel'=>$sel]);
     }
     function detail(Request $request,$id){
-        $det = users::where('id',$id)->first();
+        $det = User::where('id',$id)->first();
         return view('siteadmin.usersdetail',['det'=>$det]);
     }
 }

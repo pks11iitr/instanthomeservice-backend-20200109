@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
@@ -13,11 +13,11 @@ class Review extends Model
     protected $hidden=['created_at', 'updated_at', 'deleted_at' ];
 
     public function user(){
-        return $this->belongsTo('App\Models\User', 'user_id');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function order(){
-        return $this->belongsTo('App\Models\Orders','order_id');
+        return $this->belongsTo('App\Models\Orders',  'order_id');
     }
 
 }

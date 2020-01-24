@@ -18,7 +18,7 @@
                         $.ajax({
                             type: "GET",
                             dataType: "json",
-                            url: 'vendors/update',
+                            url: 'updatenot',
                             data: {'status': status, 'user_id': user_id},
 
                             success: function (data) {
@@ -54,7 +54,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Agreement Complete Table</h3>
+                            <h3 class="card-title">Agreement Not Complete Table</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body" >
@@ -70,32 +70,32 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($vendors as $vendor)
+                                @foreach($agreementnot as $agreement)
                                     <tr>
-                                        <td>{{$vendor->name}}</td>
-                                        <td>{{$vendor->email}}</td>
-                                        <td>{{$vendor->mobile}}</td>
-                                        <td><img src="{{$vendor->image}}" height="50px" width="50px"/></td>
+                                        <td>{{$agreement->name}}</td>
+                                        <td>{{$agreement->email}}</td>
+                                        <td>{{$agreement->mobile}}</td>
+                                        <td><img src="{{$agreement->image}}" height="50px" width="50px"/></td>
                                         <td >
-                                            @if($vendor->status=='0')
+                                            @if($agreement->status=='0')
                                                 InActive
-                                            @elseif($vendor->status=='1')
+                                            @elseif($agreement->status=='1')
                                                 Active
-                                            @elseif($vendor->status=='2')
+                                            @elseif($agreement->status=='2')
                                                 Deactivate
                                             @endif
                                         </td>
                                         <td>
-                                            <select  name="mySelect"  id="mySelect" data-id="{{$vendor->id}}" class="form-control">
+                                            <select  name="mySelect"  id="mySelect" data-id="{{$agreement->id}}"
+                                                     class="form-control">
                                                 <option value="">Select Role</option>
                                                 <option value="0">InActive</option>
                                                 <option value="1">Active</option>
                                                 <option value="2">DeActive</option>
                                             </select>
                                         </td>
-
                                     </tr>
-                                 @endforeach
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

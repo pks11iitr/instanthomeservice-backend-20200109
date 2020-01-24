@@ -46,17 +46,23 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
     });
     Route::group(['prefix'=>'orders'],function (){
         Route::get('/','Admin\OrdersController@index')->name('orders.list');
-        Route::get('detail/{id}','Admin\OrdersController@detail')->name('orders.detail');
-        Route::get('change-status/{id}','Admin\OrdersController@changestatus')->name('order.status.change');
+        Route::get('details/{id}','Admin\OrdersController@details')->name('orders.details');
+        Route::get('completed','Admin\OrdersController@completed')->name('orders.completed');
+        Route::get('inprocess','Admin\OrdersController@inprocess')->name('orders.inprocess');
+        Route::get('cancelled','Admin\OrdersController@cancelled')->name('orders.cancelled');
     });
     Route::group(['prefix'=>'vendors'],function (){
         Route::get('/','Admin\VendorsController@index')->name('venders.list');
+        Route::get('agreementnot','Admin\VendorsController@agreementnot')->name('venders.agreementnot');
+        Route::get('update','Admin\VendorsController@update')->name('venders.update');
+        Route::get('updatenot','Admin\VendorsController@updatenot')->name('venders.updatenot');
     });
     Route::group(['prefix'=>'customers'],function (){
         Route::get('/','Admin\CustomersController@index')->name('customers.list');
     });
     Route::group(['prefix'=>'complaints'],function (){
         Route::get('/','Admin\ComplaintsController@index')->name('complaints.list');
+        Route::get('update','Admin\ComplaintsController@update')->name('complaints.update');
     });
     Route::group(['prefix'=>'reviews'],function (){
         Route::get('/','Admin\ReviewsController@index')->name('reviews.list');

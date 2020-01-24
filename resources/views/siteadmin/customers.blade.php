@@ -41,13 +41,13 @@
                             </tr>
                             </thead>
                             <tbody>
-
+                            @foreach($customers as $customer)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-
+                                <td>{{$customer->name}}</td>
+                                <td>{{$customer->email}}</td>
+                                <td>{{$customer->mobile}}</td>
+                                <td><img src="{{$customer->image}}" height="50px" width="50px"/></td>
+                                @endforeach
                             </tr>
                             </tbody>
                         </table>

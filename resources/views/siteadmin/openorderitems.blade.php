@@ -28,6 +28,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Open Order Details</h3>
+                            <br><span>Order Status: {{$order->status}}</span>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -103,7 +104,27 @@
                                                                     <tr>
                                                                         <td>{{$list->name}}</td>
                                                                         <td>{{$list->mobile}}</td>
-                                                                        <td><button type="button" class="btn btn-primary" data-toggle="modal">Button</button></td>
+                                                                        @foreach($order->vendors as $v)
+
+                                                                        <td>
+                                                                            @if($v->id==$list->id)
+                                                                            <button type="button" class="btn btn-primary" data-toggle="modal">
+                                                                                @if($v->pivot->status=='new')
+                                                                                    {{'Waiting for accept'}}
+                                                                                @elseif($v->pivot->status=='accepted')
+                                                                                    {{'Accepted'}}
+                                                                                @elseif($v->pivot->status=='rejected')
+                                                                                    {{'Rejected'}}
+                                                                                @elseif($v->pivot->status=='expired')
+                                                                                    {{'Expired'}}
+                                                                                @endif
+                                                                            </button>
+                                                                            @else
+                                                                                <button type="button" class="btn btn-primary" data-toggle="modal">Assign</button>
+                                                                            @endif
+                                                                        </td>
+
+                                                                        @endforeach
                                                                     </tr>
                                                                     @endforeach
                                                                 </tbody>

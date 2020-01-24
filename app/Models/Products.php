@@ -20,6 +20,7 @@ class Products extends Model
         return $this->belongsTo('App\Models\Category', 'categoryid');
     }
 
+
     public function getImageAttribute($value){
         return Storage::url($value);
     }

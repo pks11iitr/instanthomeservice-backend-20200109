@@ -11,14 +11,24 @@ use DB;
 class OrdersController extends Controller
 {
     public function index(Request $request){
-        $sel = Orders::where('status','=','new')->OrWhere('status','=','assigned')->get();
+        $sel = Orders::with(['time'])->where('status','=','new')->OrWhere('status','=','assigned')->get();
         return view('siteadmin.orders',['sel'=>$sel]);
     }
     public function details(Request $request,$id){
-        $order = Orders::with(['details.product','time'])->findOrFail($id);
+        $order = Orders::with(['details.product','time','vendors'])->findOrFail($id);
+
+        $services=[];
+
+        foreach($order->details as $d){
+            $services[]=$d->product->category->parentcategory->id;
+        }
+
 //        echo '<pre>';
 //        print_r($order->toArray());die;
-        $lists = User::role('vendor')->get();
+        //var_dump($services);die;
+        $lists = User::role('vendor')->with('services')->whereHas('services', function($service) use($services){
+            $service->whereIn('user_services.service_id', $services);
+        })->get();
         return view('siteadmin.openorderitems',['order'=>$order,'lists'=>$lists]);
     }
     public function completed(Request $request){

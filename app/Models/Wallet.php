@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use DB;
 class Wallet extends Model
 {
     protected $table='wallet';
@@ -20,6 +20,10 @@ class Wallet extends Model
         }
 
         return ($balances['Credit']??0)-($balances['Debit']??0);
+    }
+
+    public static function updatewallet($userid, $description, $type, $amount,$orderid=null){
+        Wallet::create(['user_id'=>$userid, 'description'=>$description, 'type'=>$type, 'iscomplete'=>1, 'amount'=>$amount, 'order_id'=>$orderid]);
     }
 
 

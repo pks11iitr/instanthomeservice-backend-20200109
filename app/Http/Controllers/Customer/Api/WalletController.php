@@ -85,4 +85,11 @@ class WalletController extends Controller
             ], 200);
         }
     }
+
+    public function getWalletBalance(Request $request){
+        $user=auth()->user();
+        if($user){
+            return ['balance'=>Wallet::balance($user->id)];
+        }
+    }
 }

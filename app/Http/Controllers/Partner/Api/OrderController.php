@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Partner\Api;
 
 use App\Models\Orders;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -138,6 +139,101 @@ class OrderController extends Controller
             'message'=>'logout'
         ];
 
+    }
+
+    public function acceptOrder(Request $request, $id){
+        $user=auth()->user();
+        if($user){
+            $order=Orders::whereHas('vendors', function($vendors) use ($user){
+                $vendors->where('vendor_orders.status', 'new')->where('vendor_id', $user->id);
+            })->where('orders.status', 'assigned')->findOrFail($id);
+            if($order){
+                $ballance=Wallet::balance($user->id);
+                if($ballance>=config('config.vendorfee')){
+                    //update status i.e. update pivot
+                    $vendor=$order->vendors()->where('vendor_id', $user->id)->firstOrFail();
+                    $vendor->pivot->status='accepted';
+                    $vendor->pivot->save();
+
+                    //change order status
+                    $order->status='accepted';
+                    $order->save();
+
+                    //update wallet history
+                    Wallet::updatewallet($user->id, 'Service fee deducted for Booking ID: '.$order->refid, 'Debit', config('config.vendorfee'),$orderid=$order->id);
+
+
+                    return [
+                        'status'=>'success',
+                        'message'=>'Booking has been accepted'
+                    ];
+                }else{
+                    return [
+                        'status'=>'success',
+                        'message'=>'Booking cannot be accepted. Please recharge your wallet'
+                    ];
+                }
+            }
+        }
+
+        return [
+            'status'=>'failed',
+            'message'=>'logout'
+        ];
+    }
+
+    public function rejectOrder(Request $request, $id){
+        $user=auth()->user();
+        if($user){
+            $order=Orders::whereHas('vendors', function($vendors) use ($user){
+                $vendors->where('vendor_orders.status', 'new')->where('vendor_id', $user->id);
+            })->where('orders.status', 'assigned')->findOrFail($id);
+            if($order){
+                // reject booking i.e. update pivot
+                $vendor=$order->vendors()->where('vendor_id', $user->id)->firstOrFail();
+                $vendor->pivot->status='rejected';
+                $vendor->pivot->save();
+
+                //change order status to new
+                $order->status='new';
+                $order->save();
+
+                return [
+                        'status'=>'success',
+                        'message'=>'You have rejected this booking'
+                    ];
+            }
+        }
+
+        return [
+            'status'=>'failed',
+            'message'=>'logout'
+        ];
+    }
+
+    public function startProcessing(Request $request, $id){
+        $user=auth()->user();
+        if($user){
+            $order=Orders::whereHas('vendors', function($vendors) use ($user){
+                $vendors->where('vendor_orders.status', 'accepted')->where('vendor_id', $user->id);
+            })->where('orders.status', 'accepted')->findOrFail($id);
+            if($order){
+
+                //change order status to processing
+                $order->status='processing';
+                $order->save();
+
+                return [
+                    'status'=>'success',
+                    'message'=>'You have started working on it.'
+                ];
+            }
+        }
+
+        return [
+            'status'=>'failed',
+            'message'=>'logout'
+        ];
     }
 
 }

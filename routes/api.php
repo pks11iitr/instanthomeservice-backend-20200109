@@ -39,6 +39,7 @@ use Illuminate\Http\Request;
         $api->get('verify-payment/{id}', ['as'=>'api.pay.verify', 'uses'=>'Customer\Api\OrderController@verifyPayment']);
         $api->get('add-money', ['as'=>'api.pay', 'uses'=>'Customer\Api\WalletController@addMoney']);
         $api->get('verify-recharge/{id}', ['as'=>'api.pay.verify', 'uses'=>'Customer\Api\WalletController@verifyRecharge']);
+        $api->get('wallet-balance', ['as'=>'api.balance', 'uses'=>'Customer\Api\WalletController@getWalletBalance']);
     });
 
     $api->get('home', ['as'=>'api.home', 'uses'=>'Customer\Api\HomeController@index']);
@@ -63,6 +64,9 @@ use Illuminate\Http\Request;
 
         $api->post('my-availablity', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
         $api->post('complete-service/{id}', ['as'=>'vendor.api.completeorders', 'uses'=>'Partner\Api\OrderController@completeService']);
+        $api->get('accept-order/{id}', ['as'=>'vendor.api.accept', 'uses'=>'Partner\Api\OrderController@acceptOrder']);
+        $api->get('reject-order/{id}', ['as'=>'vendor.api.reject', 'uses'=>'Partner\Api\OrderController@rejectOrder']);
+        $api->get('start-processing/{id}', ['as'=>'vendor.api.start', 'uses'=>'Partner\Api\OrderController@startProcessing']);
 
     });
 

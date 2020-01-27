@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Partner\Api;
 
 use App\Models\Category;
 use App\Models\TimeSlot;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -117,6 +118,7 @@ class ProfileController extends Controller
             'email'=>$user->email??'',
             'mobile'=>$user->mobile??'',
             'image'=>$user->image??'',
+            'walletbalance'=>Wallet::balance($user->id)
         ];
     }
 

@@ -109,7 +109,7 @@ class OrderController extends Controller
 
         $user=auth()->user();
         if($user){
-            $order=Orders::whereHas('vendors',function($vendor) use ($user){
+            $order=Orders::where('orders.status', 'processing')->whereHas('vendors',function($vendor) use ($user){
                 $vendor->whereIn('vendor_orders.status', ['accepted','completed'])->where('vendor_id', $user->id);
         })->findOrFail($id);
             if($order){
@@ -121,7 +121,13 @@ class OrderController extends Controller
                 }
                 $order->saveDocument($image, 'billimage');
                 //var_dump($request->estimate);die;
-                $order->update(['total_after_inspection'=>$request->estimate]);
+                $order->update(['total_after_inspection'=>$request->estimate, 'status'=>'completed']);
+
+                $vendor=$order->vendors()->where('vendor_id', $user->id)->firstOrFail();
+                $vendor->pivot->status='completed';
+                $vendor->pivot->save();
+
+
 
                 return [
                     'status'=>'status',

@@ -52,7 +52,7 @@
                                         <td>{{$s->user->mobile}}</td>
                                         <td>{{$s->user->name}}</td>
                                         <td>{{$s->booking_date}}</td>
-                                        <td>{{$s->booking_time}}</td>
+                                        <td>{{$s->time->name??''}}</td>
                                         <td><a href="" class="btn btn-primary">Details</a></td>
                                     </tr>
                                 @endforeach

@@ -50,6 +50,8 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
         Route::get('completed','Admin\OrdersController@completed')->name('orders.completed');
         Route::get('inprocess','Admin\OrdersController@inprocess')->name('orders.inprocess');
         Route::get('cancelled','Admin\OrdersController@cancelled')->name('orders.cancelled');
+        Route::get('assign-order/{iod}/{vid}','Admin\OrdersController@assignToVendor')->name('orders.assign.order');
+        Route::get('revoke-order/{iod}/{vid}','Admin\OrdersController@revokeVendor')->name('orders.revoke.order');
     });
     Route::group(['prefix'=>'vendors'],function (){
         Route::get('/','Admin\VendorsController@index')->name('venders.list');

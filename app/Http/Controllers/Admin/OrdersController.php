@@ -14,6 +14,20 @@ class OrdersController extends Controller
         $sel = Orders::with(['time'])->where('status','=','new')->OrWhere('status','=','assigned')->get();
         return view('siteadmin.orders',['sel'=>$sel]);
     }
+
+    public function completed(Request $request){
+        $sel = Orders::where('status','=','completed')->orWhere('status','=','paid')->get();
+        return view('siteadmin.completedorders',['sel'=>$sel]);
+    }
+    public function inprocess(Request $request){
+        $sel = Orders::where('status','=','processing')->orWhere('status','=','accepted')->get();
+        return view('siteadmin.inprocessorders',['sel'=>$sel]);
+    }
+    public function cancelled(Request $request){
+        $sel = Orders::where('status','=','cancelled')->get();
+        return view('siteadmin.cancelledorders',['sel'=>$sel]);
+    }
+
     public function details(Request $request,$id){
         $order = Orders::with(['details.product','time','vendors'])->findOrFail($id);
 
@@ -22,25 +36,53 @@ class OrdersController extends Controller
         foreach($order->details as $d){
             $services[]=$d->product->category->parentcategory->id;
         }
+        $user=$order->user;
 
-//        echo '<pre>';
-//        print_r($order->toArray());die;
-        //var_dump($services);die;
-        $lists = User::role('vendor')->with('services')->whereHas('services', function($service) use($services){
-            $service->whereIn('user_services.service_id', $services);
-        })->get();
-        return view('siteadmin.openorderitems',['order'=>$order,'lists'=>$lists]);
+        $vendors=[];
+        foreach($order->vendors as $v){
+            $vendors[$v->id]=$v->pivot->status;
+        }
+
+        $haversine = "(6371 * acos(cos(radians($order->lat))
+                     * cos(radians(users.lat))
+                     * cos(radians(users.lang)
+                     - radians($order->lang))
+                     + sin(radians($order->lat))
+                     * sin(radians(users.lat))))";
+
+        $lists = User::role('vendor')
+            ->with('services')
+            ->whereHas('services', function($service) use($services){
+                    $service->whereIn('user_services.service_id', $services)->select();
+            })->select('users.*', DB::raw("$haversine as distance"))->get();
+//        echo "<pre>";
+//        print_r($lists->toArray());die;
+        return view('siteadmin.openorderitems',['order'=>$order,'lists'=>$lists, 'vendors'=>$vendors]);
     }
-    public function completed(Request $request){
-        $sel = Orders::where('status','=','completed')->orWhere('status','=','accepted')->get();
-        return view('siteadmin.completedorders',['sel'=>$sel]);
+
+    public function assignToVendor(Request $request, $id,$vid){
+
+        $order=Orders::findOrFail($id);
+        if($order->status=='new'){
+            $order->status='assigned';
+            $order->save();
+            $order->vendors()->attach([$vid=>['status'=>'new']]);
+            return redirect()->back()->with('success', 'Order has been assigned to vendor.');
+        }
+        return redirect()->back()->with('error', 'New vendor cannot be assigned at this stage. Revoke currect vendor first');
     }
-    public function inprocess(Request $request){
-        $sel = Orders::where('status','=','processing')->orWhere('status','=','paid')->get();
-        return view('siteadmin.inprocessorders',['sel'=>$sel]);
+
+    public function revokeVendor(Request $request, $id, $vid){
+        $order=Orders::findOrFail($id);
+        if($order->status=='assigned'){
+            $order->status='new';
+            $order->save();
+            $order->vendors()->detach($vid);
+            $order->vendors()->attach([$vid=>['status'=>'expired']]);
+            return redirect()->back()->with('success', 'Order has been assigned to vendor.');
+        }
+        return redirect()->back()->with('error', 'Order cannot be revoked at this stage');
+
     }
-    public function cancelled(Request $request){
-        $sel = Orders::where('status','=','cancelled')->get();
-        return view('siteadmin.cancelledorders',['sel'=>$sel]);
-    }
+
 }

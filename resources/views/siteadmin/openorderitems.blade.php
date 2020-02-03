@@ -29,6 +29,9 @@
                         <div class="card-header">
                             <h3 class="card-title">Open Order Details</h3>
                             <br><span>Order Status: {{$order->status}}</span>
+                            @if(in_array($order->status,['completed', 'paid']))
+                                <br><span>Total Amount : {{$order->total_paid}}</span>
+                            @endif
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -43,7 +46,7 @@
                                 <tbody>
                                 @foreach($order->details as $detail)
                                     <tr>
-                                        <td>{{$detail->product->name}}</td>
+                                        <td>{{$detail->product->name??''}} [ {{$detail->product->category->title??''}} ]</td>
                                         <td>{{$detail->price}}</td>
                                         <td>{{$detail->quantity}}</td>
                                     </tr>
@@ -75,72 +78,17 @@
                                     <td>Booking Time</td><td>{{$order->time->name??''}}</td>
                                 </tr>
                                 <tr>
-                                    <td></td><td><div class="container">
-                                            <!-- Trigger the modal with a button -->
-                                            @if(in_array($order->status, ['new']))
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Assign</button>
-                                            @endif
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="myModal" role="dialog">
-                                                <div class="modal-dialog">
 
-                                                    <!-- Modal content-->
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                            <h4 class="modal-title"></h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <table id="example1" class="table table-bordered table-striped">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th>Vendor Name</th>
-                                                                    <th>Vendor Mobile</th>
-                                                                    <th>Button</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                @foreach($lists as $list)
-                                                                    <tr>
-                                                                        <td>{{$list->name}}</td>
-                                                                        <td>{{$list->mobile}}</td>
-                                                                        @foreach($order->vendors as $v)
+                                        <td></td>
+                                        <td>
+                                            <div class="container">
+                                                <!-- Trigger the modal with a button -->
 
-                                                                        <td>
-                                                                            @if($v->id==$list->id)
-                                                                            <button type="button" class="btn btn-primary" data-toggle="modal">
-                                                                                @if($v->pivot->status=='new')
-                                                                                    {{'Waiting for accept'}}
-                                                                                @elseif($v->pivot->status=='accepted')
-                                                                                    {{'Accepted'}}
-                                                                                @elseif($v->pivot->status=='rejected')
-                                                                                    {{'Rejected'}}
-                                                                                @elseif($v->pivot->status=='expired')
-                                                                                    {{'Expired'}}
-                                                                                @endif
-                                                                            </button>
-                                                                            @else
-                                                                                <button type="button" class="btn btn-primary" data-toggle="modal">Assign</button>
-                                                                            @endif
-                                                                        </td>
-
-                                                                        @endforeach
-                                                                    </tr>
-                                                                    @endforeach
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-
-                                                        {{--<div class="modal-footer">
-                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
-                                                        </div>--}}
-                                                    </div>
-
-                                                </div>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">View Vendors</button>
+                                                <!-- Modal -->
                                             </div>
+                                        </td>
 
-                                        </div>
-                                    </td>
                                 </tr>
 
                                 </tbody>
@@ -156,5 +104,85 @@
         </section>
         <!-- /.content -->
     </div>
+
+<div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+
+                <div class="modal-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Vendor Name</th>
+                            <th>Vendor Mobile</th>
+                            <th>Distance</th>
+                            <th>Wallet Balance(in Rs.)</th>
+                            <th>Button</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($lists as $list)
+                            <tr>
+                                <td>{{$list->name}}</td>
+                                <td>{{$list->mobile}}</td>
+                                <td>{{$list->distance}}</td>
+                                <td>{{\App\Models\Wallet::balance($list->id)}}</td>
+                                    <td>
+
+                                                @if(isset($vendors[$list->id]))
+                                                    @if($vendors[$list->id]=='new')
+                                                        {{'Waiting for accept'}}<a href="{{route('orders.revoke.order',['oid'=>$order->id, 'vid'=>$list->id])}}">Click to revoke</a>
+                                                    @elseif($vendors[$list->id]=='accepted')
+                                                        {{'Accepted'}}
+                                                    @elseif($vendors[$list->id]=='rejected')
+                                                        {{'Rejected'}}
+                                                    @elseif($vendors[$list->id]=='expired')
+                                                        {{'Expired'}}<a href="{{route('orders.assign.order',['oid'=>$order->id, 'vid'=>$list->id])}}">Click to reassign</a>
+                                                    @elseif($vendors[$list->id]=='completed')
+                                                        {{'Total Estimated'}}
+                                                    @elseif($vendors[$list->id]=='paid')
+                                                        {{'Payment Received'}}
+                                                    @endif
+                                                @else
+                                                    <a href="{{route('orders.assign.order',['oid'=>$order->id, 'vid'=>$list->id])}}">Assign</a>
+                                                @endif
+
+                                    </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{{--<div class="modal fade" id="statusmodal" role="dialog">--}}
+{{--        <div class="modal-dialog">--}}
+
+{{--            <!-- Modal content-->--}}
+{{--            <div class="modal-content">--}}
+{{--                <div class="modal-header">--}}
+{{--                    <h4 class="modal-title">Change Order Status</h4>--}}
+{{--                    <button type="button" class="close" data-dismiss="modal">&times;</button>--}}
+{{--                </div>--}}
+
+{{--                <div class="modal-body">--}}
+{{--                    <select name="new_status">--}}
+{{--                        <option value="new">Mark as new</option>--}}
+{{--                        <option value="declined">Decline order</option>--}}
+{{--                    </select>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+{{--        </div>--}}
+{{--    </div>--}}
 
 @endsection

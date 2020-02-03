@@ -39,6 +39,7 @@
                                     <th>Customer(Mobile)</th>
                                     <th>Booking Date</th>
                                     <th>Booking Time</th>
+                                    <th>Status</th>
                                     <th>Details</th>
                                 </tr>
                                 </thead>
@@ -51,6 +52,7 @@
                                         <td>{{$s->user->mobile}}</td>
                                         <td>{{$s->booking_date}}</td>
                                         <td>{{$s->time->name??''}}</td>
+                                        <td>{{$s->status??''}}</td>
                                         <td><a href="{{route('orders.details',['id'=>$s->id])}}" class="btn btn-primary">Details</a></td>
                                     </tr>
                                 @endforeach

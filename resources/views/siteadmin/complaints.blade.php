@@ -71,7 +71,7 @@
                                 @foreach($complaints as $complaint)
                                 <tr>
                                     <td>{{$complaint->order_id}}</td>
-                                    <td>{{$complaint->user->name}}</td>
+                                    <td>{{$complaint->user->name??''}}</td>
                                     <td><img src="{{$complaint->attachment}}" height="50px" width="50px"/></td>
                                     <td>{{$complaint->description}}</td>
                                     <td >

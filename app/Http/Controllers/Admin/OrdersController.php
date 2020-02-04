@@ -34,7 +34,8 @@ class OrdersController extends Controller
         $services=[];
 
         foreach($order->details as $d){
-            $services[]=$d->product->category->parentcategory->id;
+            if(isset($d->product->category->parentcategory->id))
+                $services[]=$d->product->category->parentcategory->id;
         }
         $user=$order->user;
 

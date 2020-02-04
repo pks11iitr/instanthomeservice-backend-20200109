@@ -11,20 +11,20 @@ use DB;
 class OrdersController extends Controller
 {
     public function index(Request $request){
-        $sel = Orders::with(['time'])->where('status','=','new')->OrWhere('status','=','assigned')->get();
+        $sel = Orders::with(['time'])->where('isbookingcomplete', true)->where('status','=','new')->OrWhere('status','=','assigned')->get();
         return view('siteadmin.orders',['sel'=>$sel]);
     }
 
     public function completed(Request $request){
-        $sel = Orders::where('status','=','completed')->orWhere('status','=','paid')->get();
+        $sel = Orders::where('isbookingcomplete', true)->where('status','=','completed')->orWhere('status','=','paid')->get();
         return view('siteadmin.completedorders',['sel'=>$sel]);
     }
     public function inprocess(Request $request){
-        $sel = Orders::where('status','=','processing')->orWhere('status','=','accepted')->get();
+        $sel = Orders::where('isbookingcomplete', true)->where('status','=','processing')->orWhere('status','=','accepted')->get();
         return view('siteadmin.inprocessorders',['sel'=>$sel]);
     }
     public function cancelled(Request $request){
-        $sel = Orders::where('status','=','cancelled')->get();
+        $sel = Orders::where('isbookingcomplete', true)->where('status','=','cancelled')->get();
         return view('siteadmin.cancelledorders',['sel'=>$sel]);
     }
 
@@ -54,7 +54,7 @@ class OrdersController extends Controller
             ->with('services')
             ->whereHas('services', function($service) use($services){
                     $service->whereIn('user_services.service_id', $services)->select();
-            })->select('users.*', DB::raw("$haversine as distance"))->get();
+            })->select('users.*', DB::raw("$haversine as distance"))->orderBy('distance', 'asc')->get();
 //        echo "<pre>";
 //        print_r($lists->toArray());die;
         return view('siteadmin.openorderitems',['order'=>$order,'lists'=>$lists, 'vendors'=>$vendors]);

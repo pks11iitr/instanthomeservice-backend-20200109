@@ -38,7 +38,7 @@ use Illuminate\Http\Request;
         $api->get('pay-now/{id}', ['as'=>'api.pay', 'uses'=>'Customer\Api\OrderController@paynow']);
         $api->get('verify-payment/{id}', ['as'=>'api.pay.verify', 'uses'=>'Customer\Api\OrderController@verifyPayment']);
         $api->post('add-money', ['as'=>'api.pay', 'uses'=>'Customer\Api\WalletController@addMoney']);
-        $api->get('verify-recharge/{id}', ['as'=>'api.pay.verify', 'uses'=>'Customer\Api\WalletController@verifyRecharge']);
+        $api->post('verify-recharge/{id}', ['as'=>'api.pay.verify', 'uses'=>'Customer\Api\WalletController@verifyRecharge']);
         $api->get('wallet-balance', ['as'=>'api.balance', 'uses'=>'Customer\Api\WalletController@getWalletBalance']);
     });
 

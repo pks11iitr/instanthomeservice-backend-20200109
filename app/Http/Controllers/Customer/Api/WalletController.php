@@ -29,7 +29,7 @@ class WalletController extends Controller
             ]);
             $responsearr=json_decode($response);
             if(isset($responsearr->id)){
-                $wallet->razor_order_id=$responsearr->id;
+                $wallet->order_id=$responsearr->id;
                 $wallet->order_id_response=$response;
                 $wallet->save();
                 return [

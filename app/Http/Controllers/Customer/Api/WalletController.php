@@ -3,11 +3,17 @@
 namespace App\Http\Controllers\Customer\Api;
 
 use App\Models\Wallet;
+use App\Services\Payment\RazorPayService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class WalletController extends Controller
 {
+    public function __construct(RazorPayService $pay)
+    {
+        $this->pay=$pay;
+    }
+
     public function history(Request $request){
         $history=Wallet::where('iscomplete', true)->get();
         return compact('history');

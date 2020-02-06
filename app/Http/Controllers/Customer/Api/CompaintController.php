@@ -41,7 +41,7 @@ class CompaintController extends Controller
                 $path = DB::raw('attachment');
             }
 
-            if (Complaint::create(array_merge($request->only('title', 'description', 'order_id'), ['user_id' => auth()->user()->id, 'attachment'=>$path])))
+            if (Complaint::create(array_merge($request->only('title', 'description', 'order_id'), ['user_id' => auth()->user()->id, 'attachment'=>$path, 'refid'=>date('YmdHis')])))
                 return [
                     'status' => 'success',
                     'message' => 'Your complaint has been submitted'

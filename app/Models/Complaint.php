@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class Complaint extends Model
 {
     protected $table='complaints';
-    protected $fillable=['user_id', 'order_id', 'attachment', 'description', 'is_resolved'];
+    protected $fillable=['user_id', 'order_id', 'attachment', 'description', 'is_resolved','refid'];
 
     protected $hidden=['created_at', 'updated_at', 'deleted_at' ];
 

@@ -56,7 +56,7 @@ class CompaintController extends Controller
 
     public function orderlist(Request $request){
         $user=auth()->user();
-        return Orders::where('user_id', $user->id)->select('id','refid')->get();
+        return Orders::where('user_id', $user->id)->select('id','order_id')->get();
     }
 
 

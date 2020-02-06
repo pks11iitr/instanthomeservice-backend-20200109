@@ -43,7 +43,7 @@ use Illuminate\Http\Request;
         $api->get('wallet-history', ['as'=>'api.history', 'uses'=>'Customer\Api\WalletController@history']);
         $api->get('complaints', ['as'=>'api.history', 'uses'=>'Customer\Api\ComplaintController@index']);
         $api->post('complaints', ['as'=>'api.history.post', 'uses'=>'Customer\Api\ComplaintController@store']);
-        $api->get('orderid-list', ['as'=>'api.order.idlist', 'uses'=>'Customer\Api\ComplaintController@orderlist']);
+        $api->get('orderid-list', ['as'=>'api.order.idlist', 'uses'=>'Customer\Api\CompaintController@orderlist']);
 
     });
 

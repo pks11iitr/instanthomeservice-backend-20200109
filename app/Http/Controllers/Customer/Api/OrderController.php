@@ -122,6 +122,7 @@ class OrderController extends Controller
         $orderdata['lang']=$order->lang;
         $orderdata['price_after_inspection']=$order->total_after_inspection;
         $order['reviews']=$order->reviews;
+        $order['id']=$order->id;
         $orderdata['time']=date('D, d M').'('.$order->time->name.')';
         //$orderdata['date']=$order->updated_at;
         $orderdata['items']=[];

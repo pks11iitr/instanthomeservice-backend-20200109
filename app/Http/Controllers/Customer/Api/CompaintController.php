@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer\Api;
 
 use App\Models\Complaint;
+use App\Models\Orders;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -51,6 +52,11 @@ class CompaintController extends Controller
             'status'=>'failed',
             'message'=>'Operation failed. Please try again'
         ];
+    }
+
+    public function orderlist(Request $request){
+        $user=auth()->user();
+        return Orders::where('user_id', $user->id)->select('id','refid')->get();
     }
 
 

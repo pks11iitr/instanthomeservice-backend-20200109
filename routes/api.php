@@ -41,6 +41,10 @@ use Illuminate\Http\Request;
         $api->post('verify-recharge/{id}', ['as'=>'api.pay.verify', 'uses'=>'Customer\Api\WalletController@verifyRecharge']);
         $api->get('wallet-balance', ['as'=>'api.balance', 'uses'=>'Customer\Api\WalletController@getWalletBalance']);
         $api->get('wallet-history', ['as'=>'api.history', 'uses'=>'Customer\Api\WalletController@history']);
+        $api->get('complaints', ['as'=>'api.history', 'uses'=>'Customer\Api\ComplaintController@index']);
+        $api->post('complaints', ['as'=>'api.history.post', 'uses'=>'Customer\Api\ComplaintController@store']);
+        $api->get('orderid-list', ['as'=>'api.order.idlist', 'uses'=>'Customer\Api\ComplaintController@orderlist']);
+
     });
 
     $api->get('home', ['as'=>'api.home', 'uses'=>'Customer\Api\HomeController@index']);

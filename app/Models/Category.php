@@ -36,6 +36,10 @@ class Category extends Model
         return Storage::url($value);
     }
 
+    public function getRateUrlAttribute($value){
+        return Storage::url($value);
+    }
+
     public function rootCategory(){
         return $this->parentcategory()->with('parentcategory')->wherehas('parentcategory');
     }

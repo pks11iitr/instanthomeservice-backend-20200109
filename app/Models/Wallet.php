@@ -23,7 +23,7 @@ class Wallet extends Model
     }
 
     public static function updatewallet($userid, $description, $type, $amount,$orderid=null){
-        Wallet::create(['user_id'=>$userid, 'description'=>$description, 'type'=>$type, 'iscomplete'=>1, 'amount'=>$amount, 'order_id'=>$orderid]);
+        Wallet::create(['refid'=>date('YmdHis'), 'user_id'=>$userid, 'description'=>$description, 'type'=>$type, 'iscomplete'=>1, 'amount'=>$amount, 'order_id'=>$orderid]);
     }
 
 

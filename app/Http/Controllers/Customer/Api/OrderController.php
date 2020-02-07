@@ -232,11 +232,11 @@ class OrderController extends Controller
                     $order->from_wallet=$order->total_after_inspection;
                     $order->save();
 
-                    Wallet::updatewallet($user->id, 'Paid for Booking ID:'.$order->refid, 'Debit', $order->total_after_inspection);
+                    Wallet::updatewallet($user->id, 'Paid for Booking ID:'.$order->order_id, 'Debit', $order->total_after_inspection);
 
                    return response()->json([
                         'status'=>'success',
-                        'status1'=>'paid',
+                        'paymentdone'=>'yes',
                         'message'=>'Your booking payment has been successfull'
                     ]);
                 }else{
@@ -272,6 +272,7 @@ class OrderController extends Controller
                 return response()->json([
                     'status'=>'success',
                     'message'=>'success',
+                    'paymentdone'=>'no',
                     'data'=>[
                         'id'=>$order->id,
                         'orderid'=> $order->razor_order_id,

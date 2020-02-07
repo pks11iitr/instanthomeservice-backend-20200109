@@ -5,6 +5,7 @@
 /public/uploads/*
 /vendor
 .idea/*
+.idea/worspace.xml
 .env
 .env.backup
 .phpunit.result.cache

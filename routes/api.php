@@ -34,6 +34,17 @@ use Illuminate\Http\Request;
         $api->get('date-time-slots', ['as'=>'api.times', 'uses'=>'Customer\Api\OrderController@getTimeSlots']);
         $api->get('get-profile', ['as'=>'api.profileget', 'uses'=>'Customer\Api\ProfileController@getProfile']);
         $api->post('set-profile', ['as'=>'api.profileset', 'uses'=>'Customer\Api\ProfileController@setProfile']);
+        $api->post('submit-review/{id}', ['as'=>'api.review', 'uses'=>'Customer\Api\OrderController@review']);
+        $api->get('pay-now/{id}', ['as'=>'api.pay', 'uses'=>'Customer\Api\OrderController@paynow']);
+        $api->post('verify-payment/{id}', ['as'=>'api.pay.verify', 'uses'=>'Customer\Api\OrderController@verifyPayment']);
+        $api->post('add-money', ['as'=>'api.pay', 'uses'=>'Customer\Api\WalletController@addMoney']);
+        $api->post('verify-recharge/{id}', ['as'=>'api.pay.verify', 'uses'=>'Customer\Api\WalletController@verifyRecharge']);
+        $api->get('wallet-balance', ['as'=>'api.balance', 'uses'=>'Customer\Api\WalletController@getWalletBalance']);
+        $api->get('wallet-history', ['as'=>'api.history', 'uses'=>'Customer\Api\WalletController@history']);
+        $api->get('complaints', ['as'=>'api.history', 'uses'=>'Customer\Api\CompaintController@index']);
+        $api->post('complaints', ['as'=>'api.history.post', 'uses'=>'Customer\Api\CompaintController@store']);
+        $api->get('orderid-list', ['as'=>'api.order.idlist', 'uses'=>'Customer\Api\CompaintController@orderlist']);
+
     });
 
     $api->get('home', ['as'=>'api.home', 'uses'=>'Customer\Api\HomeController@index']);
@@ -42,7 +53,6 @@ use Illuminate\Http\Request;
     $api->get('product/{id}', ['as'=>'api.product', 'uses'=>'Customer\Api\ProductController@details']);
     $api->get('cart-details', ['as'=>'api.cart.details', 'uses'=>'Customer\Api\CartController@getCartDetails']);
     $api->post('add-cart', ['as'=>'api.cart', 'uses'=>'Customer\Api\CartController@store']);
-    $api->post('submit-review/{id}', ['as'=>'api.review', 'uses'=>'Customer\Api\OrderController@review']);
     /*
      * Customer App Apis Starts
      */
@@ -59,6 +69,9 @@ use Illuminate\Http\Request;
 
         $api->post('my-availablity', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
         $api->post('complete-service/{id}', ['as'=>'vendor.api.completeorders', 'uses'=>'Partner\Api\OrderController@completeService']);
+        $api->get('accept-order/{id}', ['as'=>'vendor.api.accept', 'uses'=>'Partner\Api\OrderController@acceptOrder']);
+        $api->get('reject-order/{id}', ['as'=>'vendor.api.reject', 'uses'=>'Partner\Api\OrderController@rejectOrder']);
+        $api->get('start-processing/{id}', ['as'=>'vendor.api.start', 'uses'=>'Partner\Api\OrderController@startProcessing']);
 
     });
 

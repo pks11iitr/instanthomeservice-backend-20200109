@@ -44,8 +44,8 @@
                                 <tbody>
                                 @foreach($reviews as $review)
                                 <tr>
-                                    <td>{{$review->order->name}}</td>
-                                    <td>{{$review->user->name}}({{$review->user->mobile}})</td>
+                                    <td>{{$review->order->name??''}}</td>
+                                    <td>{{$review->user->name??''}}({{$review->user->mobile??''}})</td>
                                     <td></td>
                                     <td>{{$review->ratings}}</td>
                                     <td>{{$review->review}}</td>

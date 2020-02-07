@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer\Api;
 
 use App\Models\Complaint;
+use App\Models\Orders;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -41,7 +42,7 @@ class CompaintController extends Controller
                 $path = DB::raw('attachment');
             }
 
-            if (Complaint::create(array_merge($request->only('title', 'description', 'order_id'), ['user_id' => auth()->user()->id, 'attachment'=>$path])))
+            if (Complaint::create(array_merge($request->only('title', 'description', 'order_id'), ['user_id' => auth()->user()->id, 'attachment'=>$path, 'refid'=>date('YmdHis')])))
                 return [
                     'status' => 'success',
                     'message' => 'Your complaint has been submitted'
@@ -51,6 +52,11 @@ class CompaintController extends Controller
             'status'=>'failed',
             'message'=>'Operation failed. Please try again'
         ];
+    }
+
+    public function orderlist(Request $request){
+        $user=auth()->user();
+        return Orders::where('user_id', $user->id)->select('id','order_id')->get();
     }
 
 

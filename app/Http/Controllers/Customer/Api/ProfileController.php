@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Customer\Api;
 
+use App\Models\Wallet;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -57,7 +58,8 @@ class ProfileController extends Controller
 
     public function getProfile(Request $request){
         $user=auth()->user();
-        return $user->only('name', 'email', 'mobile', 'image');
+        if($user)
+        return array_merge($user->only('name', 'email', 'mobile', 'image'), ['walletbalance'=>Wallet::balance($user->id)]);
     }
 
     public function setProfile(Request $request){

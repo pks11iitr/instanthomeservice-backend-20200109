@@ -36,7 +36,7 @@ use Illuminate\Http\Request;
         $api->post('set-profile', ['as'=>'api.profileset', 'uses'=>'Customer\Api\ProfileController@setProfile']);
         $api->post('submit-review/{id}', ['as'=>'api.review', 'uses'=>'Customer\Api\OrderController@review']);
         $api->get('pay-now/{id}', ['as'=>'api.pay', 'uses'=>'Customer\Api\OrderController@paynow']);
-        $api->get('verify-payment/{id}', ['as'=>'api.pay.verify', 'uses'=>'Customer\Api\OrderController@verifyPayment']);
+        $api->post('verify-payment/{id}', ['as'=>'api.pay.verify', 'uses'=>'Customer\Api\OrderController@verifyPayment']);
         $api->post('add-money', ['as'=>'api.pay', 'uses'=>'Customer\Api\WalletController@addMoney']);
         $api->post('verify-recharge/{id}', ['as'=>'api.pay.verify', 'uses'=>'Customer\Api\WalletController@verifyRecharge']);
         $api->get('wallet-balance', ['as'=>'api.balance', 'uses'=>'Customer\Api\WalletController@getWalletBalance']);

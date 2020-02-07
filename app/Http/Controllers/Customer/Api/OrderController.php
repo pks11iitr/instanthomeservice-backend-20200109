@@ -314,7 +314,7 @@ class OrderController extends Controller
                 if($order->using_wallet==1){
                     $balance=Wallet::balance($order->user_id);
                     if($balance>=$order->from_wallet){
-                        Wallet::updatewallet($order->user_id, 'Paid for Booking ID:'.$order->refid, 'Debit', $order->from_wallet);
+                        Wallet::updatewallet($order->user_id, 'Paid for Booking ID:'.$order->order_id, 'Debit', $order->from_wallet);
                     }else{
                         return response()->json([
                             'status'=>'failed',

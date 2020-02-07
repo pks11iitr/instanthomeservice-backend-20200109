@@ -37,7 +37,9 @@ class Category extends Model
     }
 
     public function getRateUrlAttribute($value){
-        return Storage::url($value);
+        if(!empty($value))
+            return Storage::url($value);
+        return null;
     }
 
     public function rootCategory(){

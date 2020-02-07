@@ -306,11 +306,6 @@ class OrderController extends Controller
                 $order->payment_id_response=$request->razorpay_signature;
                 $order->status='paid';
 
-                $vendor=$order->vendors()->where('vendor_orders.status', 'completed')->firstOrFail();
-                $vendor->pivot->status='paid';
-                $vendor->pivot->save();
-
-
                 if($order->using_wallet==1){
                     $balance=Wallet::balance($order->user_id);
                     if($balance>=$order->from_wallet){

@@ -18,19 +18,24 @@ class CategoryController extends Controller
     public function store(Request $request){
 
         if(isset($request->categoryimage)){
-            $file=$request->categoryimage->path();
+            $file=$request->categoryimage;
+            $file2=$request->rate_url;
 
             $name=str_replace(' ', '_', $request->categoryimage->getClientOriginalName());
+            $name2=str_replace(' ', '_', $request->rate_url->getClientOriginalName());
 
             $path='category/'.$name;
+            $path2='category/'.$name2;
 
             Storage::put($path, file_get_contents($file));
+            Storage::put($path2, file_get_contents($file2));
         }else{
             $path=null;
         }
         Category::create(['title' => $request->title,
             'description' => $request->description,
             'image' => $path,
+            'rate_url'=>$path2,
             'parent' => $request->parent,
             'istop' => $request->istop,
             'isactive'=>$request->isactive]);

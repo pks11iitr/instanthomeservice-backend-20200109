@@ -32,12 +32,38 @@ class OrdersController extends Controller
         return view('siteadmin.openorderitems',['order'=>$order,'lists'=>$lists]);
     }
     public function completed(Request $request){
-        $sel = Orders::where('status','=','completed')->orWhere('status','=','accepted')->get();
+        $sel = Orders::with(['time'])->where('status','=','completed')->orWhere('status','=','accepted')->get();
         return view('siteadmin.completedorders',['sel'=>$sel]);
     }
+    public function completedetails(Request $request,$id){
+        $order = Orders::with(['details.product','time','vendors'])->findOrFail($id);
+
+        $services=[];
+
+        foreach($order->details as $d){
+            $services[]=$d->product->category->parentcategory->id;
+        }
+        $lists = User::role('vendor')->with('services')->whereHas('services', function($service) use($services){
+            $service->whereIn('user_services.service_id', $services);
+        })->get();
+        return view('siteadmin.completedetails',['order'=>$order,'lists'=>$lists]);
+    }
     public function inprocess(Request $request){
-        $sel = Orders::where('status','=','processing')->orWhere('status','=','paid')->get();
+        $sel = Orders::with(['time'])->where('status','=','processing')->orWhere('status','=','paid')->get();
         return view('siteadmin.inprocessorders',['sel'=>$sel]);
+    }
+    public function inprocessdetails(Request $request,$id){
+        $order = Orders::with(['details.product','time','vendors'])->findOrFail($id);
+
+        $services=[];
+
+        foreach($order->details as $d){
+            $services[]=$d->product->category->parentcategory->id;
+        }
+        $lists = User::role('vendor')->with('services')->whereHas('services', function($service) use($services){
+            $service->whereIn('user_services.service_id', $services);
+        })->get();
+        return view('siteadmin.inprocessdetails',['order'=>$order,'lists'=>$lists]);
     }
     public function cancelled(Request $request){
         $sel = Orders::where('status','=','cancelled')->get();

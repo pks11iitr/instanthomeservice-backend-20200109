@@ -48,7 +48,9 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
         Route::get('/','Admin\OrdersController@index')->name('orders.list');
         Route::get('details/{id}','Admin\OrdersController@details')->name('orders.details');
         Route::get('completed','Admin\OrdersController@completed')->name('orders.completed');
+        Route::get('completedetails/{id}','Admin\OrdersController@completedetails')->name('orders.completedetails');
         Route::get('inprocess','Admin\OrdersController@inprocess')->name('orders.inprocess');
+        Route::get('inprocessdetails/{id}','Admin\OrdersController@inprocessdetails')->name('orders.inprocessdetails');
         Route::get('cancelled','Admin\OrdersController@cancelled')->name('orders.cancelled');
     });
     Route::group(['prefix'=>'vendors'],function (){

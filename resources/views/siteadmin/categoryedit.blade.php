@@ -49,6 +49,11 @@
                                         <img src="{{$category->image}}" height="100" width="200">
                                     </div>
                                     <div class="form-group">
+                                        <label for="exampleInputimage">Rate Url</label>
+                                        <input type="file" name="rate_url" class="form-control" id="exampleInputimage" placeholder="">
+                                        <img src="{{$category->rate_url}}" height="100" width="200">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="exampleInputparent">Parent Category(optional)</label>
                                         <select name="parent" class="form-control" id="exampleInputistop" placeholder="">
                                             <option value="">Select Parent Category</option>

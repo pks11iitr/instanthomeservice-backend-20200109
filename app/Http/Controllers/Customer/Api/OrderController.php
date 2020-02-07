@@ -223,14 +223,13 @@ class OrderController extends Controller
                 $balance=Wallet::balance($user->id);
                 if($balance>=$order->total_after_inspection){
 
-                    // reject booking i.e. update pivot
-                    $vendor=$order->vendors()->where('status', 'completed')->firstOrFail();
+                    $vendor=$order->vendors()->where('vendor_orders.status', 'completed')->firstOrFail();
                     $vendor->pivot->status='paid';
                     $vendor->pivot->save();
 
-                    //change order status to new
                     $order->status='paid';
                     $order->using_wallet=true;
+                    $order->from_wallet=$order->total_after_inspection;
                     $order->save();
 
                     Wallet::updatewallet($user->id, 'Paid for Booking ID:'.$order->refid, 'Debit', $order->total_after_inspection);
@@ -241,6 +240,9 @@ class OrderController extends Controller
                         'message'=>'Your booking payment has been successfull'
                     ]);
                 }else{
+                    $order->using_wallet=true;
+                    $order->from_wallet=$balance;
+                    $order->save();
 
                     $final_cost=($order->total_after_inspection-$balance)*100;
 
@@ -251,12 +253,13 @@ class OrderController extends Controller
                     ]);
                 }
             }else{
+
                 $final_cost=$order->total_after_inspection*100;
 
                 $response=$this->pay->generateorderid([
                     "amount"=>$final_cost,
                     "currency"=>"INR",
-                    "receipt"=>$order->id.'',
+                    "receipt"=>$order->order_id.'',
                 ]);
             }
 
@@ -264,7 +267,7 @@ class OrderController extends Controller
             if(isset($responsearr->id)){
                 $order->razor_order_id=$responsearr->id;
                 $order->order_id_response=$response;
-                $order->using_wallet=($request->usewallet==1)?true:false;
+                //$order->using_wallet=($request->usewallet==1)?true:false;
                 $order->save();
                 return response()->json([
                     'status'=>'success',
@@ -302,9 +305,25 @@ class OrderController extends Controller
                 $order->payment_id_response=$request->razorpay_signature;
                 $order->status='paid';
 
+                $vendor=$order->vendors()->where('status', 'completed')->firstOrFail();
+                $vendor->pivot->status='paid';
+                $vendor->pivot->save();
+
+
                 if($order->using_wallet==1){
                     $balance=Wallet::balance($order->user_id);
-                    Wallet::updatewallet($order->user_id, 'Paid for Booking ID:'.$order->refid, 'Debit', $balance);
+                    if($balance>=$order->from_wallet){
+                        Wallet::updatewallet($order->user_id, 'Paid for Booking ID:'.$order->refid, 'Debit', $order->from_wallet);
+                    }else{
+                        return response()->json([
+                            'status'=>'failed',
+                            'message'=>'Payment is not successfull',
+                            'errors'=>[
+
+                            ],
+                        ], 200);
+                    }
+
                 }
 
                 $order->save();

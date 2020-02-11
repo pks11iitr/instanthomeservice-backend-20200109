@@ -143,5 +143,39 @@ class ProfileController extends Controller
         ];
 
     }
+    public function acceptAggrement(Request $request){
+        $user=auth()->user();
+        $user->aggrement_signed==true;
+
+        if($user->save()){
+            return [
+                'status'=>'success',
+                'message'=>'Aggreement has been accepted'
+            ];
+        }
+
+        return [
+            'status'=>'failed',
+            'message'=>'Profile update failed'
+        ];
+
+    }
+
+    public function getAggrementDetails(Request $request){
+        $user=auth()->user();
+        if($user->agreement_signed){
+            return [
+                'status'=>'signed',
+                'url'=>'',
+            ];
+        }else{
+            return [
+                'status'=>'notsigned',
+                'url'=>'',
+            ];
+        }
+    }
+
+
 }
 

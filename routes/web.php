@@ -73,6 +73,11 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
         Route::get('/','Admin\UsersController@index')->name('users.list');
         Route::get('detail/{id}','Admin\UsersController@detail')->name('users.detail');
     });
+    Route::group(['prefix'=>'agreement'],function (){
+        Route::get('upload-form','Admin\AgreementController@form')->name('form.agreement');
+        Route::get('/','Admin\AgreementController@view')->name('view.agreement');
+        Route::post('/','Admin\AgreementController@upload')->name('upload.agreement');
+    });
 });
 
 Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'partner', 'is'=>'partner'], function(){

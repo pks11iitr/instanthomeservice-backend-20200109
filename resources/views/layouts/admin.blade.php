@@ -323,6 +323,29 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                Agreement
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('form.agreement')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Upload Agreement</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('view.agreement')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>View Agreement</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

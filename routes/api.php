@@ -67,6 +67,7 @@ use Illuminate\Http\Request;
         $api->post('add-time', ['as'=>'vendor.api.setsetvices', 'uses'=>'Partner\Api\ProfileController@addTime']);
         $api->post('delete-time', ['as'=>'vendor.api.setsetvices', 'uses'=>'Partner\Api\ProfileController@delTime']);
         $api->get('accept-aggrement', ['as'=>'vendor.api.aggrement', 'uses'=>'Partner\Api\ProfileController@acceptAggrement']);
+        $api->get('get-agreement', ['as'=>'vendor.api.getaggrement', 'uses'=>'Partner\Api\ProfileController@getAggrementDetails']);
         $api->post('my-availablity', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\ProfileController@store']);
         $api->post('complete-service/{id}', ['as'=>'vendor.api.completeorders', 'uses'=>'Partner\Api\OrderController@completeService']);
         $api->get('accept-order/{id}', ['as'=>'vendor.api.accept', 'uses'=>'Partner\Api\OrderController@acceptOrder']);

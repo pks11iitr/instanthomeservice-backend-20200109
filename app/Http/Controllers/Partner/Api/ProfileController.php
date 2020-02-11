@@ -146,7 +146,7 @@ class ProfileController extends Controller
     }
     public function acceptAggrement(Request $request){
         $user=auth()->user();
-        $user->aggrement_signed==true;
+        $user->agreement_signed==true;
 
         if($user->save()){
             return [

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Partner\Api;
 
+use App\Models\Agreement;
 use App\Models\Category;
 use App\Models\TimeSlot;
 use App\Models\Wallet;
@@ -163,15 +164,17 @@ class ProfileController extends Controller
 
     public function getAggrementDetails(Request $request){
         $user=auth()->user();
+        $agreement=Agreement::orderBy('id', 'desc')->first();
         if($user->agreement_signed){
+
             return [
                 'status'=>'signed',
-                'url'=>'',
+                'url'=>$agreement->doc_path,
             ];
         }else{
             return [
                 'status'=>'notsigned',
-                'url'=>'',
+                'url'=>$agreement->doc_path,
             ];
         }
     }

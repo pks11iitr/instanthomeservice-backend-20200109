@@ -28,7 +28,7 @@
                         <!-- jquery validation -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Category Add</h3>
+                                <h3 class="card-title">Category Edit</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
@@ -47,6 +47,11 @@
                                         <label for="exampleInputimage">Image</label>
                                         <input type="file" name="categoryimage" class="form-control" id="exampleInputimage" placeholder="">
                                         <img src="{{$category->image}}" height="100" width="200">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputimage">Rate Url</label>
+                                        <input type="file" name="rate_url" class="form-control" id="exampleInputimage" placeholder="">
+                                        <img src="{{$category->rate_url}}" height="100" width="200">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputparent">Parent Category(optional)</label>

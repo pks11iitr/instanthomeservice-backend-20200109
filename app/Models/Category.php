@@ -13,7 +13,7 @@ class Category extends Model
 
     protected $table='category';
 
-    protected $fillable=['title','image', 'description', 'parent','istop','isactive'];
+    protected $fillable=['title','image', 'description', 'parent','istop','rate_url','isactive'];
 
     protected $hidden =['created_at','updated_at','deleted_at','parent','istop','isactive'];
 

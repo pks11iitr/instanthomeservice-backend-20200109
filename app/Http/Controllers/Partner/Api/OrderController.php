@@ -55,7 +55,19 @@ class OrderController extends Controller
             }
 
         }
-        return $ordersarr;
+
+        $balance=Wallet::balance($user->id);
+        if($balance<config('config.vendorfee')){
+            $balance='Please recharge your wallet to accept orders.';
+        }else{
+            $balance='';
+        }
+        if(!$user->agreement_signed)
+            $agreement='Please sign agreement to start working. Go to profile settings';
+        else
+            $agreement='';
+
+        return compact('orders','agreement', 'balance');
     }
 
     public function pastOrders(Request $request, $user){
@@ -88,6 +100,7 @@ class OrderController extends Controller
         $orderdata=[];
         $orderdata['total']=$order->total_paid;
         $orderdata['taxes']=0;
+        $orderdata['order_id']=$order->order_id;
         $orderdata['name']=$order->name;
         $orderdata['address']=$order->address;
         $orderdata['lat']=$order->lat;
@@ -212,6 +225,12 @@ class OrderController extends Controller
             })->where('orders.status', 'assigned')->findOrFail($id);
             if($order){
                 $ballance=Wallet::balance($user->id);
+                if(!$user->agreement_signed)
+                    return [
+                        'status'=>'failed',
+                        'message'=>'Please sign agreement with us. Go to profile settings.'
+                    ];
+
                 if($ballance>=config('config.vendorfee')){
                     //update status i.e. update pivot
                     $vendor=$order->vendors()->where('vendor_id', $user->id)->firstOrFail();
@@ -232,7 +251,7 @@ class OrderController extends Controller
                     ];
                 }else{
                     return [
-                        'status'=>'success',
+                        'status'=>'failed',
                         'message'=>'Booking cannot be accepted. Please recharge your wallet'
                     ];
                 }

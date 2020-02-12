@@ -69,19 +69,27 @@ class OrdersController extends Controller
         foreach($order->vendors as $v){
             $vendors[$v->id]=$v->pivot->status;
         }
-
-        $haversine = "(6371 * acos(cos(radians($order->lat))
+        if(!empty($order->lat) && !empty($order->lang)){
+            $haversine = "(6371 * acos(cos(radians($order->lat))
                      * cos(radians(users.lat))
                      * cos(radians(users.lang)
                      - radians($order->lang))
                      + sin(radians($order->lat))
                      * sin(radians(users.lat))))";
 
-        $lists = User::role('vendor')
-            ->with('services')
-            ->whereHas('services', function($service) use($services){
+            $lists = User::role('vendor')
+                ->with('services')
+                ->whereHas('services', function($service) use($services){
                     $service->whereIn('user_services.service_id', $services)->select();
-            })->select('users.*', DB::raw("$haversine as distance"))->orderBy('distance', 'asc')->get();
+                })->select('users.*', DB::raw("$haversine as distance"))->orderBy('distance', 'asc')->get();
+        }else{
+            $lists = User::role('vendor')
+                ->with('services')
+                ->whereHas('services', function($service) use($services){
+                    $service->whereIn('user_services.service_id', $services)->select();
+                })->select('users.*')->orderBy('distance', 'asc')->get();
+        }
+
 //        echo "<pre>";
 //        print_r($lists->toArray());die;
         return view('siteadmin.openorderitems',['order'=>$order,'lists'=>$lists, 'vendors'=>$vendors]);

@@ -131,7 +131,7 @@
                             <tr>
                                 <td>{{$list->name}}</td>
                                 <td>{{$list->mobile}}</td>
-                                <td>{{$list->distance}}</td>
+                                <td>{{$list->distance??'NA'}}</td>
                                 <td>{{\App\Models\Wallet::balance($list->id)}}</td>
                                     <td>
 

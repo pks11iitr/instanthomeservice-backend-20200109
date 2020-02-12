@@ -80,7 +80,7 @@ class OrderController extends Controller
         $user=auth()->user();
 
         $order=Orders::with(['details.product', 'vendors'=>function($vendors)use($user){
-            $vendors->where('user_id', $user->id);
+            $vendors->where('vendor_id', $user->id);
         }])->whereHas('vendors', function($vendor) use($user){
             $vendor->where('vendor_id', $user->id);
         })->findOrFail($id);
@@ -95,6 +95,8 @@ class OrderController extends Controller
         $orderdata['price_after_inspection']=$order->total_after_inspection;
         $orderdata['time']=date('D, d M').'('.$order->time->name.')';
         //$orderdata['date']=$order->updated_at;
+        $orderdata['orderstatus']=$order->status;
+        $orderdata['vendorrstatus']=$order->vendors[0]->pivot->status??'';
         $orderdata['items']=[];
         foreach($order->details as $d){
             $orderdata['items'][]=[
@@ -104,6 +106,48 @@ class OrderController extends Controller
                 'total'=>$d->product->price*$d->quantity,
                 'image'=>$d->product->image
             ];
+        }
+
+        if($orderdata['orderstatus']=='new' && $orderdata['vendorrstatus']=='rejected'){
+            $orderdata['status']='Rejected';
+            $orderdata['name']='';
+            $orderdata['address']='';
+            $orderdata['lat']='';
+            $orderdata['lang']='';
+            $orderdata['price_after_inspection']='';
+            $orderdata['time']='';
+        }elseif($orderdata['orderstatus']=='assigned' && $orderdata['vendorrstatus']=='new'){
+            $orderdata['status']='new'; //show accept/reject button
+            $orderdata['name']='';
+            $orderdata['address']='';
+            $orderdata['lat']='';
+            $orderdata['lang']='';
+            $orderdata['price_after_inspection']='';
+            $orderdata['time']='';
+        }elseif($orderdata['orderstatus']=='accepted' && $orderdata['vendorrstatus']=='accepted'){
+            $orderdata['status']='accepted';//show process button
+        }elseif($orderdata['orderstatus']=='processing' && $orderdata['vendorrstatus']=='accepted'){
+            $orderdata['status']='processing';//show complete button
+        }elseif($orderdata['orderstatus']=='new' && $orderdata['vendorrstatus']=='expired'){
+            $orderdata['status']='Expired';
+            $orderdata['name']='';
+            $orderdata['address']='';
+            $orderdata['lat']='';
+            $orderdata['lang']='';
+            $orderdata['price_after_inspection']='';
+            $orderdata['time']='';
+        }elseif($orderdata['orderstatus']=='completed' && $orderdata['vendorrstatus']=='completed'){
+            $orderdata['status']='Waiting For Payment';
+        }elseif($orderdata['orderstatus']=='paid' && $orderdata['vendorrstatus']=='completed'){
+            $orderdata['status']='Payment Completed';
+        }else{
+            $orderdata['status']='';
+            $orderdata['name']='';
+            $orderdata['address']='';
+            $orderdata['lat']='';
+            $orderdata['lang']='';
+            $orderdata['price_after_inspection']='';
+            $orderdata['time']='';
         }
 
         return $orderdata;

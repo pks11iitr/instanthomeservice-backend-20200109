@@ -87,7 +87,7 @@ class OrdersController extends Controller
                 ->with('services')
                 ->whereHas('services', function($service) use($services){
                     $service->whereIn('user_services.service_id', $services)->select();
-                })->select('users.*')->orderBy('distance', 'asc')->get();
+                })->select('users.*')->get();
         }
 
 //        echo "<pre>";

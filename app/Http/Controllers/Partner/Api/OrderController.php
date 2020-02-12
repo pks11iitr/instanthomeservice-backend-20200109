@@ -38,6 +38,8 @@ class OrderController extends Controller
         ->get();
         $ordersarr=[];
         foreach($orders as $o){
+            if(empty($o->lat) || empty($o->lang))
+                $o->distance='Not Available';
             if(!empty($o->booking_date) && !empty($o->booking_time)){
                 $o->time1=date('D, d M', strtotime($o->booking_date)).' '.($o->time->name??'');
                 unset($o->time);
@@ -45,7 +47,7 @@ class OrderController extends Controller
                 unset($o->time1);
                 $ordersarr[]=$o;
             }else{
-                $o->time1='Not Provided';
+                $o->time1='Not Available';
                 unset($o->time);
                 $o->time=$o->time1;
                 unset($o->time1);

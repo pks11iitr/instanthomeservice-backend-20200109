@@ -62,6 +62,8 @@ class OrdersController extends Controller
         foreach($order->details as $d){
             if(isset($d->product->category->parentcategory->id))
                 $services[]=$d->product->category->parentcategory->id;
+            else
+                $services[]=$d->product->category->id;
         }
         $user=$order->user;
 

@@ -11,20 +11,20 @@ use DB;
 class OrdersController extends Controller
 {
     public function index(Request $request){
-        $sel = Orders::with(['time'])->where('isbookingcomplete', true)->where('status','=','new')->OrWhere('status','=','assigned')->get();
+        $sel = Orders::with(['time'])->where('isbookingcomplete', true)->where('status','=','new')->OrWhere('status','=','assigned')->orderBy('created_at', 'desc')->get();
         return view('siteadmin.orders',['sel'=>$sel]);
     }
 
     public function completed(Request $request){
-        $sel = Orders::where('isbookingcomplete', true)->where('status','=','completed')->orWhere('status','=','paid')->get();
+        $sel = Orders::where('isbookingcomplete', true)->where('status','=','completed')->orWhere('status','=','paid')->orderBy('created_at', 'desc')->get();
         return view('siteadmin.completedorders',['sel'=>$sel]);
     }
     public function inprocess(Request $request){
-        $sel = Orders::where('isbookingcomplete', true)->where('status','=','processing')->orWhere('status','=','accepted')->get();
+        $sel = Orders::where('isbookingcomplete', true)->where('status','=','processing')->orWhere('status','=','accepted')->orderBy('created_at', 'desc')->get();
         return view('siteadmin.inprocessorders',['sel'=>$sel]);
     }
     public function cancelled(Request $request){
-        $sel = Orders::where('isbookingcomplete', true)->where('status','=','cancelled')->get();
+        $sel = Orders::where('isbookingcomplete', true)->where('status','=','cancelled')->orderBy('created_at', 'desc')->get();
         return view('siteadmin.cancelledorders',['sel'=>$sel]);
     }
 

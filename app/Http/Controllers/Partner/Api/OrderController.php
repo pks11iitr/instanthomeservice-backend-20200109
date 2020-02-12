@@ -34,15 +34,24 @@ class OrderController extends Controller
             ->whereHas('vendors', function($vendor) use($user){
                     $vendor->where('vendor_id', $user->id)->whereIn('vendor_orders.status', ['new', 'accepted']);
             })
-            ->select('id', 'order_id', 'lat', 'lang', 'booking_time','booking_date', DB::raw("$haversine as distance"))
+            ->select('id', 'order_id', 'lat', 'lang', 'booking_time','booking_date', DB::raw("$haversine as distance"))->orderBy('id','desc')
         ->get();
         $ordersarr=[];
         foreach($orders as $o){
-            $o->time1=date('D, d M', strtotime($o->booking_date)).' '.$o->time->name;
-            unset($o->time);
-            $o->time=$o->time1;
-            unset($o->time1);
-            $ordersarr[]=$o;
+            if(!empty($o->booking_date) && !empty($o->booking_time)){
+                $o->time1=date('D, d M', strtotime($o->booking_date)).' '.($o->time->name??'');
+                unset($o->time);
+                $o->time=$o->time1;
+                unset($o->time1);
+                $ordersarr[]=$o;
+            }else{
+                $o->time1='Not Provided';
+                unset($o->time);
+                $o->time=$o->time1;
+                unset($o->time1);
+                $ordersarr[]=$o;
+            }
+
         }
         return $ordersarr;
     }
@@ -68,7 +77,9 @@ class OrderController extends Controller
     public function details(Request $request, $id){
         $user=auth()->user();
 
-        $order=Orders::with(['details.product'])->whereHas('vendors', function($vendor) use($user){
+        $order=Orders::with(['details.product', 'vendors'=>function($vendors)use($user){
+            $vendors->where('user_id', $user->id);
+        }])->whereHas('vendors', function($vendor) use($user){
             $vendor->where('vendor_id', $user->id);
         })->findOrFail($id);
 

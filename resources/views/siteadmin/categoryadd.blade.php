@@ -48,6 +48,10 @@
                                     <input type="file" name="categoryimage" class="form-control" id="exampleInputimage" placeholder="">
                                 </div>
                                 <div class="form-group">
+                                    <label for="exampleInputimage">Rate Url</label>
+                                    <input type="file" name="rate_url" class="form-control" id="exampleInputimage" placeholder="">
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleInputparent">Parent Category(optional)</label>
                                     <select name="parent" class="form-control" id="exampleInputistop" placeholder="">
                                         <option value="">Select Parent Category</option>

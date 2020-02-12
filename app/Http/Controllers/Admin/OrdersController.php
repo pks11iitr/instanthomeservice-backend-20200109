@@ -19,9 +19,35 @@ class OrdersController extends Controller
         $sel = Orders::where('isbookingcomplete', true)->where('status','=','completed')->orWhere('status','=','paid')->orderBy('created_at', 'desc')->get();
         return view('siteadmin.completedorders',['sel'=>$sel]);
     }
+    public function completedetails(Request $request,$id){
+        $order = Orders::with(['details.product','time','vendors'])->findOrFail($id);
+
+        $services=[];
+
+        foreach($order->details as $d){
+            $services[]=$d->product->category->parentcategory->id;
+        }
+        $lists = User::role('vendor')->with('services')->whereHas('services', function($service) use($services){
+            $service->whereIn('user_services.service_id', $services);
+        })->get();
+        return view('siteadmin.completedetails',['order'=>$order,'lists'=>$lists]);
+    }
     public function inprocess(Request $request){
         $sel = Orders::where('isbookingcomplete', true)->where('status','=','processing')->orWhere('status','=','accepted')->orderBy('created_at', 'desc')->get();
         return view('siteadmin.inprocessorders',['sel'=>$sel]);
+    }
+    public function inprocessdetails(Request $request,$id){
+        $order = Orders::with(['details.product','time','vendors'])->findOrFail($id);
+
+        $services=[];
+
+        foreach($order->details as $d){
+            $services[]=$d->product->category->parentcategory->id;
+        }
+        $lists = User::role('vendor')->with('services')->whereHas('services', function($service) use($services){
+            $service->whereIn('user_services.service_id', $services);
+        })->get();
+        return view('siteadmin.inprocessdetails',['order'=>$order,'lists'=>$lists]);
     }
     public function cancelled(Request $request){
         $sel = Orders::where('isbookingcomplete', true)->where('status','=','cancelled')->orderBy('created_at', 'desc')->get();

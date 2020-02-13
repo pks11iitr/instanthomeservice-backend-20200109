@@ -59,7 +59,7 @@ use Illuminate\Http\Request;
 
     $api->group(['middleware' => ['auth:api','acl'], 'is'=>'vendor'], function ($api) {
         $api->get('get-orders', ['as'=>'vendor.api.orders', 'uses'=>'Partner\Api\OrderController@index']);
-        $api->get('update-availability', ['as'=>'vendor.api.availability', 'uses'=>'Partner\Api\ProfileController@updateAvailability']);
+        $api->post('update-availability', ['as'=>'vendor.api.availability', 'uses'=>'Partner\Api\ProfileController@updateAvailability']);
         $api->get('vendor/order-details/{id}', ['as'=>'vendor.api.details', 'uses'=>'Partner\Api\OrderController@details']);
         $api->get('my-services', ['as'=>'vendor.api.getservices', 'uses'=>'Partner\Api\ProfileController@services']);
         $api->post('add-service', ['as'=>'vendor.api.setsetvices', 'uses'=>'Partner\Api\ProfileController@addServices']);

@@ -253,7 +253,9 @@ class OrderController extends Controller
                     ]);
                 }
             }else{
-
+                $order->using_wallet=false;
+                $order->from_wallet=0;
+                $order->save();
                 $final_cost=$order->total_after_inspection*100;
 
                 $response=$this->pay->generateorderid([

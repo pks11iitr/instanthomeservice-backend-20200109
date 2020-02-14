@@ -119,8 +119,10 @@ class ProfileController extends Controller
             'email'=>$user->email??'',
             'mobile'=>$user->mobile??'',
             'image'=>$user->image??'',
+            'is_available'=>$user->is_available??0,
             'walletbalance'=>Wallet::balance($user->id),
-            'is_available'=>$user->is_available
+
+
         ];
     }
 

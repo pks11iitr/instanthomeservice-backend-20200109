@@ -29,13 +29,13 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
         Route::post('update/{id}','Admin\BannerController@update')->name('banners.update');
     });
 
-    Route::group(['prefix'=>'partners'],function (){
-        Route::get('/','Admin\PartnersController@index')->name('partners.list');
-        Route::get('create','Admin\PartnersController@create')->name('partners.create');
-        Route::post('store','Admin\PartnersController@store')->name('partners.store');
-        Route::get('edit/{id}','Admin\PartnersController@edit')->name('partners.edit');
-        Route::post('update/{id}','Admin\PartnersController@update')->name('partners.update');
-    });
+//    Route::group(['prefix'=>'partners'],function (){
+//        Route::get('/','Admin\PartnersController@index')->name('partners.list');
+//        Route::get('create','Admin\PartnersController@create')->name('partners.create');
+//        Route::post('store','Admin\PartnersController@store')->name('partners.store');
+//        Route::get('edit/{id}','Admin\PartnersController@edit')->name('partners.edit');
+//        Route::post('update/{id}','Admin\PartnersController@update')->name('partners.update');
+//    });
     Route::group(['prefix'=>'products'],function (){
         Route::get('/','Admin\ProductsController@index')->name('products.list');
         Route::get('create','Admin\ProductsController@create')->name('products.create');
@@ -72,10 +72,10 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
     Route::group(['prefix'=>'reviews'],function (){
         Route::get('/','Admin\ReviewsController@index')->name('reviews.list');
     });
-    Route::group(['prefix'=>'users'],function (){
-        Route::get('/','Admin\UsersController@index')->name('users.list');
-        Route::get('detail/{id}','Admin\UsersController@detail')->name('users.detail');
-    });
+//    Route::group(['prefix'=>'users'],function (){
+//        Route::get('/','Admin\UsersController@index')->name('users.list');
+//        Route::get('detail/{id}','Admin\UsersController@detail')->name('users.detail');
+//    });
     Route::group(['prefix'=>'agreement'],function (){
         Route::get('upload-form','Admin\AgreementController@form')->name('form.agreement');
         Route::get('/','Admin\AgreementController@view')->name('view.agreement');

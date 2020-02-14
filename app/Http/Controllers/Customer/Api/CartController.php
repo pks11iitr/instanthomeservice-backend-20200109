@@ -91,9 +91,25 @@ class CartController extends Controller
               $cart=[];
           }
 
+          $totalitems=0;
+          $totalcost=0;
+          $text='';
+          foreach($cart as $c){
+              $totalitems=$totalitems+$c->quantity;
+              if(!empty($c->product->price)){
+                  $totalcost=$totalcost+$c->product->price*$c->quantity;
+              }else{
+                  $text='Final cost after inspection';
+              }
+
+          }
+
           return [
               'status'=>'success',
-              'cart'=>$cart
+              'cart'=>$cart,
+              'totalcount'=>$totalitems,
+              'totalcost'=>$totalcost,
+              'text'=>$text
           ];
       }
 }

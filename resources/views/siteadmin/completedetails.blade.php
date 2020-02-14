@@ -69,78 +69,41 @@
                                     <td>Address</td><td>{{$order->address}}</td>
                                 </tr>
                                 <tr>
+                                    <td>Address</td><td>{{$order->user->mobile}}</td>
+                                </tr>
+                                <tr>
                                     <td>Booking Date</td><td>{{$order->booking_date}}</td>
                                 </tr>
                                 <tr>
                                     <td>Booking Time</td><td>{{$order->time->name}}</td>
-                                </tr>
-                                <tr>
-                                    <td></td><td><div class="container">
-                                            <!-- Trigger the modal with a button -->
-                                            @if(in_array($order->status, ['new']))
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Assign</button>
-                                        @endif
-                                        <!-- Modal -->
-                                            <div class="modal fade" id="myModal" role="dialog">
-                                                <div class="modal-dialog">
-
-                                                    <!-- Modal content-->
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                            <h4 class="modal-title"></h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <table id="example1" class="table table-bordered table-striped">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th>Vendor Name</th>
-                                                                    <th>Vendor Mobile</th>
-                                                                    <th>Button</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                @foreach($lists as $list)
-                                                                    <tr>
-                                                                        <td>{{$list->name}}</td>
-                                                                        <td>{{$list->mobile}}</td>
-                                                                        @foreach($order->vendors as $v)
-
-                                                                            <td>
-                                                                                @if($v->id==$list->id)
-                                                                                    <button type="button" class="btn btn-primary" data-toggle="modal">
-                                                                                        @if($v->pivot->status=='new')
-                                                                                            {{'Waiting for accept'}}
-                                                                                        @elseif($v->pivot->status=='accepted')
-                                                                                            {{'Accepted'}}
-                                                                                        @elseif($v->pivot->status=='rejected')
-                                                                                            {{'Rejected'}}
-                                                                                        @elseif($v->pivot->status=='expired')
-                                                                                            {{'Expired'}}
-                                                                                        @endif
-                                                                                    </button>
-                                                                                @else
-                                                                                    <button type="button" class="btn btn-primary" data-toggle="modal">Assign</button>
-                                                                                @endif
-                                                                            </td>
-
-                                                                        @endforeach
-                                                                    </tr>
-                                                                @endforeach
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
                                 </tr>
 
                                 </tbody>
 
                             </table>
                         </div>
+
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Field</th>
+                                    <th>Value</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($order->vendors as $vendor)
+                                <tr>
+                                    <td>Vendor Name</td><td>{{$vendor->name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Vendor Mobile</td><td>{{$vendor->address}}</td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+
                     </div>
                     <!-- /.card -->
                 </div>

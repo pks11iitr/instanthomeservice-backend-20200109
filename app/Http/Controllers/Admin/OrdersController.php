@@ -11,29 +11,30 @@ use DB;
 class OrdersController extends Controller
 {
     public function index(Request $request){
-        $sel = Orders::with(['time'])->where('isbookingcomplete', true)->where('status','=','new')->OrWhere('status','=','assigned')->orderBy('created_at', 'desc')->get();
+        $sel = Orders::with(['time'])->where('isbookingcomplete', true)->where(function($query){
+            $query->where('status','=','new')->OrWhere('status','=','assigned');
+        })->orderBy('created_at', 'desc')->get();
         return view('siteadmin.orders',['sel'=>$sel]);
     }
 
     public function completed(Request $request){
-        $sel = Orders::where('isbookingcomplete', true)->where('status','=','completed')->orWhere('status','=','paid')->orderBy('created_at', 'desc')->get();
+        $sel = Orders::where('isbookingcomplete', true)->where(function($query){
+          $query->where('status','=','completed')->orWhere('status','=','paid');
+        })->orderBy('created_at', 'desc')->get();
         return view('siteadmin.completedorders',['sel'=>$sel]);
     }
     public function completedetails(Request $request,$id){
-        $order = Orders::with(['details.product','time','vendors'])->findOrFail($id);
+        $order = Orders::with(['details.product','time','vendors'=>function($vendors){
+            $vendors->whereIn('vendor_orders.status',['completed','paid']);
+        }])->findOrFail($id);
 
-        $services=[];
 
-        foreach($order->details as $d){
-            $services[]=$d->product->category->parentcategory->id;
-        }
-        $lists = User::role('vendor')->with('services')->whereHas('services', function($service) use($services){
-            $service->whereIn('user_services.service_id', $services);
-        })->get();
-        return view('siteadmin.completedetails',['order'=>$order,'lists'=>$lists]);
+        return view('siteadmin.completedetails',['order'=>$order]);
     }
     public function inprocess(Request $request){
-        $sel = Orders::where('isbookingcomplete', true)->where('status','=','processing')->orWhere('status','=','accepted')->orderBy('created_at', 'desc')->get();
+        $sel = Orders::where('isbookingcomplete', true)->where(function($query){
+            $query->where('status','=','processing')->orWhere('status','=','accepted');
+        })->orderBy('created_at', 'desc')->get();
         return view('siteadmin.inprocessorders',['sel'=>$sel]);
     }
     public function inprocessdetails(Request $request,$id){
@@ -83,7 +84,7 @@ class OrdersController extends Controller
                 ->with('services')
                 ->whereHas('services', function($service) use($services){
                     $service->whereIn('user_services.service_id', $services)->select();
-                })->select('users.*', DB::raw("$haversine as distance"))->orderBy('distance', 'asc')->get();
+                })->select('users.*', DB::raw("$haversine as distance"))->orderBy('distance', 'asc')->where('agreement_signed',true)->get();
         }else{
             $lists = User::role('vendor')
                 ->with('services')

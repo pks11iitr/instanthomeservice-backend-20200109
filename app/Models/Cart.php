@@ -17,4 +17,30 @@ class Cart extends Model
         return $this->belongsTo('App\Models\Products', 'product_id');
     }
 
+    public static function cartitems($user, $unique_id){
+        if($user){
+            $cart = Cart::with('product')->where('userid', $user->id)->get();
+        }else if($unique_id){
+            $cart = Cart::with('product')->where('unique_id', $unique_id)->get();
+        }else{
+            $cart=[];
+        }
+
+        $totalitems=0;
+        $totalcost=0;
+        $text='';
+        foreach($cart as $c){
+            $totalitems=$totalitems+$c->quantity;
+            if(!empty($c->product->price)){
+                $totalcost=$totalcost+$c->product->price*$c->quantity;
+            }else{
+                $text='Final cost after inspection';
+            }
+        }
+        return [
+            'totalitems'=>$totalitems,
+            'totalcost'=>$totalcost
+        ];
+    }
+
 }

@@ -99,6 +99,7 @@
                                 <tr>
                                     <td>Vendor Mobile</td><td>{{$vendor->address}}</td>
                                 </tr>
+                                    @endforeach
                                 </tbody>
 
                             </table>

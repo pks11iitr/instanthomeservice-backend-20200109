@@ -59,7 +59,7 @@ class ProfileController extends Controller
     public function getProfile(Request $request){
         $user=auth()->user();
         if($user)
-        return array_merge($user->only('name', 'email', 'mobile', 'image','is_avalilable'), ['walletbalance'=>Wallet::balance($user->id)]);
+        return array_merge($user->only('name', 'email', 'mobile', 'image','is_available'), ['walletbalance'=>Wallet::balance($user->id)]);
     }
 
     public function setProfile(Request $request){

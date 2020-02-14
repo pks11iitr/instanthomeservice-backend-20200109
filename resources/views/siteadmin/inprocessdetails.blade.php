@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -13,7 +14,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Orders</li>
+                            <li class="breadcrumb-item active">Order Items</li>
                         </ol>
                     </div>
                 </div>
@@ -26,38 +27,84 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Completed Orders Table</h3>
+                            <h3 class="card-title">Completed Order Details</h3>
+                            <br><span>Order Status: {{$order->status}}</span>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>OrderID</th>
-                                    <th>Name</th>
-                                    <th>Address</th>
-                                    <th>Customer(Mobile)</th>
-                                    <th>Booking Date</th>
-                                    <th>Booking Time</th>
-                                    <th>Details</th>
+                                    <th>Product Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($sel as $s)
+                                @foreach($order->details as $detail)
                                     <tr>
-                                        <td>{{$s->id}}</td>
-                                        <td>{{$s->name}}</td>
-                                        <td>{{$s->address}}</td>
-                                        <td>{{$s->user->mobile}}</td>
-                                        <td>{{$s->booking_date}}</td>
-                                        <td>{{$s->time->name}}</td>
-                                        <th><a href="{{route('orders.completedetails',['id'=>$s->id])}}" class="btn btn-primary">Details</a></th>
+                                        <td>{{$detail->product->name}}</td>
+                                        <td>{{$detail->price}}</td>
+                                        <td>{{$detail->quantity}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Field</th>
+                                    <th>Value</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr>
+                                    <td>Name</td><td>{{$order->name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Address</td><td>{{$order->address}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Address</td><td>{{$order->user->mobile}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Booking Date</td><td>{{$order->booking_date}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Booking Time</td><td>{{$order->time->name}}</td>
+                                </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Field</th>
+                                    <th>Value</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($order->vendors as $vendor)
+                                    <tr>
+                                        <td>Vendor Name</td><td>{{$vendor->name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vendor Mobile</td><td>{{$vendor->mobile}}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+
+                            </table>
+                        </div>
+
                     </div>
                     <!-- /.card -->
                 </div>

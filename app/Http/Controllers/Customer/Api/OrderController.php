@@ -123,7 +123,10 @@ class OrderController extends Controller
         $orderdata['price_after_inspection']=$order->total_after_inspection;
         $order['reviews']=$order->reviews;
         $order['id']=$order->id;
-        $orderdata['time']=date('D, d M').(isset($order->time->name))?'('.$order->time->name.')':'';
+        if(isset($order->booking_date))
+            $orderdata['time']=date('D, d M', strtotime($order->booking_date)).(isset($order->time->name))?'('.$order->time->name.')':'';
+        else
+            $orderdata['time']='NA';
         //$orderdata['date']=$order->updated_at;
         $orderdata['items']=[];
         foreach($order->details as $d){

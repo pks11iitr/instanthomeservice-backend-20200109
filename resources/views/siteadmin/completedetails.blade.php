@@ -97,7 +97,7 @@
                                     <td>Vendor Name</td><td>{{$vendor->name}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Vendor Mobile</td><td>{{$vendor->address}}</td>
+                                    <td>Vendor Mobile</td><td>{{$vendor->mobile}}</td>
                                 </tr>
                                     @endforeach
                                 </tbody>

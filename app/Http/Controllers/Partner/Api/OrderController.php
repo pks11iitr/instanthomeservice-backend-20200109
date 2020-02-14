@@ -106,7 +106,7 @@ class OrderController extends Controller
         $orderdata['lat']=$order->lat;
         $orderdata['lang']=$order->lang;
         $orderdata['price_after_inspection']=$order->total_after_inspection;
-        $orderdata['time']=date('D, d M').'('.$order->time->name.')';
+        $orderdata['time']=date('D, d M', strtotime($order->booking_date)).'('.$order->time->name.')';
         //$orderdata['date']=$order->updated_at;
         $orderdata['orderstatus']=$order->status;
         $orderdata['vendorrstatus']=$order->vendors[0]->pivot->status??'';

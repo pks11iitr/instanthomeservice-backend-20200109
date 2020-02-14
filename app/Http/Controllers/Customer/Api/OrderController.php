@@ -94,7 +94,7 @@ class OrderController extends Controller
 
     public function history(Request $request){
           $user=auth()->user();
-          $orders=Orders::with(['details'])->where('user_id', $user->id)->orderBy('updated_at', 'desc')->get();
+          $orders=Orders::with(['details'])->where('user_id', $user->id)->orderBy('updated_at', 'desc')->where('isbookingcomplete',true)->get();
 
           $orderarray=[];
           foreach($orders as $o){

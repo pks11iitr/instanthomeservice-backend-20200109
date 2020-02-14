@@ -38,17 +38,11 @@ class OrdersController extends Controller
         return view('siteadmin.inprocessorders',['sel'=>$sel]);
     }
     public function inprocessdetails(Request $request,$id){
-        $order = Orders::with(['details.product','time','vendors'])->findOrFail($id);
+        $order = Orders::with(['details.product','time','vendors'=>function($vendors){
+            $vendors->whereIn('vendor_orders.status',['accepted','processing']);
+        }])->findOrFail($id);
 
-        $services=[];
-
-        foreach($order->details as $d){
-            $services[]=$d->product->category->parentcategory->id;
-        }
-        $lists = User::role('vendor')->with('services')->whereHas('services', function($service) use($services){
-            $service->whereIn('user_services.service_id', $services);
-        })->get();
-        return view('siteadmin.inprocessdetails',['order'=>$order,'lists'=>$lists]);
+        return view('siteadmin.inprocessdetails',['order'=>$order]);
     }
     public function cancelled(Request $request){
         $sel = Orders::where('isbookingcomplete', true)->where('status','=','cancelled')->orderBy('created_at', 'desc')->get();

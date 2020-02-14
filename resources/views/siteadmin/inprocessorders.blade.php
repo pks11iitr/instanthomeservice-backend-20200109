@@ -34,7 +34,7 @@
                                 <thead>
                                 <tr>
                                     <th>OrderID</th>
-                                    <th>Name</th>
+                                    <th>ReferenceID</th>                                                                          <th>Name</th>
                                     <th>Address</th>
                                     <th>Customer(Mobile)</th>
                                     <th>Vendor(Name)</th>
@@ -47,6 +47,7 @@
                                 @foreach($sel as $s)
                                     <tr>
                                         <td>{{$s->id}}</td>
+                                        <td>{{$s->order_id}}</td>
                                         <td>{{$s->name}}</td>
                                         <td>{{$s->address}}</td>
                                         <td>{{$s->user->mobile}}</td>

@@ -39,7 +39,7 @@ class OrdersController extends Controller
     }
     public function inprocessdetails(Request $request,$id){
         $order = Orders::with(['details.product','time','vendors'=>function($vendors){
-            $vendors->whereIn('vendor_orders.status',['accepted','processing']);
+            $vendors->whereIn('vendor_orders.status',['accepted']);
         }])->findOrFail($id);
 
         return view('siteadmin.inprocessdetails',['order'=>$order]);
@@ -47,6 +47,11 @@ class OrdersController extends Controller
     public function cancelled(Request $request){
         $sel = Orders::where('isbookingcomplete', true)->where('status','=','cancelled')->orderBy('created_at', 'desc')->get();
         return view('siteadmin.cancelledorders',['sel'=>$sel]);
+    }
+
+    public function cancelleddetails(Request $request,$id){
+        $order = Orders::with(['details.product','time'])->findOrFail($id);
+        return view('siteadmin.cancelleddetails',['order'=>$order]);
     }
 
     public function details(Request $request,$id){

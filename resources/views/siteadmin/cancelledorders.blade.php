@@ -53,7 +53,7 @@
                                         <td>{{$s->user->name}}</td>
                                         <td>{{$s->booking_date}}</td>
                                         <td>{{$s->booking_time}}</td>
-                                        <td><a href="" class="btn btn-primary">Details</a></td>
+                                        <td><a href="{{route('orders.cancelleddetails',['id'=>$s->id])}}" class="btn btn-primary">Details</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

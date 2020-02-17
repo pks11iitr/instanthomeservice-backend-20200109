@@ -114,15 +114,15 @@ class OrderController extends Controller
         $orderdata=[];
         $orderdata['total']=$order->total_paid;
         $orderdata['taxes']=0;
-        $orderdata['name']=$order->name;
-        $orderdata['address']=$order->address;
+        $orderdata['name']=$order->name??'Not available';
+        $orderdata['address']=$order->address??'Not Available';
         $orderdata['order_id']=$order->order_id;
         $orderdata['status']=$order->status;
         $orderdata['lat']=$order->lat;
         $orderdata['lang']=$order->lang;
         $orderdata['price_after_inspection']=$order->total_after_inspection;
-        $order['reviews']=$order->reviews;
-        $order['id']=$order->id;
+        $orderdata['reviews']=$order->reviews;
+        $orderdata['id']=$order->id;
         if(isset($order->booking_date))
             $orderdata['time']=date('D, d M', strtotime($order->booking_date)).(isset($order->time->name))?'('.$order->time->name.')':'';
         else

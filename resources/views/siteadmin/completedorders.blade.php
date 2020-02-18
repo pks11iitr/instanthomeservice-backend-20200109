@@ -52,7 +52,7 @@
                                         <td>{{$s->address}}</td>
                                         <td>{{$s->user->mobile}}</td>
                                         <td>{{$s->booking_date}}</td>
-                                        <td>{{$s->time->name}}</td>
+                                        <td>{{$s->time->name??''}}</td>
                                         <th><a href="{{route('orders.completedetails',['id'=>$s->id])}}" class="btn btn-primary">Details</a></th>
                                     </tr>
                                 @endforeach

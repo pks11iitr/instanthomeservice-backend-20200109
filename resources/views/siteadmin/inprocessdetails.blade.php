@@ -75,7 +75,7 @@
                                     <td>Booking Date</td><td>{{$order->booking_date}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Booking Time</td><td>{{$order->time->name}}</td>
+                                    <td>Booking Time</td><td>{{$order->time->name??''}}</td>
                                 </tr>
 
                                 </tbody>

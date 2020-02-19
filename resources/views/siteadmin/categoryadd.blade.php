@@ -56,7 +56,7 @@
                                     <select name="parent" class="form-control" id="exampleInputistop" placeholder="">
                                         <option value="">Select Parent Category</option>
                                         @foreach($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->title}}</option>
+                                            <option value="{{$category->id}}">{{$category->title}}</option>
                                         @endforeach
                                     </select>
                                 </div>

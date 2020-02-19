@@ -86,3 +86,7 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
 Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'partner', 'is'=>'partner'], function(){
     Route::get('dashboard', 'Partner\DashboardController@index')->name('partner.dashboard');
 });
+
+Route::get('privacy','Admin\TermController@privacy');
+Route::get('about','Admin\TermController@about');
+Route::get('term','Admin\TermController@term');

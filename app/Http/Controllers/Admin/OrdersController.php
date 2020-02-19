@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Controller;
+use App\Models\Document;
 use App\Models\Order_items;
 use App\Models\Orders;
 use App\User;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
+
 class OrdersController extends Controller
 {
     public function index(Request $request){
@@ -27,9 +29,8 @@ class OrdersController extends Controller
         $order = Orders::with(['details.product','time','vendors'=>function($vendors){
             $vendors->whereIn('vendor_orders.status',['completed','paid']);
         }])->findOrFail($id);
-
-
-        return view('siteadmin.completedetails',['order'=>$order]);
+        $documents =Document::where('entity_id',$order->id)->get();
+        return view('siteadmin.completedetails',['order'=>$order,'documents'=>$documents]);
     }
     public function inprocess(Request $request){
         $sel = Orders::where('isbookingcomplete', true)->where(function($query){
@@ -41,8 +42,8 @@ class OrdersController extends Controller
         $order = Orders::with(['details.product','time','vendors'=>function($vendors){
             $vendors->whereIn('vendor_orders.status',['accepted']);
         }])->findOrFail($id);
-
-        return view('siteadmin.inprocessdetails',['order'=>$order]);
+        $documents =Document::where('entity_id',$order->id)->get();
+        return view('siteadmin.inprocessdetails',['order'=>$order,'documents'=>$documents]);
     }
     public function cancelled(Request $request){
         $sel = Orders::where('isbookingcomplete', true)->where('status','=','cancelled')->orderBy('created_at', 'desc')->get();

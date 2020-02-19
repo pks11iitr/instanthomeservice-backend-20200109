@@ -104,6 +104,30 @@
 
                             </table>
                         </div>
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Document Type</th>
+                                    <th>Document View</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($documents as $doc)
+                                    <tr>
+
+                                        <td>
+                                            {{substr($doc->doc_path, 0, strpos($doc->doc_path, "/"))}}
+                                        </td>
+                                        <td>
+                                            <a href="{{URL::to('/')}}/uploads/{{$doc->doc_path}}" class="btn btn-warning">View</a>
+                                        </td>
+
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
 
                     </div>
                     <!-- /.card -->

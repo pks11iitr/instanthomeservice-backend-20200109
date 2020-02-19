@@ -117,11 +117,10 @@
                                     <tr>
 
                                         <td>
-                                            {{--{{substr($doc->doc_path, 0, strpos($doc->doc_path, "/"))}}--}}
-                                            {{$doc->doc_path}}
+                                            {{substr($doc->doc_path, 0, strpos($doc->doc_path, "/"))}}
                                         </td>
                                         <td>
-                                            <a href="{{$doc->doc_path}}" class="btn btn-warning">View</a>
+                                            <a href="{{URL::to('/')}}/uploads/{{$doc->doc_path}}" class="btn btn-warning">View</a>
                                         </td>
 
                                     </tr>

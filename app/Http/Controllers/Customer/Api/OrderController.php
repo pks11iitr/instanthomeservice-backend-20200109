@@ -15,6 +15,8 @@ use App\Models\Cart;
 use App\Models\Orders;
 use App\Models\Products;
 use App\Models\Order_items;
+use PDF;
+
 class OrderController extends Controller
 {
     public function __construct(RazorPayService $pay)
@@ -124,6 +126,7 @@ class OrderController extends Controller
         $orderdata['price_after_inspection']=$order->total_after_inspection;
         $orderdata['reviews']=$order->reviews;
         $orderdata['id']=$order->id;
+        $orderdata['invoice_url']=route('download.invoice', ['id'=>$order->order_id]);
         if(isset($order->booking_date))
             $orderdata['time']=date('D, d M', strtotime($order->booking_date)).(isset($order->time->name))?'('.$order->time->name.')':'';
         else
@@ -383,5 +386,14 @@ class OrderController extends Controller
             'message'=>'Coupon applied successfully.',
             'amount'=>$discount
         ];
+    }
+
+
+    public function invoice(Request $request, $refid){
+        $order=Orders::with(['details.product','reviews'])->where('order_id', $refid)->firstOrFail();
+
+        $pdf = PDF::loadView('invoice', compact('order'));
+        return $pdf->download('invoice.pdf');
+
     }
 }

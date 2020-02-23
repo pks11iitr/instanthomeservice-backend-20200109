@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Customer\Api;
 
+use App\Models\Coupon;
 use App\Models\Review;
 use App\Models\Size;
 use App\Models\TimeSlot;
@@ -222,6 +223,12 @@ class OrderController extends Controller
         $user=auth()->user();
         if($user){
             $order=Orders::where('status', 'completed')->findOrFail($id);
+            if(!$order->applyCoupon($request->coupon)){
+                return [
+                    'status'=>'failed',
+                    'message'=>'Coupon is not valid'
+                ];
+            }
             if($request->usewallet==1){
                 $balance=Wallet::balance($user->id);
                 if($balance>=$order->total_after_inspection){
@@ -352,5 +359,29 @@ class OrderController extends Controller
             'message'=>'logout'
         ];
 
+    }
+
+    public function checkCoupon(Request $request){
+        $request->validate([
+            'coupon'=>'required',
+            'id'=>'required|integer'
+        ]);
+
+        $order=Orders::findOrFail($request->id);
+
+        $coupon=Coupon::where('code', $request->coupon)->first();
+        if(!($coupon && $coupon->isValid())){
+            return [
+                'status'=>'failed',
+                'message'=>'Coupon is not valid',
+                'amount'=>0
+            ];
+        }
+        $discount=$coupon->calculateDiscount($order->total_after_inspection);
+        return [
+            'status'=>'success',
+            'message'=>'Coupon applied successfully.',
+            'amount'=>$discount
+        ];
     }
 }

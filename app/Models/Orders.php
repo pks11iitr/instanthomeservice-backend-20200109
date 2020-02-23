@@ -34,4 +34,35 @@ class Orders extends Model
         return $this->hasOne('App\Models\Review', 'order_id');
     }
 
+    public function applyCoupon($coupon){
+        if(empty($coupon)){
+            $this->removeCoupon();
+            return true;
+        }
+
+        $coupon=Coupon::where('code', $coupon)->first();
+        if(empty($coupon) || (!empty($coupon) && !$coupon->isValid()))
+            return false;
+
+        //remove previous coupon if any
+        if(!empty($this->coupon))
+            $this->removeCoupon();
+
+        //apply new coupon
+        $this->instant_discount=$coupon->calculateDiscount($this->total_after_inspection);
+        $this->total_after_inspection=$this->total_after_inspection-$this->instant_discount;
+        $this->coupon=$coupon->code;
+        $this->save();
+
+        $coupon->incrementUsage();
+        return true;
+    }
+
+    public function removeCoupon(){
+        $this->total_after_inspection=$this->total_after_inspection+$this->instant_discount;
+        $this->coupon=null;
+        $this->instant_discount=0;
+        $this->save();
+    }
+
 }

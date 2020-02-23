@@ -11,7 +11,7 @@ class Document extends Model
 
     public $fillable=['doc_path','uploaded_by','entity_type', 'entity_id'];
 
-    public function getDocPathAttribute($value){
+    /*public function getDocPathAttribute($value){
         return Storage::url($value);
-    }
+    }*/
 }

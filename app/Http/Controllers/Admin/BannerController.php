@@ -78,18 +78,13 @@ class BannerController extends Controller
                       $path=DB::raw('doc_path');
                   }
 
-
-
           if($banner->update([
-
         			'isactive'=>$request->isactive,
                     'doc_path'=>$path
           ])){
                 return redirect()->route('banners.list')->with('success', 'Banner has been updated');
-
           }
              	return redirect()->back()->with('error', 'Banner update failed');
-
-                          }
+          }
 
   }

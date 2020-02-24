@@ -128,7 +128,7 @@ class OrderController extends Controller
         $orderdata['id']=$order->id;
         $orderdata['invoice_url']=route('download.invoice', ['id'=>$order->order_id]);
         if(isset($order->booking_date))
-            $orderdata['time']=date('D, d M', strtotime($order->booking_date)).(isset($order->time->name))?'('.$order->time->name.')':'';
+            $orderdata['time']=date('D, d M', strtotime($order->booking_date)).(isset($order->time->name)?'('.$order->time->name.')':'');
         else
             $orderdata['time']='NA';
         //$orderdata['date']=$order->updated_at;

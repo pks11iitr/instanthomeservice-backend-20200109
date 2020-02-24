@@ -78,7 +78,7 @@ use Illuminate\Http\Request;
 
     });
 
-$api->get('download-invoice/{id}', 'Customer\Api\OrderController@invoice')->name('download.invoice');
+$api->get('download-invoice/{id}', ['as'=>'download.invoice', 'uses'=>'Customer\Api\OrderController@invoice']);
 
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();

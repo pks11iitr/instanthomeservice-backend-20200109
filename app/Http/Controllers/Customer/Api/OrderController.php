@@ -126,7 +126,7 @@ class OrderController extends Controller
         $orderdata['price_after_inspection']=$order->total_after_inspection;
         $orderdata['reviews']=$order->reviews;
         $orderdata['id']=$order->id;
-        $orderdata['invoice_url']=route('download.invoicedownload.invoice', ['id'=>$order->order_id]);
+        $orderdata['invoice_url']=route('download.invoice', ['id'=>$order->order_id]);
         if(isset($order->booking_date))
             $orderdata['time']=date('D, d M', strtotime($order->booking_date)).(isset($order->time->name))?'('.$order->time->name.')':'';
         else

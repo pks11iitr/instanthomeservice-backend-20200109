@@ -201,8 +201,8 @@ class ProfileController extends Controller
 
     public function updateLocation(Request $request){
         $request->validate([
-            'lat'=>'required|number',
-            'lang'=>'required|number'
+            'lat'=>'required|numeric',
+            'lang'=>'required|numeric'
         ]);
         $user=auth()->user();
         $user->lat=$request->lat;

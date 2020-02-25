@@ -8,6 +8,8 @@ use App\Models\TimeSlot;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -130,11 +132,25 @@ class ProfileController extends Controller
         $request->validate([
             'image'=>'nullable|image',
             'name'=>'required|string|max:100',
-            'email'=>'nullable|email'
+            'email'=>'nullable|email',
+            'address'=>'nullable|string'
         ]);
 
         $user=auth()->user();
-        if($user->update(array_merge($request->only('name', 'email'), ['image'=>$path]))){
+
+        if(isset($request->image)){
+            $file=$request->image->path();
+
+            $name=str_replace(' ', '_', $request->image->getClientOriginalName());
+
+            $path='profile/'.$name;
+
+            Storage::put($path, file_get_contents($file));
+        }else{
+            $path=DB::raw('image');
+        }
+
+        if($user->update(array_merge($request->only('name', 'email','address'), ['image'=>$path]))){
             return [
                 'status'=>'success',
                 'message'=>'Profile has been updated'
@@ -180,6 +196,24 @@ class ProfileController extends Controller
                 'url'=>$agreement->doc_path,
             ];
         }
+    }
+
+
+    public function updateLocation(Request $request){
+        $request->validate([
+            'lat'=>'requierd|number',
+            'lang'=>'required|number'
+        ]);
+        $user=auth()->user();
+        $user->lat=$request->lat;
+        $user->lang=$request->lang;
+        if($user->save())
+            return [
+                'status'=>'success'
+            ];
+        return [
+            'status'=>'failed'
+        ];
     }
 
 

@@ -59,14 +59,15 @@ class ProfileController extends Controller
     public function getProfile(Request $request){
         $user=auth()->user();
         if($user)
-        return array_merge($user->only('name', 'email', 'mobile', 'image','is_available'), ['walletbalance'=>Wallet::balance($user->id)]);
+        return array_merge($user->only('name', 'email', 'mobile', 'image','is_available','address'), ['walletbalance'=>Wallet::balance($user->id)]);
     }
 
     public function setProfile(Request $request){
         $request->validate([
             'image'=>'required|image',
             'name'=>'required|max:50',
-            'email'=>'required|email'
+            'email'=>'required|email',
+            'address'=>'nullable|string'
         ]);
         $user=auth()->user();
         if(isset($request->image)){
@@ -80,7 +81,7 @@ class ProfileController extends Controller
         }else{
             $path=DB::raw('image');
         }
-        if($user->update(array_merge($request->only('name', 'email'), ['image'=>$path]))){
+        if($user->update(array_merge($request->only('name', 'email','address'), ['image'=>$path]))){
             return [
                 'status'=>'success',
                 'message'=>'User profile has been uploaded',
@@ -93,8 +94,6 @@ class ProfileController extends Controller
                 'user'=>''
             ];
         }
-
-
     }
 
 }

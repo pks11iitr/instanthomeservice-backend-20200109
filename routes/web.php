@@ -81,6 +81,11 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
         Route::get('/','Admin\AgreementController@view')->name('view.agreement');
         Route::post('/','Admin\AgreementController@upload')->name('upload.agreement');
     });
+    Route::group(['prefix'=>'coupons'],function (){
+        Route::get('/','Admin\CouponController@index')->name('coupons.list');
+        Route::get('edit/{id}','Admin\CouponController@edit')->name('coupons.edit');
+        Route::post('update/{id}','Admin\CouponController@update')->name('coupons.update');
+    });
 });
 
 Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'partner', 'is'=>'partner'], function(){

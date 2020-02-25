@@ -35,6 +35,28 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
+                                    <th>Total After Inspection</th>
+                                    <th>Instant Discount</th>
+                                    <th>Amount Paid</th>
+                                    <th>Coupon</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+
+                                        <td>{{$order->total_after_inspection + $order->instant_discount}}</td>
+                                        <td>{{$order->instant_discount}}</td>
+                                        <td>{{$order->total_after_inspection}}</td>
+                                        <td>{{$order->coupon}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
                                     <th>Product Name</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
@@ -77,9 +99,7 @@
                                 <tr>
                                     <td>Booking Time</td><td>{{$order->time->name}}</td>
                                 </tr>
-
                                 </tbody>
-
                             </table>
                          </div>
 

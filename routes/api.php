@@ -41,6 +41,7 @@ use Illuminate\Http\Request;
         $api->post('verify-recharge/{id}', ['as'=>'api.pay.verify', 'uses'=>'Customer\Api\WalletController@verifyRecharge']);
         $api->get('wallet-balance', ['as'=>'api.balance', 'uses'=>'Customer\Api\WalletController@getWalletBalance']);
         $api->get('wallet-history', ['as'=>'api.history', 'uses'=>'Customer\Api\WalletController@history']);
+        $api->post('coupon-check', ['as'=>'api.coupon', 'uses'=>'Customer\Api\OrderController@checkCoupon']);
         $api->get('complaints', ['as'=>'api.history', 'uses'=>'Customer\Api\CompaintController@index']);
         $api->post('complaints', ['as'=>'api.history.post', 'uses'=>'Customer\Api\CompaintController@store']);
         $api->get('orderid-list', ['as'=>'api.order.idlist', 'uses'=>'Customer\Api\CompaintController@orderlist']);
@@ -74,9 +75,12 @@ use Illuminate\Http\Request;
         $api->get('accept-order/{id}', ['as'=>'vendor.api.accept', 'uses'=>'Partner\Api\OrderController@acceptOrder']);
         $api->get('reject-order/{id}', ['as'=>'vendor.api.reject', 'uses'=>'Partner\Api\OrderController@rejectOrder']);
         $api->get('start-processing/{id}', ['as'=>'vendor.api.start', 'uses'=>'Partner\Api\OrderController@startProcessing']);
+        $api->post('update-location', ['as'=>'vendor.api.location', 'uses'=>'Partner\Api\ProfileController@updateLocation']);
+
 
     });
 
+$api->get('download-invoice/{id}', ['as'=>'download.invoice', 'uses'=>'Customer\Api\OrderController@invoice']);
 
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();

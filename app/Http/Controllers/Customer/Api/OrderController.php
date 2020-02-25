@@ -123,7 +123,9 @@ class OrderController extends Controller
         $orderdata['status']=$order->status;
         $orderdata['lat']=$order->lat;
         $orderdata['lang']=$order->lang;
-        $orderdata['price_after_inspection']=$order->total_after_inspection;
+        $orderdata['price_after_inspection']=$order->total_after_inspection+$order->instant_discount;
+        $orderdata['coupon']=$order->coupon;
+        $orderdata['discount']=$order->instant_discount;
         $orderdata['reviews']=$order->reviews;
         $orderdata['id']=$order->id;
         $orderdata['invoice_url']=route('download.invoice', ['id'=>$order->order_id]);

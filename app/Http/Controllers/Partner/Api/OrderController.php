@@ -321,4 +321,31 @@ class OrderController extends Controller
         ];
     }
 
+
+    public function markAsPaid(Request $request, $id){
+        $user=auth()->user();
+        if($user){
+            $order=Orders::whereHas('vendors', function($vendors) use ($user){
+                $vendors->where('vendor_orders.status', 'completed')->where('vendor_id', $user->id);
+            })->where('orders.status', 'completed')->findOrFail($id);
+            if($order){
+
+                //change order status to processing
+                $order->status='paid';
+                $order->payment_mode='code';
+                $order->save();
+
+                return [
+                    'status'=>'success',
+                    'message'=>'Payment has been marked as COD.'
+                ];
+            }
+        }
+
+        return [
+            'status'=>'failed',
+            'message'=>'logout'
+        ];
+    }
+
 }

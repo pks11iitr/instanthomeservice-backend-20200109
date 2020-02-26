@@ -75,6 +75,7 @@ use Illuminate\Http\Request;
         $api->get('accept-order/{id}', ['as'=>'vendor.api.accept', 'uses'=>'Partner\Api\OrderController@acceptOrder']);
         $api->get('reject-order/{id}', ['as'=>'vendor.api.reject', 'uses'=>'Partner\Api\OrderController@rejectOrder']);
         $api->get('start-processing/{id}', ['as'=>'vendor.api.start', 'uses'=>'Partner\Api\OrderController@startProcessing']);
+        $api->get('mark-as-paid/{id}', ['as'=>'vendor.api.cod', 'uses'=>'Partner\Api\OrderController@markAsPaid']);
         $api->post('update-location', ['as'=>'vendor.api.location', 'uses'=>'Partner\Api\ProfileController@updateLocation']);
 
 

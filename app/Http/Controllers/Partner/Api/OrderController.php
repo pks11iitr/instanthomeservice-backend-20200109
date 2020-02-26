@@ -182,7 +182,7 @@ class OrderController extends Controller
 
         $user=auth()->user();
         if($user){
-            $order=Orders::where('orders.status', 'processing')->whereHas('vendors',function($vendor) use ($user){
+            $order=Orders::whereIn('orders.status', ['processing', 'completed'])->whereHas('vendors',function($vendor) use ($user){
                 $vendor->whereIn('vendor_orders.status', ['accepted','completed'])->where('vendor_id', $user->id);
         })->findOrFail($id);
             if($order){

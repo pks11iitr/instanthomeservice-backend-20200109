@@ -40,6 +40,8 @@ class OrderController extends Controller
         foreach($orders as $o){
             if(empty($o->lat) || empty($o->lang))
                 $o->distance='Not Available';
+            else
+                $o->distance=round($o->distance, 2).' km away';
             if(!empty($o->booking_date) && !empty($o->booking_time)){
                 $o->time1=date('D, d M', strtotime($o->booking_date)).' '.($o->time->name??'');
                 unset($o->time);
@@ -154,7 +156,7 @@ class OrderController extends Controller
             $orderdata['time']='';
         }elseif($orderdata['orderstatus']=='completed' && $orderdata['vendorrstatus']=='completed'){
             $orderdata['status']='Waiting For Payment';
-        }elseif($orderdata['orderstatus']=='paid' && $orderdata['vendorrstatus']=='completed'){
+        }elseif($orderdata['orderstatus']=='paid' && $orderdata['vendorrstatus']=='paid'){
             $orderdata['status']='Payment Completed';
         }else{
             $orderdata['status']='';

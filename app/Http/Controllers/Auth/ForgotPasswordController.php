@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\OTPModel;
-use App\Models\Users;
+use App\User;
 use App\Services\SMS\Msg91;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
@@ -49,7 +49,7 @@ class ForgotPasswordController extends Controller
 //            ? $this->sendResetLinkResponse($request, $response)
 //            : $this->sendResetLinkFailedResponse($request, $response);
 
-        $user=Users::where('mobile', $this->credentials($request))->first();
+        $user=User::where('mobile', $this->credentials($request))->first();
         if(!$user) {
             return redirect()->back()->with('error', 'invalid login attempt');
         }else if(!in_array($user->status, [0 , 1])){

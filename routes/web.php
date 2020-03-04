@@ -1,8 +1,8 @@
 <?php
 
 Route::get('/', function(){
-    return view('welcome');
-})->name('website.home');
+    return redirect()->route('login');
+});
 
 
 Auth::routes();

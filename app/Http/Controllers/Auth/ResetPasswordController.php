@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\OTPModel;
-use App\Models\Users;
+use App\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
@@ -59,14 +59,14 @@ class ResetPasswordController extends Controller
 //            ? $this->sendResetResponse($request, $response)
 //            : $this->sendResetFailedResponse($request, $response);
 
-        $user=Users::where('mobile', $request->mobile)->first();
+        $user=User::where('mobile', $request->mobile)->first();
         if(!$user) {
             return redirect()->back()->with('error', 'invalid login attempt');
         }else if(!in_array($user->status, [0 , 1])){
             return redirect()->back()->with('error', 'Account has been blocked');
         }
 
-        if(!OTPModel::verifyOTP($user->id, 'reset-password', $request->otp)){
+        if(!OTPModel::verifyOTP($user->id, 'login', $request->otp)){
             return redirect()->back()->with('error', 'Incorrect OTP entered');
         }
 

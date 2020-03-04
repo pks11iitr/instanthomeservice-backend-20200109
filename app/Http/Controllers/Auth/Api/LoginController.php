@@ -109,7 +109,16 @@ class LoginController extends Controller
                     ],
                 ], 401);
             }
-            OTPModel::createOTP($user->id, 'login');
+            if($otp=OTPModel::createOTP($user->id, 'login')){
+                $msg=config('sms-templates.login-otp');
+                $msg=str_replace('{{otp}}', $otp, $msg);
+                if(Msg91::send($request->mobile, $msg)){
+                    return [
+                        'status'=>'success',
+                        'message'=>'Please verify OTP to continue'
+                    ];
+                }
+            }
         }
         return [
             'message'=>'Please verify OTP to continue'

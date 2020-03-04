@@ -32,7 +32,7 @@ class OrderController extends Controller
                      * sin(radians(orders.lat))))";
         $orders=Orders::with('time')
             ->whereHas('vendors', function($vendor) use($user){
-                    $vendor->where('vendor_id', $user->id)->whereIn('vendor_orders.status', ['new', 'accepted','completed']);
+                    $vendor->where('vendor_id', $user->id)->whereIn('vendor_orders.status', ['new', 'accepted','completed', 'paid']);
             })
             ->select('id', 'order_id', 'lat', 'lang', 'booking_time','booking_date', DB::raw("$haversine as distance"))->orderBy('id','desc')
         ->get();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Customer\Api;
 
+use App\Models\Coupon;
 use App\Models\Review;
 use App\Models\Size;
 use App\Models\TimeSlot;
@@ -14,6 +15,8 @@ use App\Models\Cart;
 use App\Models\Orders;
 use App\Models\Products;
 use App\Models\Order_items;
+use PDF;
+
 class OrderController extends Controller
 {
     public function __construct(RazorPayService $pay)
@@ -123,8 +126,9 @@ class OrderController extends Controller
         $orderdata['price_after_inspection']=$order->total_after_inspection;
         $orderdata['reviews']=$order->reviews;
         $orderdata['id']=$order->id;
+        $orderdata['invoice_url']=route('download.invoice', ['id'=>$order->order_id]);
         if(isset($order->booking_date))
-            $orderdata['time']=date('D, d M', strtotime($order->booking_date)).(isset($order->time->name))?'('.$order->time->name.')':'';
+            $orderdata['time']=date('D, d M', strtotime($order->booking_date)).(isset($order->time->name)?'('.$order->time->name.')':'');
         else
             $orderdata['time']='NA';
         //$orderdata['date']=$order->updated_at;
@@ -222,6 +226,12 @@ class OrderController extends Controller
         $user=auth()->user();
         if($user){
             $order=Orders::where('status', 'completed')->findOrFail($id);
+            if(!$order->applyCoupon($request->coupon)){
+                return [
+                    'status'=>'failed',
+                    'message'=>'Coupon is not valid'
+                ];
+            }
             if($request->usewallet==1){
                 $balance=Wallet::balance($user->id);
                 if($balance>=$order->total_after_inspection){
@@ -351,6 +361,39 @@ class OrderController extends Controller
             'status'=>'failed',
             'message'=>'logout'
         ];
+
+    }
+
+    public function checkCoupon(Request $request){
+        $request->validate([
+            'coupon'=>'required',
+            'id'=>'required|integer'
+        ]);
+
+        $order=Orders::findOrFail($request->id);
+
+        $coupon=Coupon::where('code', $request->coupon)->first();
+        if(!($coupon && $coupon->isValid())){
+            return [
+                'status'=>'failed',
+                'message'=>'Coupon is not valid',
+                'amount'=>0
+            ];
+        }
+        $discount=$coupon->calculateDiscount($order->total_after_inspection);
+        return [
+            'status'=>'success',
+            'message'=>'Coupon applied successfully.',
+            'amount'=>$discount
+        ];
+    }
+
+
+    public function invoice(Request $request, $refid){
+        $order=Orders::with(['details.product','reviews'])->where('order_id', $refid)->firstOrFail();
+
+        $pdf = PDF::loadView('invoice', compact('order'));
+        return $pdf->download('invoice.pdf');
 
     }
 }

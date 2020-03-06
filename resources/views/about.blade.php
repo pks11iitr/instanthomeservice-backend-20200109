@@ -4,8 +4,8 @@
 <body>
 <div style="margin-left:15px;">
     <h2 align="center" >About Us</h2>
-    <h4>About Home Services</h4>
-    Home Service For You is the company which is based in India. We are offering the complete home services
+    <h4>About Japak Home Services</h4>
+    Japak Home Service For You is the company which is based in India. We are offering the complete home services
     including plumbing services, electric services, carpentry services, cleaning services, pest control services, home
     security services etc. Home Services For You delivers solutions for your entire home from interior to exterior.
 

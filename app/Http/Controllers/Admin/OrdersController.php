@@ -30,6 +30,7 @@ class OrdersController extends Controller
             $vendors->whereIn('vendor_orders.status',['completed','paid']);
         }])->findOrFail($id);
         $documents =Document::where('entity_id',$order->id)->get();
+
         return view('siteadmin.completedetails',['order'=>$order,'documents'=>$documents]);
     }
     public function inprocess(Request $request){

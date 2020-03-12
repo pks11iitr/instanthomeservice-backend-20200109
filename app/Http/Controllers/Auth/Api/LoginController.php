@@ -87,7 +87,8 @@ class LoginController extends Controller
                    if(Msg91::send($request->mobile, $msg)){
                        return [
                            'status'=>'success',
-                           'message'=>'Please verify OTP to continue'
+                           'message'=>'Please verify OTP to continue',
+                           'type'=>($request->type=='vendor'?'vendor':'customer')
                        ];
                    }
                }
@@ -115,13 +116,15 @@ class LoginController extends Controller
                 if(Msg91::send($request->mobile, $msg)){
                     return [
                         'status'=>'success',
-                        'message'=>'Please verify OTP to continue'
+                        'message'=>'Please verify OTP to continue',
+                        'type'=>($user->hasRole('vendor')?'vendor':'customer')
                     ];
                 }
             }
         }
         return [
-            'message'=>'Please verify OTP to continue'
+            'status'=>'failed',
+            'message'=>'Something went wrong. Try again'
         ];
 
 

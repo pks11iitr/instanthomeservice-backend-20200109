@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 
     $api->post('login', ['as'=>'api.login', 'uses'=>'Auth\Api\LoginController@login']);
     $api->post('verify-otp', ['as'=>'api.otp.verify', 'uses'=>'Auth\Api\LoginController@verifyOTP']);
+    $api->post('resend-otp', ['as'=>'api.otp.resend', 'uses'=>'Auth\Api\LoginController@resendOTP']);
 
     /*
      * Customer App Apis Starts

@@ -192,5 +192,46 @@ class LoginController extends Controller
         return ['message'=>'user home page'];
     }
 
+    public function resendOTP(Request $request){
+        $request->validate([
+           'mobile'=>'required|digits:10',
+            'type'=>'required'
+        ]);
+        $user=$this->ifUserExists($request->mobile);
+        if($user){
+
+            if(!in_array($user->status, [0 , 1])){
+                //send OTP
+                return response()->json([
+                    'status'=>'failed',
+                    'message'=>'Account has been blocked',
+                    'errors'=>[
+
+                    ],
+                ], 200);
+            }
+            if($otp=OTPModel::createOTP($user->id, $request->type)){
+                $msg=config('sms-templates.login-otp');
+                $msg=str_replace('{{otp}}', $otp, $msg);
+                if(Msg91::send($request->mobile, $msg)){
+                    return [
+                        'status'=>'success',
+                        'message'=>'Please verify OTP to continue'
+                    ];
+                }
+            }
+
+
+        }else{
+            return response()->json([
+                'status'=>'failed',
+                'message'=>'User is not registered',
+                'errors'=>[
+
+                ],
+            ], 200);
+        }
+    }
+
 
 }

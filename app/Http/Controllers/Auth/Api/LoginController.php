@@ -110,6 +110,19 @@ class LoginController extends Controller
                     ],
                 ], 401);
             }
+            if($user->hasRole('vendor') && $request->type=='customer'){
+                return [
+                    'status'=>'success',
+                    'message'=>'Please verify OTP to continue',
+                    'type'=>($user->hasRole('vendor')?'vendor':'customer')
+                ];
+            }else{
+                return [
+                    'status'=>'success',
+                    'message'=>'Please verify OTP to continue',
+                    'type'=>($user->hasRole('vendor')?'vendor':'customer')
+                ];
+            }
             if($otp=OTPModel::createOTP($user->id, 'login')){
                 $msg=config('sms-templates.login-otp');
                 $msg=str_replace('{{otp}}', $otp, $msg);

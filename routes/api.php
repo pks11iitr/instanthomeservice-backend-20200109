@@ -46,6 +46,7 @@ use Illuminate\Http\Request;
         $api->get('complaints', ['as'=>'api.history', 'uses'=>'Customer\Api\CompaintController@index']);
         $api->post('complaints', ['as'=>'api.history.post', 'uses'=>'Customer\Api\CompaintController@store']);
         $api->get('orderid-list', ['as'=>'api.order.idlist', 'uses'=>'Customer\Api\CompaintController@orderlist']);
+        $api->post('make-rent-query', ['as'=>'api.order.rentquery', 'uses'=>'Customer\Api\OrderController@makeRentQuery']);
 
     });
 

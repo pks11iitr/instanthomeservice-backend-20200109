@@ -76,7 +76,7 @@ class OrderController extends Controller
                     return [
                         'status'=>'success',
                         'orderid'=>$order->id,
-                        'message'=>'Your request has been submitted. Our team will contact you shortly'
+                        'message'=>'Thank you, your request has been submitted. Our executive will call you regarding prices of the products'
                     ];
                 }else{
                     return [
@@ -92,6 +92,50 @@ class OrderController extends Controller
                     'message'=>'This action is not valid'
                 ];
             }
+    }
+
+    public function makeRentQuery(Request $request){
+        $request->validate([
+            'product_id'=>'required|array',
+            'product_id.*'=>'required|integer',
+            'quantity'=>'required|array',
+            'quantity.*'=>'required|integer',
+            'address'=>'required|string|max:300',
+            'name'=>'required|string|max:100',
+            'auto_address'=>'required|string|max:300',
+            'lat'=>'required|numeric',
+            'lang'=>'required|numeric',
+        ]);
+
+        $user=auth()->user();
+
+        $products=[];
+        $i=0;
+        foreach($request->product_id as $pid)
+        {
+            $products[$pid]=$request->quantity[$i];
+            $i++;
+        }
+
+        Orders::where('user_id', $user->id)->where('isbookingcomplete', false)->delete();
+
+        $order=Orders::create(['user_id'=>$user->id, 'order_id'=>date('YmdHis')]);
+
+        foreach($products as $product=>$quantity){
+
+            Order_items::create([
+                'order_id'=>$order->id,
+                'quantity'=>$quantity,
+                'price'=>null,
+                'product_id'=>$product,
+            ]);
+        }
+
+        return [
+            'status'=>'success',
+            'orderid'=>$order->id,
+            'message'=>'Thank you, your request has been submitted. Thanks our executive will call you regarding prices of the products'
+        ];
     }
 
 

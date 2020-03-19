@@ -119,7 +119,14 @@ class OrderController extends Controller
 
         Orders::where('user_id', $user->id)->where('isbookingcomplete', false)->delete();
 
-        $order=Orders::create(['user_id'=>$user->id, 'isbookingcomplete'=>true, 'address'=>$request->adderss, 'auto_address'=>$request->auto_adderss, 'name'=>$request->name, 'lat'=>$request->lat, 'lang'=>$request->lang, 'order_id'=>date('YmdHis')]);
+        $order=Orders::create(['user_id'=>$user->id,
+            'isbookingcomplete'=>true,
+            'address'=>$request->address,
+            'auto_address'=>$request->auto_address,
+            'name'=>$request->name,
+            'lat'=>$request->lat,
+            'lang'=>$request->lang,
+            'order_id'=>date('YmdHis')]);
 
         foreach($products as $product=>$quantity){
 

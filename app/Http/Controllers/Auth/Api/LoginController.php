@@ -113,13 +113,13 @@ class LoginController extends Controller
             if($user->hasRole('vendor') && $request->type=='customer'){
                 return [
                     'status'=>'success',
-                    'message'=>'Please verify OTP to continue',
+                    'message'=>'This account is registered as zapaak partner.',
                     'type'=>($user->hasRole('vendor')?'vendor':'customer')
                 ];
             }else{
                 return [
                     'status'=>'success',
-                    'message'=>'Please verify OTP to continue',
+                    'message'=>'This account is not a verified zapaak partner',
                     'type'=>($user->hasRole('vendor')?'vendor':'customer')
                 ];
             }

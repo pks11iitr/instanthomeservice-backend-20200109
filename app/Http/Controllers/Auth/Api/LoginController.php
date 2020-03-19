@@ -116,7 +116,7 @@ class LoginController extends Controller
                     'message'=>'This account is registered as zapaak partner.',
                     'type'=>($user->hasRole('vendor')?'vendor':'customer')
                 ];
-            }else{
+            }else if($user->hasRole('customer') && $request->type=='vendor'){
                 return [
                     'status'=>'success',
                     'message'=>'This account is not a verified zapaak partner',

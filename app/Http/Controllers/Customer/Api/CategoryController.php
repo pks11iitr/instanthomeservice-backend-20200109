@@ -51,7 +51,7 @@ class CategoryController extends Controller
             }
 
             if($category->type==6){
-                    if($i<3){
+                    if(!stripos($p->name, 'uninstall')!==false){
                         $installation[]=$p;
                     }else{
                         $uninstallation[]=$p;

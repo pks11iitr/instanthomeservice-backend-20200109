@@ -36,7 +36,7 @@ class CategoryController extends Controller
             $carts[$c->product_id]=$c->quantity;
         }
         $category=Category::active()->with(['product'=>function($products){
-          $products->where('isactive', true);
+          $products->where('isactive', true)->orderBy('created_at', 'asc');
         }])->where('id',$id)->first();
 
         $i=0;

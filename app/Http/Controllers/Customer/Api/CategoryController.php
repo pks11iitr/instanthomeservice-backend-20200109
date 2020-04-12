@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer\Api;
 
 use App\Models\Cart;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -37,7 +38,7 @@ class CategoryController extends Controller
         }
         $category=Category::active()->with(['product'=>function($products){
           $products->where('isactive', true)->orderBy('created_at', 'asc');
-        }])->where('id',$id)->first();
+        }, 'parentcategory'])->where('id',$id)->first();
 
         $i=0;
         $installation=[];
@@ -62,12 +63,24 @@ class CategoryController extends Controller
       $category->installation=$installation;
       $category->uninstallation=$uninstallation;
       //$category->cart=$cart;
-      return $category;
+
+      if($category->parentcategory==null)
+          $category->reviews_count=Review::where('category_id', $category->id)->count();
+
+        return $category;
     }
 
     public function subcategory(Request $request, $id){
-        $category=Category::active()->with('subcategories')->find($id);
+        $category=Category::active()->with(['subcategories','parentcategory'])->find($id);
+        if($category->parentcategory==null)
+            $category->reviews_count=Review::where('category_id', $category->id)->count();
         return $category;
 
+    }
+
+    public function reviews(Request $request, $id){
+        $category=Category::active()->findOrFail($id);
+        $category->reviews=Review::with('user')->where('category_id', $category->id)->get();
+        return $category;
     }
 }

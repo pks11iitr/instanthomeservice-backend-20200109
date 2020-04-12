@@ -8,7 +8,7 @@ class Review extends Model
 {
     protected $table="reviews";
 
-    protected $fillable=['user_id', 'order_id', 'review', 'ratings'];
+    protected $fillable=['user_id', 'order_id', 'review', 'ratings', 'category_id'];
 
     protected $hidden=['created_at', 'updated_at', 'deleted_at' ];
 

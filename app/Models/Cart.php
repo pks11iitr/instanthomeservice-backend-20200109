@@ -43,4 +43,12 @@ class Cart extends Model
         ];
     }
 
+    public static function remove($user, $did){
+        if($user){
+            Cart::where('userid', $user->id)->delete();
+        }else if($did){
+            Cart::where('unique_id', $did)->delete();
+        }
+    }
+
 }

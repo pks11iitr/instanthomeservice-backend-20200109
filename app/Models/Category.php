@@ -28,6 +28,10 @@ class Category extends Model
         return $this->belongsTo('App\Models\Category', 'parent');
     }
 
+    public function rootcategory(){
+        return $this->parentcategory()->with('rootcategory');
+    }
+
     public function subcategories(){
         return $this->hasMany('App\Models\Category', 'parent');
     }
@@ -42,8 +46,6 @@ class Category extends Model
         return null;
     }
 
-    public function rootCategory(){
-        return $this->parentcategory()->with('parentcategory')->wherehas('parentcategory');
-    }
+
 
 }

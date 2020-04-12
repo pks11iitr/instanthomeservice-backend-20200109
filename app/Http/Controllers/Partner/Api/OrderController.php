@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Partner\Api;
 
 use App\Models\Orders;
+use App\Models\OrderStatus;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -197,6 +198,7 @@ class OrderController extends Controller
                 $order->saveDocument($image, 'billimage');
                 //var_dump($request->estimate);die;
                 $order->update(['total_after_inspection'=>$request->estimate, 'status'=>'completed']);
+                OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->status]);
 
                 $vendor=$order->vendors()->where('vendor_id', $user->id)->firstOrFail();
                 $vendor->pivot->status='completed';
@@ -246,6 +248,8 @@ class OrderController extends Controller
                     $order->status='accepted';
                     $order->save();
 
+                    OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->status]);
+
                     //update wallet history
                     Wallet::updatewallet($user->id, 'Service fee deducted for Booking ID: '.$order->refid, 'Debit', config('config.vendorfee'),$orderid=$order->id);
 
@@ -285,6 +289,8 @@ class OrderController extends Controller
                 $order->status='new';
                 $order->save();
 
+                OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->status]);
+
                 return [
                         'status'=>'success',
                         'message'=>'You have rejected this booking'
@@ -309,6 +315,8 @@ class OrderController extends Controller
                 //change order status to processing
                 $order->status='processing';
                 $order->save();
+
+                OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->status]);
 
                 return [
                     'status'=>'success',
@@ -336,6 +344,8 @@ class OrderController extends Controller
                 $order->status='paid';
                 $order->payment_mode='code';
                 $order->save();
+
+                OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->status]);
 
                 return [
                     'status'=>'success',

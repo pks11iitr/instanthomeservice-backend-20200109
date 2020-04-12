@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer\Api;
 
 use App\Models\Coupon;
+use App\Models\OrderStatus;
 use App\Models\Review;
 use App\Models\Size;
 use App\Models\TimeSlot;
@@ -34,6 +35,7 @@ class OrderController extends Controller
             Orders::where('user_id', $user->id)->where('isbookingcomplete', false)->delete();
 
             $order=Orders::create(['user_id'=>$user->id, 'order_id'=>date('YmdHis')]);
+            OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->status]);
               foreach($cart as $c){
                 //echo $c->product_id;
 
@@ -67,6 +69,7 @@ class OrderController extends Controller
                 if($product->flow==2){
                     Orders::where('user_id', $user->id)->where('isbookingcomplete', false)->delete();
                     $order=Orders::create(['user_id'=>$user->id, 'isbookingcomplete'=>true, 'order_id'=>date('YmdHis')]);
+                    OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->status]);
                     Order_items::create([
                         'order_id'=>$order->id,
                         'quantity'=>1,
@@ -127,7 +130,7 @@ class OrderController extends Controller
             'lat'=>$request->lat,
             'lang'=>$request->lang,
             'order_id'=>date('YmdHis')]);
-
+        OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->status]);
         foreach($products as $product=>$quantity){
 
             Order_items::create([
@@ -259,8 +262,13 @@ class OrderController extends Controller
         ]);
         $user=auth()->guard('api')->user();
         if($user){
-            $order=Orders::where('user_id', $user->id)->where('status', 'paid')->findOrFail($id);
-            $review=new Review(['ratings'=>$request->rating, 'review'=>$request->review,'user_id'=>$user->id]);
+            $order=Orders::with('details')->where('user_id', $user->id)->where('status', 'paid')->findOrFail($id);
+
+            $root=$category=$order->details[0]->product->category;
+            while($root->rootcategory!=null)
+                $root=$root->rootcategory;
+
+            $review=new Review(['ratings'=>$request->rating, 'review'=>$request->review,'user_id'=>$user->id, 'category_id'=>$root->id]);
             $order->reviews()->save($review);
             return [
                 'status'=>'success',
@@ -292,8 +300,8 @@ class OrderController extends Controller
                     $vendor=$order->vendors()->where('vendor_orders.status', 'completed')->firstOrFail();
                     $vendor->pivot->status='paid';
                     $vendor->pivot->save();
-
                     $order->status='paid';
+                    OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->status]);
                     $order->using_wallet=true;
                     $order->from_wallet=$order->total_after_inspection;
                     $order->save();
@@ -373,6 +381,8 @@ class OrderController extends Controller
                 $order->payment_id=$request->razorpay_payment_id;
                 $order->payment_id_response=$request->razorpay_signature;
                 $order->status='paid';
+
+                OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->status]);
 
                 if($order->using_wallet==1){
                     $balance=Wallet::balance($order->user_id);

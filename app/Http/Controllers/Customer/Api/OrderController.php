@@ -69,6 +69,8 @@ class OrderController extends Controller
                 if($product->flow==2){
                     Orders::where('user_id', $user->id)->where('isbookingcomplete', false)->delete();
                     $order=Orders::create(['user_id'=>$user->id, 'isbookingcomplete'=>true, 'order_id'=>date('YmdHis')]);
+                    Cart::remove($user,null);
+
                     OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->status]);
                     Order_items::create([
                         'order_id'=>$order->id,
@@ -140,7 +142,7 @@ class OrderController extends Controller
                 'product_id'=>$product,
             ]);
         }
-
+        Cart::remove($user,null);
         return [
             'status'=>'success',
             'orderid'=>$order->id,
@@ -240,11 +242,11 @@ class OrderController extends Controller
             'booking_date'=>'required|date_format:Y-m-d',
             'booking_time'=>'required|integer|min:1|max:12'
         ]);
-        $user=auth()->guard('api')->user();
+        $user=auth()->user();
         $order=Orders::where('user_id', $user->id)->where('isbookingcomplete', false)->findOrFail($id);
         if($order->update(array_merge($request->only('booking_date', 'booking_time'), [ 'isbookingcomplete'=>true]))){
             //clear cart
-            $user->cart()->delete();
+            Cart::remove($user);
             return [
                 'status'=>'success'
             ];

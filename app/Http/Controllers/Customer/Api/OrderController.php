@@ -35,6 +35,7 @@ class OrderController extends Controller
             Orders::where('user_id', $user->id)->where('isbookingcomplete', false)->delete();
 
             $order=Orders::create(['user_id'=>$user->id, 'order_id'=>date('YmdHis')]);
+            $order=$order->refresh();
             OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->status]);
               foreach($cart as $c){
                 //echo $c->product_id;
@@ -70,7 +71,7 @@ class OrderController extends Controller
                     Orders::where('user_id', $user->id)->where('isbookingcomplete', false)->delete();
                     $order=Orders::create(['user_id'=>$user->id, 'isbookingcomplete'=>true, 'order_id'=>date('YmdHis')]);
                     Cart::remove($user,null);
-
+                    $order=$order->refresh();
                     OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->status]);
                     Order_items::create([
                         'order_id'=>$order->id,
@@ -132,6 +133,7 @@ class OrderController extends Controller
             'lat'=>$request->lat,
             'lang'=>$request->lang,
             'order_id'=>date('YmdHis')]);
+        $order=$order->refresh();
         OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->status]);
         foreach($products as $product=>$quantity){
 

@@ -1,8 +1,7 @@
 <?php
 
-Route::get('/', function(){
-    return redirect()->route('login');
-});
+Route::get('/', 'HomepageController@index')->name('homepage');
+Route::post('submit', 'HomepageController@submitQuery')->name('submit.customer.query');
 
 
 Auth::routes();
@@ -11,8 +10,6 @@ Auth::routes();
 
 Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], function(){
     Route::get('dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
-
-    //Route::get('/dashboard', 'HomeController@index')->name('dashboard');
     Route::group(['prefix'=>'category'], function(){
         Route::get('/','Admin\CategoryController@index')->name('category.list');
         Route::get('create','Admin\CategoryController@create')->name('category.create');

@@ -46,7 +46,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar4" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a href="http://localhost/classiclab/" class="navbar-brand"><img src="img/logo.png" alt=""></a>
+                <a href="" class="navbar-brand"><img src="img/logo.png" alt=""></a>
             </div>
             <div class="collapse navbar-collapse" id="navbar4">
                 <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">

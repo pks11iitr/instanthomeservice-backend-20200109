@@ -248,7 +248,7 @@ class OrderController extends Controller
         $order=Orders::where('user_id', $user->id)->where('isbookingcomplete', false)->findOrFail($id);
         if($order->update(array_merge($request->only('booking_date', 'booking_time'), [ 'isbookingcomplete'=>true]))){
             //clear cart
-            Cart::remove($user);
+            Cart::remove($user, null);
             return [
                 'status'=>'success'
             ];
